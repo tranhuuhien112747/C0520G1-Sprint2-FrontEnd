@@ -24,7 +24,7 @@ import {PageRoutingModule} from './page-common/page-routing.module';
     PageCommonModule,
     UserManagerModule,
     ImportQuizModule,
-    AppRoutingModule
+    AppRoutingModule,
     PageRoutingModule,
     AppRoutingModule,
   ],
