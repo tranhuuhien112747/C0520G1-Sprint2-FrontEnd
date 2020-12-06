@@ -4,3 +4,6 @@
   font-size: 12px;
   font-family: Verdana;
 }
+.app-full-bleed-dialog .mat-dialog-container {
+  padding: 0;
+}

@@ -1,0 +1,74 @@
+<div class="container-fluid p-0 m-0">
+  <form class="form-inline border border-info rounded" [formGroup]="createUserForm"
+        (ngSubmit)="addNewUser()">
+    <div class="container-fluid col-lg-12 col-md-12 p-0 m-0">
+      <div class="row m-0" style="height: 39px;background: #cce7f5">
+        <div class="col-11">
+        <h3 class="ml-2 mt-2" style="color: #3591c8">Đăng ký</h3>
+        </div>
+        <div class="col-1 p-0 mt-0 d-flex justify-content-end">
+          <i class="fa fa-times text-secondary" mat-dialog-close style="font-size: 35px"></i>
+        </div>
+      </div>
+      <div class="m-3">
+        <div class=" form-group mt-4">
+          <label class="col-lg-3 col-md-3 justify-content-start">Tên đăng nhập </label>
+          <input type="text" class="col-lg-8 col-md-8 form-control form-control-sm" required=""
+                 placeholder="Nhập tên đăng nhập" formControlName="userName">
+          <span class="text-danger ml-3">*</span>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%"
+               *ngIf="createUserForm.get('userName').invalid && createUserForm.get('userName').touched">
+        <span *ngIf="createUserForm.get('userName').hasError('required')"
+              style="font-size: 12px">Vui lòng nhập tên đăng nhập.</span>
+            <span
+              *ngIf="createUserForm.get('userName').hasError('pattern')"
+              style="font-size: 12px">Tên đăng nhập không hợp lệ.</span>
+            <span style="font-size: 12px"
+                  *ngIf="createUserForm.get('userName').hasError('inValidName')"> Tên đăng nhập đã tồn tại.
+        </span>
+          </div>
+        </div>
+        <div class=" form-group mt-5">
+          <label class="col-lg-3 col-md-3 justify-content-start">Mật khẩu </label>
+          <input type="password" class="col-lg-8 col-md-8 form-control form-control-sm" required=""
+                 placeholder="Nhập mật khẩu" formControlName="password">
+          <span class="text-danger ml-3">*</span>
+        </div>
+        <div class=" form-group mt-5">
+          <label class="col-lg-3 col-md-3 justify-content-start">Nhập lại mật khẩu </label>
+          <input type="password" class="col-lg-8 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập mật khẩu" formControlName="confirmPassword">
+          <span class="text-danger ml-3">*</span>
+        </div>
+        <div class=" form-group  mt-5">
+          <label class="col-lg-3 col-md-3 justify-content-start">Họ và tên </label>
+          <input type="text" class="col-lg-8 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập họ và tên" formControlName="fullName">
+          <span class="text-danger ml-3">*</span>
+        </div>
+        <div class=" form-group  mt-5">
+          <label class="col-lg-3 col-md-3 justify-content-start">Email </label>
+          <input type="text" class="col-lg-8 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập email" formControlName="email">
+          <span class="text-danger ml-3">*</span>
+        </div>
+        <div class=" form-group  mt-5">
+          <label class="col-lg-3 col-md-3 justify-content-start">Địa chỉ </label>
+          <input type="text" class="col-lg-8 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập địa chỉ" formControlName="address">
+          <span class="text-danger ml-3">*</span>
+        </div>
+        <div class=" form-group  mt-5">
+          <label class="col-lg-3 col-md-3 justify-content-start">Số điện thoại </label>
+          <input type="text" class="col-lg-8 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập số điện thoại" formControlName="phoneNumber">
+          <span class="text-danger ml-3">*</span>
+        </div>
+        <div class="mt-4 d-flex justify-content-center my-4">
+          <button type="reset" role="button" class="btn btn-secondary mr-3 btn-sm ">Đặt lại</button>
+          <button class="btn btn-success  btn-sm " type="submit"> Thêm</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
