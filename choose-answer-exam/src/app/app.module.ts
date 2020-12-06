@@ -17,14 +17,14 @@ import { ImportQuizModule } from './import-quiz/import-quiz.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     StatisticsModule,
     AccountManagerModule,
     ExamManagerModule,
     DataManagerModule,
     PageCommonModule,
     UserManagerModule,
-    ImportQuizModule
+    ImportQuizModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
