@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {ImportQuizComponent} from './import-quiz/import-quiz/import-quiz.component';
 
 const routes: Routes = [
-  { path: '**', redirectTo: ''}
+  { path: 'upload' , component: ImportQuizComponent},
+  { path: '**', redirectTo: ''},
 ];
 
 @NgModule({
