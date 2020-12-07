@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Question} from '../model/model.question';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class ImportQuizService {
   public saveFile = 'http://localhost:8080//saveFile';
 
   constructor(
-    public httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router,
   ) {
   }
 
@@ -28,6 +30,7 @@ export class ImportQuizService {
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', file);
+    this.router.navigateByUrl('').then(window.location.reload);
     return this.httpClient.post<HttpEvent<any>>(this.saveFile, formData, {
       reportProgress: true,
       responseType: 'json'
