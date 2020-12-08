@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "choose-answer-exam"
+    }
+  },
+  "defaultProject": "choose-answer-exam",
+  "cli": {
+    "analytics": false
+  }
 }
