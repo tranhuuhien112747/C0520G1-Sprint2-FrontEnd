@@ -1,0 +1,66 @@
+<h4 class="text-center">Chỉnh sửa câu hỏi</h4>
+<hr>
+<form [formGroup]="updateQuestion" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="row mt-4 ml-2">
+      <label class="font-weight-bold  col-md-2">Câu hỏi:</label>
+      <input class="form-control  col-md-8 " formControlName="questionContent">
+    </div>
+    <div class="row mt-4 ml-2">
+      <label class="font-weight-bold  col-md-2">Phương án:</label>
+      <div class="col-md-8" style="border: 1px solid black; border-radius: 4px">
+        <div class="input-group mb-3 input-group-sm mt-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text">A</span>
+          </div>
+          <input type="text" class="form-control" formControlName="answerA">
+        </div>
+        <div class="input-group mb-3 input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">B</span>
+          </div>
+          <input type="text" class="form-control" formControlName="answerB">
+        </div>
+        <div class="input-group mb-3 input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">C</span>
+          </div>
+          <input type="text" class="form-control" formControlName="answerC">
+        </div>
+        <div class="input-group mb-3 input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">D</span>
+          </div>
+          <input type="text" class="form-control" formControlName="answerD">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4 ml-2">
+      <label class="font-weight-bold  col-md-2">Đáp án đúng:</label>
+      <div class="col-md-8 ml-3  d-flex">
+        <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'A'">&nbsp;A
+        </label>
+        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'B'">&nbsp;B
+        </label>
+        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'C'">&nbsp;C
+        </label>
+        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'D'">&nbsp;D
+        </label>
+      </div>
+    </div>
+    <div class="row mt-4 ml-2">
+      <label class="font-weight-bold   col-md-2">Môn học:</label>
+      <div class="col-md-8 ml-3  d-flex">
+        <label class="font-weight-bold mr-1 offset-1" *ngFor="let element of subjects">
+          <input class="mt-2" type="radio" formControlName="subject" [value]="element">{{element.subjectName}}
+        </label>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="row d-flex justify-content-end">
+    <button mat-dialog-close class="btn btn-secondary">Đóng</button>
+    <button type="submit" class="btn btn-outline-warning  ml-3">Xác nhận</button>
+  </div>
+</form>
