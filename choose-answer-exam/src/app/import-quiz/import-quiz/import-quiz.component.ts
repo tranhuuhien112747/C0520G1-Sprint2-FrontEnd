@@ -14,9 +14,8 @@ export class ImportQuizComponent implements OnInit {
 
   selectedFiles: FileList;
   currentFile: File;
-  fileInfos: Observable<any>;
   message = '';
-  p: any;
+  p = 0;
 
   constructor(private importQuizService: ImportQuizService) {
   }
@@ -28,10 +27,10 @@ export class ImportQuizComponent implements OnInit {
     this.currentFile = this.selectedFiles.item(0);
     this.importQuizService.upload(this.currentFile).subscribe(
       event => {
-        this.message = 'OK';
+        this.message = 'Lưu câu hỏi thành công';
       },
       err => {
-        this.message = 'Could not upload the file!';
+        this.message = 'Không thể lưu câu hỏi!';
         this.currentFile = undefined;
       });
 

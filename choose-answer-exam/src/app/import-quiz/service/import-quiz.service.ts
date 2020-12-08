@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class ImportQuizService {
-  public API = 'http://localhost:8080';
   public uploadFile = 'http://localhost:8080/upload';
   public saveFile = 'http://localhost:8080//saveFile';
 
@@ -30,7 +29,7 @@ export class ImportQuizService {
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    this.router.navigateByUrl('').then(window.location.reload);
+    // this.router.navigateByUrl('upload').then(window.location.reload);
     return this.httpClient.post<HttpEvent<any>>(this.saveFile, formData, {
       reportProgress: true,
       responseType: 'json'
