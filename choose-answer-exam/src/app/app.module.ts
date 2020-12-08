@@ -27,10 +27,9 @@ import {HttpClientModule} from '@angular/common/http';
     PageCommonModule,
     UserManagerModule,
     ImportQuizModule,
-    AppRoutingModule,
     PageRoutingModule,
+    QuestionManagerModule,
     AppRoutingModule,
-    QuestionManagerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

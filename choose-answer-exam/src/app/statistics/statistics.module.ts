@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StatisticsPointComponent } from './component/statistics-point/statistics-point.component';
 import { StatisticsMemberComponent } from './component/statistics-member/statistics-member.component';
 import { StatisticsDetailDataComponent } from './component/statistics-detail-data/statistics-detail-data.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -13,7 +14,8 @@ import { StatisticsDetailDataComponent } from './component/statistics-detail-dat
         StatisticsMemberComponent
     ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatDialogModule
   ]
 })
 export class StatisticsModule { }
