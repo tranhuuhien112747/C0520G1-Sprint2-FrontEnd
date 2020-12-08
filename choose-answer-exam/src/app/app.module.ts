@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatisticsModule } from './statistics/statistics.module';
@@ -10,6 +9,7 @@ import { DataManagerModule } from './data-manager/data-manager.module';
 import {UserManagerModule} from './user-manager/user-manager.module';
 import { PageCommonModule } from './page-common/page-common.module';
 import { ImportQuizModule } from './import-quiz/import-quiz.module';
+import {PageRoutingModule} from './page-common/page-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,8 @@ import { ImportQuizModule } from './import-quiz/import-quiz.module';
     UserManagerModule,
     ImportQuizModule,
     AppRoutingModule
+    PageRoutingModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
