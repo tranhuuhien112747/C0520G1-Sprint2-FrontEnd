@@ -12,6 +12,6 @@ export class StatisticsService {
   }
 
   getStatisticsSumPoint(): Observable<any> {
-    return this.http.get(this.API_STATISTICS + '/point');
+    return this.http.get(this.API_STATISTICS + '/sum-point');
   }
 }
