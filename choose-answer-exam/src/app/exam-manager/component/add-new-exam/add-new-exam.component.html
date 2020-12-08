@@ -1,0 +1,22 @@
+<h4 class="font-weight-bold text-center">Tạo mới đề thi</h4>
+<hr>
+<form [formGroup]="createExam" (ngSubmit)="onSubmit()">
+<div class="row mt-3">
+  <label class="font-weight-bold ml-2">Tên đề thi:</label>
+  <input class="form-control offset-md-1 col-md-8 ml-2" placeholder="nhập tên đề thi" formControlName="examName">
+</div>
+<div class="row mt-4">
+  <label class="font-weight-bold  ml-2">Môn học:</label>
+
+  <div class="col-md-10 ml-1  offset-md-1 d-flex">
+
+    <label class="font-weight-bold ml-3 " *ngFor="let element of subjects">
+      <input class="mt-2" formControlName="subject" type="radio"  [value]="element.idSubject">{{element.subjectName}}
+    </label>
+  </div>
+</div>
+<div class="row d-flex justify-content-end">
+  <button mat-dialog-close class="btn btn-secondary" >Đóng</button>
+  <button type="submit" class="btn btn-outline-success  ml-3" >Thêm</button>
+</div>
+</form>
