@@ -10,8 +10,8 @@ import { PageCommonModule } from './page-common/page-common.module';
 import { UserManagerModule } from './user-manager/user-manager.module';
 import { ImportQuizModule } from './import-quiz/import-quiz.module';
 import {PageRoutingModule} from './page-common/page-routing.module';
+import {QuestionManagerModule} from './question-manager/question-manager.module';
 import {HttpClientModule} from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     PageRoutingModule,
     AppRoutingModule,
+    QuestionManagerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

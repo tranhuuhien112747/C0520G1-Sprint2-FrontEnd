@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <button class="btn btn-secondary w-100">Header</button>
+  <hr>
+</div>
+
+<div class="container-fluid justify-content-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+            <i class='fas fa-align-left mr-2'></i>Ngân hàng câu hỏi
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Danh sách thành viên</a></li>
+            <li><a class="dropdown-item" href="#">Danh sách đề thi</a></li>
+            <li><a class="dropdown-item" href="#">TOP</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-5 mt-4 d-flex justify-content-end">
+        <button class="btn" style="background: black; color: white">Thêm từ tập tin<i
+          class='far fa-file-excel ml-2'></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mr-5" style="overflow-x:auto;">
+
+    <small class="font-weight-bold" *ngIf="listQuestion != null; else block">Tổng số câu hỏi là: {{listQuestion.length}}</small>
+    <ng-template #block>
+      <small class="font-weight-bold">Tổng số câu hỏi là: 0</small>
+    </ng-template>
+    <table class="table  table-bordered table-hover mt-2 ">
+      <thead style="background: #96a2af">
+      <tr>
+        <th class="font-weight-bold text-center">STT</th>
+        <th class="font-weight-bold text-center">Mã câu hỏi</th>
+        <th class="font-weight-bold text-center">Câu hỏi</th>
+        <th class="font-weight-bold text-center">Phương án trả lời</th>
+        <th class="font-weight-bold text-center">Đáp án</th>
+        <th class="font-weight-bold text-center">Tác vụ</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="listQuestion; else blockList">
+      <tr *ngFor="let element of listQuestion | paginate: { itemsPerPage: 4, currentPage: p }; let i = index">
+        <td class="text-center">{{i + 1}}</td>
+        <td class="text-center">{{element.idQuestion | IdConvert: 'CH'}}</td>
+        <td>{{element.questionContent}}</td>
+        <td>
+          <p class="text-info">{{element.answerA}}</p>
+          <p class="text-secondary">{{element.answerB}}</p>
+          <p class="text-primary">{{element.answerC}}</p>
+          <p class="text-warning">{{element.answerD}}</p>
+        </td>
+        <td>{{element.trueAnswer}}</td>
+        <td class="text-center">
+          <button (click)="openDialogEdit(element.idQuestion)" class="btn btn-warning">sửa</button>
+          <div class="my-4"></div>
+          <button (click)="openDialogDelete(element.idQuestion)" class="btn btn-danger">Xóa</button>
+        </td>
+      </tr>
+      </tbody>
+      <ng-template #blockList>
+        <tbody>
+        <tr>
+          <td colspan="6"><h4 class="font-weight-bold  text-center">Không có dữ liệu!</h4></td>
+        </tr>
+        </tbody>
+      </ng-template>
+    </table>
+
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+                           nextLabel="Sau"
+                           responsive="true"></pagination-controls>
+    </nav>
+    <div class="d-flex justify-content-end">
+      <button class="btn mr-2 btn-success" (click)="openDialogAddNew()">Thêm mới
+      </button>
+      <button class="btn btn-secondary">Đóng</button>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
