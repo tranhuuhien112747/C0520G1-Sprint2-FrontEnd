@@ -7,8 +7,8 @@ import { StatisticsModule } from './statistics/statistics.module';
 import { AccountManagerModule } from './account-manager/account-manager.module';
 import { ExamManagerModule } from './exam-manager/exam-manager.module';
 import { DataManagerModule } from './data-manager/data-manager.module';
+import {UserManagerModule} from './user-manager/user-manager.module';
 import { PageCommonModule } from './page-common/page-common.module';
-import { UserManagerModule } from './user-manager/user-manager.module';
 import { ImportQuizModule } from './import-quiz/import-quiz.module';
 
 @NgModule({

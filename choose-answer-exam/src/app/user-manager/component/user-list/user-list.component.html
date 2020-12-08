@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-md-3">
         <div class="dropdown">
-          <button class="btn btn-info dropdown-toggle col-12" type="button" data-toggle="dropdown">
+          <button class="btn btn-sm btn-info dropdown-toggle col-12" type="button" data-toggle="dropdown">
             Danh sách thành viên
           </button>
           <ul class="dropdown-menu col-12">
@@ -39,7 +39,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of users|paginate :{itemsPerPage:1,currentPage:p}; let i = index">
+      <tr *ngFor="let user of users|paginate :{itemsPerPage:6,currentPage:p}; let i = index">
         <td class="text-center">{{i+1}}</td>
         <td class="text-center">{{user.userName}}</td>
         <td class="text-center">{{user.fullName}}</td>
@@ -50,8 +50,8 @@
           <!--                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
           <!--                        Launch demo modal-->
           <!--                    </button>-->
-          <button type="submit" class="btn btn-warning m-1" (click)="openDialogEdit(user.idUser)">Sửa</button>
-          <button type="submit" class="btn btn-danger m-1" href="#" data-toggle="modal" (click)="openDialogDelete(user.idUser)"> Xóa
+          <button type="submit" class="btn btn-sm btn-warning m-1" (click)="openDialogEdit(user.idUser)">Sửa</button>
+          <button type="submit" class="btn btn-sm btn-danger m-1"  (click)="openDialogDelete(user.idUser)"> Xóa
           </button>
         </td>
       </tr>
@@ -63,13 +63,6 @@
     <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
                          nextLabel="Sau"
                          responsive="true"></pagination-controls>
-<!--    <ul class="pagination">-->
-<!--      <li class="page-item"><a class="page-link" href="#">Trước</a></li>-->
-<!--      <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-<!--      <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--      <li class="page-item"><a class="page-link" href="#">Sau</a></li>-->
-<!--    </ul>-->
   </nav>
   <div class="d-flex justify-content-end">
     <button class="btn btn-secondary">Đóng</button>

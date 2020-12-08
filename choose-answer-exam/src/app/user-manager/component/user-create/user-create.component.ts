@@ -41,22 +41,21 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
-      // userName: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUserName)]],
-      // // userName: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$')]],
-      // password: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
-      // confirmPassword: ['', [Validators.required]],
-      // fullName: ['', [Validators.required, Validators.maxLength(30)]],
-      // email: ['', [Validators.required]],
-      // address: ['', Validators.required],
-      // phoneNumber: ['', Validators.required],
-      userName: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      userName: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUserName)]],
+      password: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
       confirmPassword: ['', [Validators.required]],
-      fullName: ['', [Validators.required]],
+      fullName: ['', [Validators.required, Validators.maxLength(30)]],
       email: ['', [Validators.required]],
       address: ['', Validators.required],
-      phoneNumber: ['', Validators.required]
-    });
+      phoneNumber: ['', Validators.required],
+      // userName: ['', [Validators.required]],
+      // password: ['', [Validators.required]],
+      // confirmPassword: ['', [Validators.required]],
+      // fullName: ['', [Validators.required]],
+      // email: ['', [Validators.required]],
+      // address: ['', Validators.required],
+      // phoneNumber: ['', Validators.required]
+    }, {validator: comparePassword});
     // {validator: comparePassword});
     this.userService.getAllUser().subscribe(data => {
       this.userList = data;
@@ -72,7 +71,9 @@ export class UserCreateComponent implements OnInit {
       }
     }
   }
+
   addNewUser() {
+    this.createUserForm.markAllAsTouched();
     if (this.createUserForm.valid) {
       this.userService.addNewUser(this.createUserForm.value).subscribe(data => {
         this.dialogRef.close();

@@ -23,7 +23,6 @@ export class UserListComponent implements OnInit {
     // tslint:disable-next-line:no-unused-expression
     this.p = 0;
     this.userService.getAllUser().subscribe(data => {
-      console.log(data);
       this.users = data;
     }, error => console.log(error));
   }
@@ -32,12 +31,11 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(UserCreateComponent, {
       panelClass: 'app-full-bleed-dialog',
       width: '740px',
-      height: '500px',
+      maxHeight: '90vh',
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.ngOnInit();
     });
   }
@@ -47,7 +45,6 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(UserEditComponent, {
       panelClass: 'app-full-bleed-dialog',
       width: '600px',
-      height: '400px',
       data: {dataE: dataEdit.idUser},
       disableClose: true
     });
