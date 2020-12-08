@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -13,5 +13,15 @@ export class StatisticsService {
 
   getStatisticsSumPoint(): Observable<any> {
     return this.http.get(this.API_STATISTICS + '/sum-point');
+  }
+
+  getStatisticsCountExamSubject(): Observable<any> {
+    return this.http.get(this.API_STATISTICS + '/count-subject');
+  }
+
+  getStatisticsResultExamUserBySubject(code: string): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('codeSubject', code);
+    return this.http.get(this.API_STATISTICS + '/search-by-subject', {params});
   }
 }

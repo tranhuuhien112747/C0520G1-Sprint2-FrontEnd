@@ -1,9 +1,30 @@
-<div style="width: 1000px;height:  530px; border: 5px solid dimgray">
-  <div style="height: 95%">
-  </div>
-  <div class="d-flex justify-content-end">
-    <button class="btn btn-sm btn-secondary font-weight-bold" mat-dialog-close type="button"
-            style="width: 80px;font-size: 13px;border: 1px solid dimgray"> Đóng
+<div class="col-md-12 m-0 p-0" style="width: 100%;height:  100%; border: 5px solid dimgray">
+  <div class="d-flex justify-content-end m-0 p-0" style="background: #fffab3">
+    <button class="btn btn-sm btn-danger font-weight-bold p-1" mat-dialog-close type="button"
+            style="width: 30px;font-size: 12px;border: 1px solid dimgray"> X
     </button>
   </div>
+
+  <!--  <div class="container-fluid f col-md-12" style="height: 95%;width: 100%">-->
+  <div class="row col-md-12 m-0 p-0" style="border-bottom:1px solid darkblue;border-top: 1px solid darkblue ">
+    <div class="col-md-1 m-0 p-0 text-center">
+      <div class="btn-group-vertical text-center mt-4" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-dark" style="width: 75px"> Java </button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px">HTML5</button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px">JavaScript</button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px">Angular</button>
+      </div>
+    </div>
+    <div class="col-md-11" id="chart">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [labels]="chartOptions.labels"
+        [responsive]="chartOptions.responsive"
+      ></apx-chart>
+      <label class="mt-4" style="color: darkblue;font-weight: bolder;font-size: 15px">Biểu đồ tròn thống kê số lần thi
+        năm 2020</label>
+    </div>
+  </div>
 </div>
+<!--</div>-->
