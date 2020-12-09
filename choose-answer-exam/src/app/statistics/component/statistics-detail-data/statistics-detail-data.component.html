@@ -1,29 +1,72 @@
-<div class="col-md-12 m-0 p-0" style="width: 100%;height:  100%; border: 5px solid dimgray">
+<div class="col-md-12 m-0 p-0" style="width: 100%;height:  100%; border: 3px solid darkblue">
   <div class="d-flex justify-content-end m-0 p-0" style="background: #fffab3">
     <button class="btn btn-sm btn-danger font-weight-bold p-1" mat-dialog-close type="button"
             style="width: 30px;font-size: 12px;border: 1px solid dimgray"> X
     </button>
   </div>
+  <div *ngIf="countSubjectList.length == 0" class="text-center" style="margin-top: 10%">
+    <h2 style="color: darkred; font-size: 25px">Hệ thống đang được bảo trì. Vui lòng quay lại sau !!!</h2>
+    <h2 style="color: darkred; font-size: 25px">Xin cảm ơn</h2>
+  </div>
 
-  <!--  <div class="container-fluid f col-md-12" style="height: 95%;width: 100%">-->
-  <div class="row col-md-12 m-0 p-0" style="border-bottom:1px solid darkblue;border-top: 1px solid darkblue ">
+  <div class="row col-md-12 m-0 p-0" style="border-bottom:1px solid darkblue;border-top: 1px solid darkblue "
+       *ngIf="countSubjectList.length > 0">
     <div class="col-md-1 m-0 p-0 text-center">
       <div class="btn-group-vertical text-center mt-4" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-dark" style="width: 75px"> Java </button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px">HTML5</button>
+        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px" (click)="selectChartColumn()"> Java</button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px" (click)="selectChartBar()">HTML5</button>
         <button type="button" class="btn btn-outline-dark" style="width: 75px">JavaScript</button>
         <button type="button" class="btn btn-outline-dark" style="width: 75px">Angular</button>
       </div>
     </div>
-    <div class="col-md-11" id="chart">
-      <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [labels]="chartOptions.labels"
-        [responsive]="chartOptions.responsive"
-      ></apx-chart>
-      <label class="mt-4" style="color: darkblue;font-weight: bolder;font-size: 15px">Biểu đồ tròn thống kê số lần thi
-        năm 2020</label>
+    <div class="col-md-10">
+      <div class="col-md-12 " *ngIf="flag == 1" >
+        <div class="mt-4 text-center">
+          <label style="color: darkblue;font-size: 15px"> Biểu đồ tổng thể hiện tỉ lệ được chọn của các môn học</label>
+          <label class="mx-2" style="font-size: 12px"> (Đơn vị: /bài thi) </label>
+        </div>
+        <div id="chart" style="background: snow">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [labels]="chartOptions.labels"
+            [responsive]="chartOptions.responsive"
+          ></apx-chart>
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="flag == 2">
+        <div class="col-md-12 mt-4 text-center">
+          <label style="color: darkblue;font-size: 15px"> Biểu đồ tổng thể hiện số lượng được chọn của các môn học</label>
+          <label class="mx-2" style="font-size: 12px"> (Đơn vị: /bài thi) </label>
+        </div>
+        <div class="col-md-12" id="chart1" style="background: snow">
+          <apx-chart
+            [series]="chartOptionsColumn.series"
+            [chart]="chartOptionsColumn.chart"
+            [dataLabels]="chartOptionsColumn.dataLabels"
+            [plotOptions]="chartOptionsColumn.plotOptions"
+            [yaxis]="chartOptionsColumn.yaxis"
+            [xaxis]="chartOptionsColumn.xaxis"
+            [legend]="chartOptionsColumn.legend"
+            [colors]="chartOptionsColumn.colors"
+            [grid]="chartOptionsColumn.grid"
+          ></apx-chart>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-1 m-0 p-0 mt-4">
+      <select style="color: purple;height: 25px;font-weight: bolder">
+        <option>Biểu đồ</option>
+        <option>Biểu đồ</option>
+        <option>Biểu đồ</option>
+
+      </select>
+    </div>
+  </div>
+  <div class="text-center  m-0 p-0 mt-4" style="background: #fffab3">
+    <div class="mt-3">
+      <h4 style="color: darkred ;font-size: 25px;font-weight: bolder">SỐ LIỆU THỐNG KÊ WEB THI ONLINE NĂM 2020</h4>
     </div>
   </div>
 </div>

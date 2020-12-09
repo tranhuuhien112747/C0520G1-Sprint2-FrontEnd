@@ -1,5 +1,12 @@
 #chart {
-  max-width: 380px;
+  max-width: 450px;
+  max-height: 600px;
   margin: 35px auto;
+  padding: 0;
+}
+
+#chart1 {
+  max-width: 580px;
+  margin: 0 auto;
   padding: 0;
 }
