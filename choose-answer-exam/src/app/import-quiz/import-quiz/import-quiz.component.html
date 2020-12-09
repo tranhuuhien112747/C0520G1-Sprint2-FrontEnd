@@ -1,49 +1,66 @@
 <div class="container-fluid px-0 w-50 " style="padding-top: 3%">
   <h4 class="row d-flex justify-content-center mt-3">Nhập câu hỏi từ file excel </h4>
-<div *ngIf="number !==1">
-  <div class="form-group row mt-5 ml-5 ">
-    <label class="col-sm-3 col-form-label">Đính kèm file excel * </label>
-    <div class="col-sm-5">
-      <input type="file" class="form-control" (change)="selectFile($event)"
-             accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+  <div *ngIf="number !==1">
+    <div class="form-group row mt-5 ml-5 ">
+      <label class="col-sm-3 col-form-label">Đính kèm file excel * </label>
+      <div class="col-sm-6">
+        <input type="file" class="form-control" (change)="selectFile($event)"
+               accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center ml-4">
+      <div class="mt-3">
+<!--        <a href="question-list" class="btn btn-secondary" type="submit">Hủy</a>-->
+        <button  class="btn btn-secondary" [routerLink]="['/question-list']" >Hủy</button>
+        <button class="btn btn-success mx-4" [disabled]="!selectedFiles" (click)="viewFile()"> Xác nhận</button>
+      </div>
     </div>
   </div>
-  <div class="row d-flex justify-content-center ml-4">
-    <div class="mt-3">
-      <a href="#" class="btn btn-secondary" type="submit">Hủy</a>
-      <button class="btn btn-success mx-4" [disabled]="!selectedFiles" (click)="viewFile()"> Xác nhận</button>
-    </div>
-  </div>
-</div>
 </div>
 
-<div class="mt-5" *ngIf="number == 1">
-  <table class="table table-hover">
-    <thead class="thead-light">
-    <tr>
-      <th>STT</th>
-      <th>Câu hỏi</th>
-      <th>Môn học</th>
-      <th>Phương án trả lời</th>
-      <th>Đáp án đúng</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let question of questionList |paginate: { itemsPerPage: 3, currentPage: p }; let i = index">
-      <td style="width: 50px">{{i + 1}}</td>
-      <td style="width: 400px">{{question.questionContent}}</td>
-      <td style="width: 100px">{{question.subject.subjectName}}</td>
-      <td style="width: 400px">{{question.answerA}}<br>{{question.answerB}}<br>{{question.answerC}}<br>{{question.answerD}}</td>
-      <td style="width: 350px">{{question.trueAnswer}}</td>
-    </tr>
-    </tbody>
-  </table>
-  <div>{{message}}</div>
-  <pagination-controls class=" d-flex justify-content-center mr-3 " (pageChange)="p = $event" previousLabel="Trước"
-                       nextLabel="Sau" responsive="true"></pagination-controls>
-  <div class="d-flex justify-content-center mt-3">
-    <a href="upload"><button class="btn btn-secondary">Hủy</button></a>
-    <button class="btn btn-success mx-4" [disabled]="!selectedFiles" (click)="saveFile()">Lưu
-    </button>
+<div class="container-fluid " style="padding-top: 3%">
+  <div *ngIf="number == 1">
+    <small class="font-weight-bold" *ngIf="questionList != null; else block">Tổng số câu hỏi
+      là: {{questionList.length}}</small>
+    <ng-template #block>
+      <small class="font-weight-bold">Tổng số câu hỏi là: 0</small>
+    </ng-template>
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th>STT</th>
+        <th>Câu hỏi</th>
+        <th>Môn học</th>
+        <th>Phương án trả lời</th>
+        <th>Đáp án đúng</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let question of questionList |paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+        <td style="width: 50px">{{i + 1}}</td>
+        <td style="width: 400px">{{question.questionContent}}</td>
+        <td style="width: 100px">{{question.subject.subjectName}}</td>
+        <td style="width: 400px">
+          <p class="text-info">{{question.answerA}}</p>
+          <p class="text-secondary">{{question.answerB}}</p>
+          <p class="text-primary">{{question.answerC}}</p>
+          <p class="text-warning">{{question.answerD}}</p>
+        </td>
+        <td style="width: 350px">{{question.trueAnswer}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div>{{message}}</div>
+    <pagination-controls class=" d-flex justify-content-center " (pageChange)="p = $event" previousLabel="Trước"
+                         nextLabel="Sau" responsive="true"></pagination-controls>
+    <div class="d-flex justify-content-center mt-3">
+      <button class="btn btn-secondary" [routerLink]="['/question-list']">Hủy</button>
+      <button class="btn btn-success mx-4" [disabled]="!selectedFiles" (click)="saveFile()">Lưu
+      </button>
+    </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+

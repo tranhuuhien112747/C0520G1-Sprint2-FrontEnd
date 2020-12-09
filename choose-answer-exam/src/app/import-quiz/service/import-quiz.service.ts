@@ -17,20 +17,28 @@ export class ImportQuizService {
   ) {
   }
 
-  getAll(file: File): Observable<Question> {
+  getAll(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.httpClient.post<Question>(this.uploadFile, formData, {
+    return this.httpClient.post<any>(this.uploadFile, formData, {
       reportProgress: true,
       responseType: 'json'
     });
   }
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  // upload(file: File): Observable<HttpEvent<any>> {
+  //   const formData: FormData = new FormData();
+  //   formData.append('file', file);
+  //   return this.httpClient.post<HttpEvent<any>>(this.saveFile, formData, {
+  //     reportProgress: true,
+  //     responseType: 'json'
+  //   });
+  // }
+
+  upload(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    // this.router.navigateByUrl('upload').then(window.location.reload);
-    return this.httpClient.post<HttpEvent<any>>(this.saveFile, formData, {
+    return this.httpClient.post<any>(this.saveFile, formData, {
       reportProgress: true,
       responseType: 'json'
     });
