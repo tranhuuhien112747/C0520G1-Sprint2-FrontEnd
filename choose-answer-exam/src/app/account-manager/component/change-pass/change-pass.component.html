@@ -1,28 +1,58 @@
-<div class="container-fluid w-50 mt-4">
+<div class="container-fluid w-75 mt-4">
   <div class="card border mt-3">
     <h3 class="card-header bg-light"><span class="mx-auto">Đổi mật khẩu</span></h3>
     <div class="card-body">
       <div class="row">
-        <form class="col-12 mx-auto">
+        <form class="col-12 mx-auto" [formGroup]="formChangePass">
           <div class="form-group">
             <label for="old-pass">Mật khẩu cũ <span class="text-danger">(*)</span></label>
             <input type="password" class="form-control col-12" id="old-pass" aria-describedby="emailHelp"
-                   value="12345678">
+                   formControlName="oldPassword">
+            <div class="text-danger font-italic" role="alert"
+                 *ngIf="formChangePass.get('oldPassword').invalid && formChangePass.get('oldPassword').touched">
+           <span *ngIf="formChangePass.get('oldPassword').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập mật khẩu cũ.</span>
+            </div>
+            <div class="text-danger font-italic" role="alert" style="font-size: 12px"
+                 *ngFor="let err of errorMessage">{{err.message}}
+            </div>
           </div>
           <div class="form-group">
             <label for="new-pass">Mật khẩu mới <span class="text-danger">(*)</span></label>
-            <input type="password" class="form-control" id="new-pass" value="123456">
+            <input type="password" class="form-control" id="new-pass" formControlName="newPassword">
+            <label class="col-lg-1 col-md-1 text-success" *ngIf="formChangePass.get('newPassword').valid">
+              <i style="font-size: 15px" class="fas fa-check"></i></label>
+            <div class="text-danger font-italic" role="alert" style="font-size: 12px" *ngIf="formChangePass.get('newPassword').invalid &&
+      formChangePass.get('newPassword').touched">
+           <span *ngIf="formChangePass.get('newPassword').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập mật khẩu.</span>
+              <span
+                *ngIf="formChangePass.get('newPassword').hasError('pattern')"
+                style="font-size: 12px">Mật khẩu không hợp lệ.</span>
+            </div>
           </div>
           <div class="form-group">
             <label for="re-pass">Xác nhận mật khẩu <span class="text-danger">(*)</span></label>
-            <input type="password" class="form-control" id="re-pass" value="123456">
+            <input type="password" class="form-control" id="re-pass" formControlName="confirmPassword">
+            <label class="col-lg-1 col-md-1 text-success"
+                   *ngIf="formChangePass.get('confirmPassword').valid && !formChangePass.hasError('passwordNotMatch')">
+              <i style="font-size: 15px" class="fas fa-check"></i></label>
+            <div class="text-danger font-italic" role="alert" style="font-size: 12px"
+                 *ngIf="formChangePass.get('confirmPassword').touched && formChangePass.get('confirmPassword').invalid">
+        <span *ngIf="formChangePass.get('confirmPassword').hasError('required')"
+              style="font-size: 12px">Vui lòng xác nhận lại mật khẩu.</span>
+            </div>
+            <div class="text-danger font-italic" role="alert" *ngIf="formChangePass.hasError('passwordNotMatch')"
+                 style="font-size: 12px;">
+              Mật khẩu không chính xác.
+            </div>
           </div>
           <div class="row">
             <div>
-              <button type="submit" class="btn btn-success ml-3" style="width: 67px">Sửa</button>
+              <button class="btn btn-primary ml-3" mat-dialog-close>Thoát</button>
             </div>
             <div>
-              <button class="btn btn-primary ml-3">Thoát</button>
+              <button type="submit" class="btn btn-success ml-3" style="width: 67px" (click)="changePass()">Sửa</button>
             </div>
           </div>
         </form>
