@@ -45,16 +45,16 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
-        // this.tokenStorage.saveUser(data);
-        const token = new TokenDTO(this.user.idToken);
-        console.log(token);
+        const token = new TokenDTO(this.user.authToken);
+        console.log(data);
         this.authenticationService.facebook(token).subscribe(next => {
           this.tokenStorage.saveToken(next.accessToken);
           this.tokenStorage.saveUser(next);
-          console.log(next);
+        //   console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.reloadPage();
+          this.ngOnInit();
+          // this.reloadPage();
         }, err => {
           console.log('error');
           this.isLoginFailed = true;
@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/']).then(() => this.reloadPage());
+        this.router.navigate(['/']).then(() => this.ngOnInit());
       },
       err => {
         this.errorMessage = err.error.message;

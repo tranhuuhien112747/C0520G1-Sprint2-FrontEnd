@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
       this.role = user.role;
       console.log('abc');
       console.log(this.role);
-      console.log(this.tokenStorageService.getToken());
       this.showAdminBoard = this.role.includes('ROLE_ADMIN');
       this.showUserBoard = this.role.includes('ROLE_USER');
       this.username = user.username;
