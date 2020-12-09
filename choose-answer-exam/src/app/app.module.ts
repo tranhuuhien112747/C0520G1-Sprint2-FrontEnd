@@ -11,6 +11,7 @@ import { UserManagerModule } from './user-manager/user-manager.module';
 import { ImportQuizModule } from './import-quiz/import-quiz.module';
 import {PageRoutingModule} from './page-common/page-routing.module';
 import {QuestionManagerModule} from './question-manager/question-manager.module';
+import {ResultExamManagerModule} from './result-exam-manager/result-exam-manager.module';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -23,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
     StatisticsModule,
     AccountManagerModule,
     ExamManagerModule,
+    ResultExamManagerModule,
     DataManagerModule,
     PageCommonModule,
     UserManagerModule,
