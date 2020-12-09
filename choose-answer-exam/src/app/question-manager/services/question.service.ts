@@ -12,6 +12,7 @@ export class QuestionService {
 
   public messageDeleteSuccess = '';
   public messageAddSuccess = '';
+  public messageUpload = '';
   constructor(private http: HttpClient) {}
   deleteQuestion(id: number): Observable<Question>{
     return this.http.delete<Question>(`${this.API}/delete/${id}`);

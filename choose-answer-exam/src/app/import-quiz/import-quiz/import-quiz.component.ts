@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ImportQuizService} from '../service/import-quiz.service';
 import {Router} from '@angular/router';
+import {QuestionService} from '../../question-manager/services/question.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -19,7 +20,8 @@ export class ImportQuizComponent implements OnInit {
 
   constructor(
     private importQuizService: ImportQuizService,
-    private router: Router
+    private router: Router,
+    private questionService: QuestionService
   ) {
   }
 
@@ -31,6 +33,8 @@ export class ImportQuizComponent implements OnInit {
     this.importQuizService.upload(this.currentFile).subscribe(data => {
         console.log(data);
         this.message = data.message;
+        this.questionService.messageUpload = this.message;
+        this.router.navigate(['question-list']);
       },
       error => {
         this.message = ' Không thể lưu câu hỏi';
@@ -48,11 +52,14 @@ export class ImportQuizComponent implements OnInit {
     this.number = 1;
     this.currentFile = this.selectedFiles.item(0);
     this.importQuizService.getAll(this.currentFile).subscribe(data => {
-      console.log(data);
-      this.questionList = data;
+        console.log(data);
+        this.questionList = data;
       },
       error => {
-      this.message = error.error.message;
-    });
+        this.message = error.error.message;
+        setTimeout(() => {
+          this.message = '';
+        }, 2000);
+      });
   }
 }

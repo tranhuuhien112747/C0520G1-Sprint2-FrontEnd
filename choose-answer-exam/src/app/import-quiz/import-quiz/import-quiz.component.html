@@ -20,6 +20,7 @@
 
 <div class="container-fluid " style="padding-top: 3%">
   <div *ngIf="number == 1">
+    <div class="text-primary d-flex justify-content-end">{{message}}</div>
     <small class="font-weight-bold text-primary" *ngIf="questionList != null; else block">Tổng số câu hỏi
       là: {{questionList.length}}</small>
     <ng-template #block>
@@ -50,7 +51,7 @@
       </tr>
       </tbody>
     </table>
-    <div class="text-primary">{{message}}</div>
+
     <pagination-controls class=" d-flex justify-content-center " (pageChange)="p = $event" previousLabel="Trước"
                          nextLabel="Sau" responsive="true"></pagination-controls>
     <div class="d-flex justify-content-center mt-3">

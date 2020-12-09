@@ -30,8 +30,12 @@
           <ng-template #AddSuccess>
             <div class="alert alert-success" role="alert" >{{messageAddSuccess}}</div>
           </ng-template>
+          <div  *ngIf="messageUpload == ''; else Upload" ></div>
+          <ng-template #Upload>
+            <div class="alert alert-success" role="alert" >{{messageUpload}}</div>
+          </ng-template>
         </div>
-        <button class="btn" style="background: black; color: white; height: 30px">Thêm từ tập tin
+        <button class="btn" style="background: black; color: white; height: 30px" [routerLink]="['/upload']">Thêm từ tập tin
           <i class='far fa-file-excel ml-2'></i>
         </button>
         <div class="mx-2"></div>
