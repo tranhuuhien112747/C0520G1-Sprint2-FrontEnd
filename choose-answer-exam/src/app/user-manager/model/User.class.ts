@@ -2,7 +2,7 @@ export class User{
   // tslint:disable-next-line:variable-name
   private _idUser: number;
   // tslint:disable-next-line:variable-name
-  private _userName: string;
+  private _username: string;
   // tslint:disable-next-line:variable-name
   private _password: string;
   // tslint:disable-next-line:variable-name
@@ -24,12 +24,13 @@ export class User{
     this._idUser = value;
   }
 
-  get userName(): string {
-    return this._userName;
+
+  get username(): string {
+    return this._username;
   }
 
-  set userName(value: string) {
-    this._userName = value;
+  set username(value: string) {
+    this._username = value;
   }
 
   get password(): string {

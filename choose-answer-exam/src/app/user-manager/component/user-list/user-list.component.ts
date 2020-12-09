@@ -42,33 +42,33 @@ export class UserListComponent implements OnInit {
 
   openDialogEdit(idUser) {
     this.userService.getUserById(idUser).subscribe(dataEdit => {
-    const dialogRef = this.dialog.open(UserEditComponent, {
-      panelClass: 'app-full-bleed-dialog',
-      width: '600px',
-      data: {dataE: dataEdit.idUser},
-      disableClose: true
-    });
+      const dialogRef = this.dialog.open(UserEditComponent, {
+        panelClass: 'app-full-bleed-dialog',
+        width: '600px',
+        data: {dataE: dataEdit.idUser},
+        disableClose: true
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.ngOnInit();
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
     });
-    });
-  };
+  }
   openDialogDelete(idUser) {
     this.userService.getUserById(idUser).subscribe(dataEdit => {
-    const dialogRef = this.dialog.open(UserDeleteComponent, {
-      // panelClass: 'app-full-bleed-dialog',
-      width: '570px',
-      height: '200px',
-      data: {dataE: dataEdit},
-      disableClose: true
-    });
+      const dialogRef = this.dialog.open(UserDeleteComponent, {
+        // panelClass: 'app-full-bleed-dialog',
+        width: '570px',
+        height: '200px',
+        data: {dataE: dataEdit},
+        disableClose: true
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.ngOnInit();
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
     });
   }
 }
