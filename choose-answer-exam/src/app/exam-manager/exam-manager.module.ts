@@ -15,6 +15,7 @@ import { DeleteQuestionInExamComponent } from './component/delete-question-in-ex
 
 
 
+
 @NgModule({
   declarations: [ListExamComponent, AddNewExamComponent, DeleteExamComponent, IdConvertExam, DetailExamComponent, AddQuestionInExamComponent, DeleteQuestionInExamComponent],
   imports: [

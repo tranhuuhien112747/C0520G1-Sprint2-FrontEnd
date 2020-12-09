@@ -11,13 +11,33 @@ import {Exam} from '../model/exam.class';
 export class ExamService {
   public API = 'http://localhost:8080/exam';
 
-  public message: string;
+  public messageAddSuccess = '';
+  public messageDeleteSuccess = '';
+  public messageDeleteQuestionSuccess = '';
+  public messageAddQuestionSuccess = '';
   constructor(private http: HttpClient) {}
-  deleteExam(id: number): Observable<Exam>{
-    return this.http.delete<Exam>(`${this.API}/deleteExam/${id}`);
+  deleteExam(idExams: string): Observable<Exam>{
+    let params = new HttpParams();
+    params = params.append('idExams', idExams);
+    return this.http.delete<Exam>(`${this.API}/deleteExam`, {params});
+  }
+  deleteQuestionInExam(idQuestions: string): Observable<Question>{
+    let params = new HttpParams();
+    params = params.append('idQuestions', idQuestions);
+    return this.http.delete<Question>(`${this.API}/deleteQuestionInExam`, {params});
+  }
+  addQuestionInExam(idQuestions: string): Observable<Question>{
+    let params = new HttpParams();
+    params = params.append('idQuestions', idQuestions);
+    return this.http.get<Question>(`${this.API}/addQuestionInExam`, {params});
   }
   getAllExam(): Observable<Exam[]>{
     return this.http.get<Exam[]>(this.API);
+  }
+  getAllQuestion(idExam: string): Observable<Question[]>{
+    let params = new HttpParams();
+    params = params.append('idExam', idExam);
+    return this.http.get<Question[]>(`${this.API}/allQuestion`, {params});
   }
   addNewExam(examName: string, subject: string): Observable<Exam> {
     let params = new HttpParams();
