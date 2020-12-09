@@ -25,11 +25,11 @@ export class User{
   }
 
 
-  get username(): string {
+  get userName(): string {
     return this._username;
   }
 
-  set username(value: string) {
+  set userName(value: string) {
     this._username = value;
   }
 

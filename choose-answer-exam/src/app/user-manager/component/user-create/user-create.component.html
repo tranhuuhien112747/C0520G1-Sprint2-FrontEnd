@@ -14,13 +14,13 @@
         <div class=" form-group mt-3">
           <label class="col-lg-3 col-md-3 justify-content-start">Tên đăng nhập <span class="ml-1" style="color: red">*</span></label>
           <input type="text" class="col-12 col-md-8 form-control form-control-sm" required=""
-                 placeholder="Nhập tên đăng nhập" formControlName="userName">
+                 placeholder="Nhập tên đăng nhập" formControlName="username">
           <label class="ml-2 text-success"
-                 *ngIf="createUserForm.get('userName').valid">
+                 *ngIf="createUserForm.get('username').valid">
             <i style="font-size: 15px" class="fas fa-check"></i></label>
           <div class="text-danger font-italic" role="alert" style="margin-left: 25%"
-               *ngIf="createUserForm.get('userName').invalid && createUserForm.get('userName').touched">
-        <span *ngIf="createUserForm.get('userName').hasError('required')"
+               *ngIf="createUserForm.get('username').invalid && createUserForm.get('username').touched">
+        <span *ngIf="createUserForm.get('username').hasError('required')"
               style="font-size: 12px">Vui lòng nhập tên đăng nhập.</span>
             <span
               *ngIf="createUserForm.get('userName').hasError('pattern')"

@@ -22,7 +22,7 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.formEdit = this.formBuilder.group({
-        userName: ['', [Validators.required]],
+        username: ['', [Validators.required]],
         fullName: ['', [Validators.required]],
         email: ['', [Validators.required]],
         address: ['', Validators.required],
