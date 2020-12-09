@@ -10,7 +10,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 export class QuestionService {
   public API = 'http://localhost:8080/question';
 
-  public message: string;
+  public messageDeleteSuccess = '';
+  public messageAddSuccess = '';
   constructor(private http: HttpClient) {}
   deleteQuestion(id: number): Observable<Question>{
     return this.http.delete<Question>(`${this.API}/delete/${id}`);

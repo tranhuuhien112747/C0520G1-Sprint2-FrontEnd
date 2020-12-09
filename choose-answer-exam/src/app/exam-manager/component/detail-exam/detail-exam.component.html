@@ -8,7 +8,7 @@
       <div class="col-md-2">
         <div class="dropdown">
           <button class="btn btn-info w-100" type="button">
-            Đề số 1 - Hóa học 12
+            Đề thi: {{examName}}
           </button>
         </div>
       </div>
@@ -31,18 +31,38 @@
         <td class="text-center">{{element.idQuestion | IdConvertExam: 'CH'}}</td>
         <td>{{element.questionContent}}</td>
         <td>{{element.trueAnswer}}</td>
-        <td class="text-center"><input type="checkbox"></td>
+        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked" (change)="changeSelection()"></td>
       </tr>
       </tbody>
     </table>
     <div class="d-flex justify-content-end row">
-      <button class="btn col-md-1 btn-success" data-toggle="modal" data-target="#myModal">Thêm mới
+      <button class="btn col-md-1 btn-success" (click)="openDialogAddQuestionInExam()">Thêm mới
       </button>
       <div class="mx-1"></div>
-      <button class="btn col-md-1 btn-danger" data-toggle="modal" data-target="#myModalDelete" >Xóa
+      <button class="btn col-md-1 btn-danger" (click)="openDialogDeleteQuestionInExam()" >Xóa
       </button>
       <div class="mx-1"></div>
-      <button class="btn col-md-1 btn-secondary">Đóng</button>
+      <button class="btn col-md-1 btn-secondary" (click)="checkBack()">Đóng</button>
     </div>
+    <div  *ngIf="messageDelete == ''; else blockMessageDelete" ></div>
+    <ng-template #blockMessageDelete>
+      <div class="alert alert-danger mt-1 offset-9" role="alert" >{{messageDelete}}</div>
+    </ng-template>
+    <div  *ngIf="messageDeleteQuestionSuccess == ''; else DeleteQuestionSuccess" ></div>
+    <ng-template #DeleteQuestionSuccess>
+      <div class="alert alert-success mt-1 offset-9" role="alert" >{{messageDeleteQuestionSuccess}}</div>
+    </ng-template>
+    <div  *ngIf="messageAddQuestionSuccess == ''; else AddQuestionSuccess" ></div>
+    <ng-template #AddQuestionSuccess>
+      <div class="alert alert-success mt-1 offset-9" role="alert" >{{messageAddQuestionSuccess}}</div>
+    </ng-template>
+    <div  *ngIf="messageAddQuestionErr == ''; else AddQuestionErr" ></div>
+    <ng-template #AddQuestionErr>
+      <div class="alert alert-danger mt-1 offset-9" role="alert" >{{messageAddQuestionErr}}</div>
+    </ng-template>
+    <div  *ngIf="messageErrBack == ''; else errBack" ></div>
+    <ng-template #errBack>
+      <div class="alert alert-danger mt-1 offset-9" role="alert" >{{messageErrBack}}</div>
+    </ng-template>
   </div>
 </div>
