@@ -29,6 +29,6 @@ export class AuthenticationService {
 
   public facebook(tokenDTO: TokenDTO): Observable<any> {
     // console.log(this.httpOptions);
-    return this.http.post<any>(API_URL + 'facebook', tokenDTO, httpOptions);
+    return this.http.post<any>(API_URL + 'login-facebook', tokenDTO, httpOptions);
   }
 }
