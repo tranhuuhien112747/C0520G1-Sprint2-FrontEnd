@@ -22,10 +22,16 @@ export class StatisticsMemberComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllUser().subscribe(data => {
       this.userList = data;
-      console.log(this.userList);
+      if (this.userList == null) {
+        console.log(data);
+      }
       this.sumMember = this.userList.length;
       this.newMember = this.userList[this.userList.length - 1].username;
-      console.log(this.sumMember);
+      if (this.newMember.length > 15) {
+        if (this.newMember.includes('@')) {
+          this.newMember = this.newMember.slice(0, this.newMember.indexOf('@'));
+        }
+      }
       console.log(this.newMember);
     });
   }
