@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ImportQuizService {
   public uploadFile = 'http://localhost:8080/upload';
-  public saveFile = 'http://localhost:8080//saveFile';
+  public saveFile = 'http://localhost:8080/saveFile';
 
   constructor(
     private httpClient: HttpClient,
