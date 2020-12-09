@@ -17,11 +17,17 @@ export class QuestionListComponent implements OnInit {
   public p: number;
   public messageDeleteSuccess = '';
   public messageAddSuccess = '';
+  public messageUpload = '';
 
   constructor(private questionService: QuestionService, private dialog: MatDialog, public router: Router) {
   }
 
   ngOnInit(): void {
+    this.messageUpload = this.questionService.messageUpload;
+    setTimeout(() => {
+      this.questionService.messageUpload = '';
+      this.messageUpload = '';
+    }, 2000);
     this.messageDeleteSuccess = this.questionService.messageDeleteSuccess;
     setTimeout(() => {
       this.questionService.messageDeleteSuccess = '';

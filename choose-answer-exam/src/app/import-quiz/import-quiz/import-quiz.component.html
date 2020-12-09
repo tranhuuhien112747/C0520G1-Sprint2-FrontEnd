@@ -20,7 +20,8 @@
 
 <div class="container-fluid " style="padding-top: 3%">
   <div *ngIf="number == 1">
-    <small class="font-weight-bold" *ngIf="questionList != null; else block">Tổng số câu hỏi
+    <div class="text-primary d-flex justify-content-end">{{message}}</div>
+    <small class="font-weight-bold text-primary" *ngIf="questionList != null; else block">Tổng số câu hỏi
       là: {{questionList.length}}</small>
     <ng-template #block>
       <small class="font-weight-bold">Tổng số câu hỏi là: 0</small>
@@ -50,11 +51,11 @@
       </tr>
       </tbody>
     </table>
-    <div>{{message}}</div>
+
     <pagination-controls class=" d-flex justify-content-center " (pageChange)="p = $event" previousLabel="Trước"
                          nextLabel="Sau" responsive="true"></pagination-controls>
     <div class="d-flex justify-content-center mt-3">
-      <button class="btn btn-secondary" [routerLink]="['/question-list']">Hủy</button>
+      <a href="upload"><button class="btn btn-secondary">Hủy</button></a>
       <button class="btn btn-success mx-4" [disabled]="!selectedFiles" (click)="saveFile()">Lưu
       </button>
     </div>

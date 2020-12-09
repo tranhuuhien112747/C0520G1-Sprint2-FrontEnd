@@ -8,7 +8,7 @@ import {AccountManagerService} from '../../service/account-manager.service';
 })
 export class InforAccountComponent implements OnInit {
 
-  public id = 2;
+  public id = 1;
   public accountInfo: any;
 
   constructor(
@@ -18,6 +18,7 @@ export class InforAccountComponent implements OnInit {
   ngOnInit(): void {
     this.accountManagerService.findAccountInfoById(this.id).subscribe( data => {
       this.accountInfo = data;
+      console.log(data);
     }, error => console.log('error'));
   }
 

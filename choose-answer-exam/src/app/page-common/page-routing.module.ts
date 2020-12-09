@@ -7,7 +7,6 @@ import {StatisticsModule} from '../statistics/statistics.module';
 import {LoginComponent} from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
-import {HttpClient} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LogoutComponent} from './logout/logout.component';
 
@@ -34,7 +33,7 @@ export const CommonRoute: Routes = [
       autoLogin: false,
       providers: [{
         id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider('1045480999303225'),
+        provider: new FacebookLoginProvider('375466110415778'),
       },
         {
           id: GoogleLoginProvider.PROVIDER_ID,

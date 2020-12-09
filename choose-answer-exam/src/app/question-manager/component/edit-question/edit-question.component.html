@@ -43,7 +43,7 @@
     <div class="row mt-4 ml-2">
       <label class="font-weight-bold  col-md-2">Đáp án đúng:</label>
       <div class="col-md-8 ml-3  d-flex">
-        <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'A'">&nbsp;A
+        <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" [checked]="" formControlName="trueAnswer" [value]="'A'">&nbsp;A
         </label>
         <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'B'">&nbsp;B
         </label>
@@ -57,7 +57,7 @@
       <label class="font-weight-bold   col-md-2">Môn học:</label>
       <div class="col-md-8 ml-3  d-flex">
         <label class="font-weight-bold mr-1 offset-1" *ngFor="let element of subjects">
-          <input class="mt-2" [checked]="true" type="radio" formControlName="subject" [value]="element">{{element.subjectName}}
+          <input class="mt-2" [checked]="element.subjectName === subjectName" type="radio"  [value]="element">{{element.subjectName}}
         </label>
       </div>
     </div>
