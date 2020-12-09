@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ImportQuizService} from '../service/import-quiz.service';
-import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-upload-file',
@@ -17,7 +17,10 @@ export class ImportQuizComponent implements OnInit {
   message = '';
   p = 0;
 
-  constructor(private importQuizService: ImportQuizService) {
+  constructor(
+    private importQuizService: ImportQuizService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -25,12 +28,12 @@ export class ImportQuizComponent implements OnInit {
 
   saveFile() {
     this.currentFile = this.selectedFiles.item(0);
-    this.importQuizService.upload(this.currentFile).subscribe(
-      event => {
-        this.message = 'Lưu câu hỏi thành công';
+    this.importQuizService.upload(this.currentFile).subscribe(data => {
+        console.log(data);
+        this.message = data.message;
       },
-      err => {
-        this.message = 'Không thể lưu câu hỏi!';
+      error => {
+        this.message = ' Không thể lưu câu hỏi';
         this.currentFile = undefined;
       });
 
@@ -47,6 +50,9 @@ export class ImportQuizComponent implements OnInit {
     this.importQuizService.getAll(this.currentFile).subscribe(data => {
       console.log(data);
       this.questionList = data;
+      },
+      error => {
+      this.message = error.error.message;
     });
   }
 }
