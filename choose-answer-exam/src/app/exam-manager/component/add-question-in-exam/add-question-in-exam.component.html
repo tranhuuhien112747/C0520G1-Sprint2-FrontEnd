@@ -1,0 +1,52 @@
+<h4 class="font-weight-bold text-center">Thêm câu hỏi vào đề</h4>
+<hr>
+<div class="row">
+  <h5 class="font-weight-bold ml-4">Danh sách câu hỏi môn Hóa học 12</h5>
+  <!-- Search form -->
+  <form class="form-inline active-cyan-4 offset-md-8">
+    <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Tên câu hỏi"
+           aria-label="Search">
+    <i class="fas fa-search" aria-hidden="true"></i>
+  </form>
+</div>
+<div class="row">
+  <div class="container-fluid mr-5" style="overflow-x:auto;">
+    <table class="table  table-bordered table-hover mt-2 ">
+      <thead style="background: #96a2af">
+      <tr>
+        <th class="font-weight-bold text-center">STT</th>
+        <th class="font-weight-bold text-center">Mã câu hỏi</th>
+        <th class="font-weight-bold text-center">Câu hỏi</th>
+        <th class="font-weight-bold text-center">Thêm</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let element of listQuestion | paginate: { itemsPerPage: 8, currentPage: p }; let i= index">
+        <td class="text-center">{{i+1}}</td>
+        <td class="text-center">{{element.idQuestion | IdConvertExam: 'CH'}}</td>
+        <td class="text-center">{{element.questionContent}}</td>
+        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked" (change)="changeSelection()"></td>
+      </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+                           nextLabel="Sau"
+                           responsive="true"></pagination-controls>
+    </nav>
+    <div class="row d-flex justify-content-end">
+      <div class="col-md-6">
+      <div  *ngIf="messageAddErr == ''; else addErr" ></div>
+      <ng-template #addErr>
+        <div class="alert alert-danger"  role="alert" >{{messageAddErr}}</div>
+      </ng-template>
+      </div>
+<!--      <div class="col-md-3">-->
+      <button mat-dialog-close class="btn btn-secondary" style="height: 30px">Đóng</button>
+      <button type="submit" class="btn btn-outline-success ml-3" style="height: 30px" (click)="onSubmit()">Thêm vào đề</button>
+<!--      </div>-->
+      <br>
+      <br>
+    </div>
+  </div>
+</div>

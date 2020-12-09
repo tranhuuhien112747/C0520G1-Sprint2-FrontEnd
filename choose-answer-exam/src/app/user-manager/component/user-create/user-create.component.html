@@ -1,0 +1,145 @@
+<div class="container-fluid p-0 m-0" style="overflow-y: auto">
+  <form class="form-inline rounded" [formGroup]="createUserForm" (ngSubmit)="addNewUser()">
+    <div class="container-fluid col-lg-12 col-md-12 p-0 m-0">
+      <div class="row m-0" style="height: 39px;background: #cce7f5">
+        <div class="col-11">
+          <h3 class="ml-2 mt-2 text-center" style="color: #3591c8">Đăng ký</h3>
+        </div>
+        <!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+        <div class="col-1 p-0 mt-0 d-flex justify-content-end">
+          <span style="font-size: 15px" aria-hidden="true" mat-dialog-close="" class="mr-2">&times;</span>
+        </div>
+      </div>
+      <div class="m-3">
+        <div class=" form-group mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Tên đăng nhập <span class="ml-1" style="color: red">*</span></label>
+          <input type="text" class="col-12 col-md-8 form-control form-control-sm" required=""
+                 placeholder="Nhập tên đăng nhập" formControlName="userName">
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('userName').valid">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%"
+               *ngIf="createUserForm.get('userName').invalid && createUserForm.get('userName').touched">
+        <span *ngIf="createUserForm.get('userName').hasError('required')"
+              style="font-size: 12px">Vui lòng nhập tên đăng nhập.</span>
+            <span
+              *ngIf="createUserForm.get('userName').hasError('pattern')"
+              style="font-size: 12px">Tên đăng nhập không hợp lệ.</span>
+            <span style="font-size: 12px"
+                  *ngIf="createUserForm.get('userName').hasError('inValidName')"> Tên đăng nhập đã tồn tại.
+        </span>
+          </div>
+        </div>
+        <div class=" form-group mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Mật khẩu <span class="ml-1" style="color: red">*</span></label>
+          <input type="password" class="col-12 col-lg-8 col-md-8 form-control form-control-sm" required=""
+                 placeholder="Nhập mật khẩu" formControlName="password">
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('password').valid">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%;font-size: 12px" *ngIf="createUserForm.get('password').invalid &&
+      createUserForm.get('password').touched">
+           <span *ngIf="createUserForm.get('password').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập mật khẩu.</span>
+            <span
+              *ngIf="createUserForm.get('password').hasError('pattern')"
+              style="font-size: 12px">Mật khẩu không hợp lệ.</span>
+          </div>
+        </div>
+        <div class=" form-group mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Nhập lại mật khẩu <span class="ml-1"
+                                                                                         style="color: red">*</span>
+          </label>
+          <input type="password" class="col-lg-8 col-12 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập mật khẩu" formControlName="confirmPassword">
+
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('confirmPassword').valid && !createUserForm.hasError('passwordNotMatch')">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%;font-size: 12px"
+               *ngIf="createUserForm.get('confirmPassword').touched && createUserForm.get('confirmPassword').invalid">
+        <span *ngIf="createUserForm.get('confirmPassword').hasError('required')"
+              style="font-size: 12px">Vui lòng xác nhận lại mật khẩu.</span>
+          </div>
+          <div class="text-danger font-italic" role="alert" *ngIf="createUserForm.hasError('passwordNotMatch')"
+               style="font-size: 12px;margin-left: 25%">
+            Mật khẩu không chính xác.
+          </div>
+
+        </div>
+        <div class=" form-group  mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Họ và tên <span class="ml-1"
+                                                                                 style="color: red">*</span></label>
+          <input type="text" class="col-12 col-lg-8 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập họ và tên" formControlName="fullName">
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('fullName').valid">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%;font-size: 12px" *ngIf="createUserForm.get('fullName').invalid &&
+      createUserForm.get('password').touched">
+           <span *ngIf="createUserForm.get('fullName').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập mật khẩu.</span>
+            <span
+              *ngIf="createUserForm.get('fullName').hasError('pattern')"
+              style="font-size: 12px">Mật khẩu không hợp lệ.</span>
+          </div>
+        </div>
+        <div class=" form-group  mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Email <span class="ml-1"
+                                                                             style="color: red">*</span></label>
+          <input type="text" class="col-lg-8 col-12 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập email" formControlName="email">
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('email').valid">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%;font-size: 12px" *ngIf="createUserForm.get('email').invalid &&
+      createUserForm.get('email').touched">
+           <span *ngIf="createUserForm.get('email').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập mật khẩu.</span>
+            <span
+              *ngIf="createUserForm.get('email').hasError('pattern')"
+              style="font-size: 12px">Mật khẩu không hợp lệ.</span>
+          </div>
+        </div>
+        <div class=" form-group  mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Địa chỉ <span class="ml-1" style="color: red">*</span></label>
+          <input type="text" class="col-lg-8 col-12 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập địa chỉ" formControlName="address">
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('address').valid">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%;font-size: 12px" *ngIf="createUserForm.get('address').invalid &&
+      createUserForm.get('address').touched">
+           <span *ngIf="createUserForm.get('address').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập địa chỉ.</span>
+            <span
+              *ngIf="createUserForm.get('address').hasError('pattern')"
+              style="font-size: 12px">Địa chỉ không hợp lệ.</span>
+          </div>
+        </div>
+        <div class=" form-group  mt-3">
+          <label class="col-lg-3 col-md-3 justify-content-start">Số điện thoại <span class="ml-1"
+                                                                                     style="color: red">*</span></label>
+          <input type="text" class="col-lg-8 col-12 col-md-8 form-control form-control-sm " required=""
+                 placeholder="Nhập số điện thoại" formControlName="phoneNumber">
+          <label class="ml-2 text-success"
+                 *ngIf="createUserForm.get('phoneNumber').valid">
+            <i style="font-size: 15px" class="fas fa-check"></i></label>
+          <div class="text-danger font-italic" role="alert" style="margin-left: 25%;font-size: 12px" *ngIf="createUserForm.get('phoneNumber').invalid &&
+      createUserForm.get('phoneNumber').touched">
+           <span *ngIf="createUserForm.get('phoneNumber').hasError('required')"
+                 style="font-size: 12px">Vui lòng nhập số điện thoại.</span>
+            <span
+              *ngIf="createUserForm.get('phoneNumber').hasError('pattern')"
+              style="font-size: 12px">Số điện thoại không hợp lệ.</span>
+          </div>
+        </div>
+        <div class="mt-2 d-flex justify-content-center my-5">
+          <button type="reset" role="button" class="btn btn-secondary mr-3 btn-sm ">Đặt lại</button>
+          <button class="btn btn-success btn-sm" type="submit"> Thêm</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

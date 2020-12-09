@@ -9,7 +9,7 @@
         <a class="nav-link text-white" href="/">Trang chủ</a>
       </li>
       <li class="nav-item text-center" style="width: 200px">
-        <a class="nav-link text-white" href="#">Java</a>
+        <a class="nav-link text-white" [routerLink]="['exam-list-by-subject/'+'java']">Java</a>
       </li>
       <li class="nav-item text-center" style="width: 200px">
         <a class="nav-link text-white" href="#">JavaScript</a>
@@ -20,8 +20,11 @@
       <li class="nav-item text-center" style="width: 200px">
         <a class="nav-link text-white" href="#">Angular</a>
       </li>
+      <li class="nav-item text-center" style="width: 200px" *ngIf="showAdminBoard">
+        <a class="nav-link text-white" href="#">Quản lý</a>
+      </li>
       <li class="nav-item text-center" style="width: 200px">
-        <a class="nav-link text-white" [routerLink]="['/infor-account']">Thông tin</a>
+        <a class="nav-link text-white" [routerLink]="['/infor-account']" *ngIf="showUserBoard">Thông tin</a>
       </li>
     </ul>
   </div>
