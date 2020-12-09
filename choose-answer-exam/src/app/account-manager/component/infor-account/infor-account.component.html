@@ -1,0 +1,83 @@
+<div class="container-fluid w-75 mt-5 p-5">
+  <div class="card border mt-3">
+    <span class="card-header bg-light"><h3 class="mx-auto">Thông tin cá nhân</h3></span>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>
+            <img src="https://i.pinimg.com/originals/06/65/7a/06657ab9534ff59ef4bb1cf3e2b30ad8.png"
+                 alt="..." class="img-thumbnail">
+          </div>
+          <div class="row">
+            <div class="col-6 mt-3">
+              <button type="button" class="btn btn-secondary">Chỉnh sửa</button>
+            </div>
+            <div class="col-6 mt-3 d-flex justify-content-end">
+              <button type="button" class="btn btn-primary">Chọn ảnh</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <form class="col-12 mx-auto">
+            <div class="form-group row">
+              <div class="col-sm-3">
+                <label for="name" class="col-form-label">Người dùng</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" disabled class="form-control" id="name" value="{{accountInfo.userName}}">
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-sm-3">
+                <label for="name" class="col-form-label">Họ tên</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" disabled class="form-control" id="fullname" value="{{accountInfo.fullName}}" >
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-sm-3">
+                <label for="inputEmail" class="col-form-label">Email</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="email" disabled class="form-control" id="inputEmail"
+                       value="{{accountInfo.email}}" >
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-sm-3">
+                <label for="address" class="col-form-label">Địa chỉ</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" disabled class="form-control" id="address" value="{{accountInfo.address}}">
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-sm-3">
+                <label for="phone" class="col-form-label">Số điện thoại</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" disabled class="form-control" id="phone" value="{{accountInfo.phoneNumber}}">
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <div>
+                    <button class="btn btn-success ml-3" style="width: 74px" [routerLink]="['/update-infor']" >Sửa
+                    </button>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary ml-3">Lịch sử</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
