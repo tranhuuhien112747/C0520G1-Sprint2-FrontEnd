@@ -24,7 +24,7 @@ export class StatisticsMemberComponent implements OnInit {
       this.userList = data;
       console.log(this.userList);
       this.sumMember = this.userList.length;
-      this.newMember = this.userList[this.userList.length - 1].userName;
+      this.newMember = this.userList[this.userList.length - 1].username;
       console.log(this.sumMember);
       console.log(this.newMember);
     });
