@@ -43,13 +43,13 @@
     <div class="row mt-4 ml-2">
       <label class="font-weight-bold  col-md-2">Đáp án đúng:</label>
       <div class="col-md-8 ml-3  d-flex">
-        <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" [checked]="" formControlName="trueAnswer" [value]="'A'">&nbsp;A
+        <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" [name]="trueAnswer" [checked]="answerA === trueAnswer" (click)="getValueTrue('A')" >&nbsp;A
         </label>
-        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'B'">&nbsp;B
+        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" [name]="trueAnswer" [checked]="answerB === trueAnswer" (click)="getValueTrue('B')">&nbsp;B
         </label>
-        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'C'">&nbsp;C
+        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" [name]="trueAnswer" [checked]="answerC === trueAnswer" (click)="getValueTrue('C')">&nbsp;C
         </label>
-        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'D'">&nbsp;D
+        <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" [name]="trueAnswer" [checked]="answerD === trueAnswer"  (click)="getValueTrue('D')">&nbsp;D
         </label>
       </div>
     </div>
@@ -57,14 +57,13 @@
       <label class="font-weight-bold   col-md-2">Môn học:</label>
       <div class="col-md-8 ml-3  d-flex">
         <label class="font-weight-bold mr-1 offset-1" *ngFor="let element of subjects">
-          <input class="mt-2" [checked]="element.subjectName === subjectName" type="radio"  [value]="element">{{element.subjectName}}
+          <input class="mt-2" [checked]="element.subjectName === subjectValue.subjectName" [name]="subject" type="radio" (click)="getValueSubject(element)">{{element.subjectName}}
         </label>
       </div>
     </div>
   </div>
   <div class="row d-flex justify-content-end">
     <button mat-dialog-close class="btn btn-secondary">Đóng</button>
-    <button type="submit" class="btn btn-outline-warning  ml-3">Xác nhận</button>
+    <button type="submit" class="btn btn-outline-success ml-3">Xác nhận</button>
   </div>
 </form>
-<input type="radio" [checked]="true">A
