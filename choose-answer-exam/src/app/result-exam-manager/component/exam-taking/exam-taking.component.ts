@@ -70,6 +70,7 @@ export class ExamTakingComponent implements OnInit {
 
   createNewResultExam(): void {
     // get endTime
+    console.log('lan 1');
     this.endTime = new Date().getTime();
     this.takenDuration = Math.round((this.endTime - this.startTime) / 1000) - 1;
     this.resultExamService.takenDurationSV = this.takenDuration;
@@ -132,7 +133,7 @@ export class ExamTakingComponent implements OnInit {
       seconds = seconds < 10 ? '0' + seconds : seconds;
 
       this.durationDisplay = minutes + ':' + seconds;
-
+      console.log('lan 1');
       if (--timer < 0) {
         timer = 0;
         clearInterval(myVar);
