@@ -13,7 +13,6 @@ import {UserEditComponent} from './component/user-edit/user-edit.component';
 import {UserDeleteComponent} from './component/user-delete/user-delete.component';
 
 
-
 @NgModule({
   declarations: [
     UserListComponent,
@@ -29,7 +28,7 @@ import {UserDeleteComponent} from './component/user-delete/user-delete.component
     NgxPaginationModule,
     ReactiveFormsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
   ],
 })
 export class UserManagerModule { }

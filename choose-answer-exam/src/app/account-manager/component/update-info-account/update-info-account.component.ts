@@ -26,10 +26,10 @@ export class UpdateInfoAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.formEditAccount = this.formBuilder.group({
-      fullName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]]
+      fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9\s]{1,30}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^([a-zA-Z_0-9]{3,10})+([@]+[a-zA-Z_0-9]{1,5})+(.com)$/)]],
+      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9-\s]{1,30}$/)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^(09|03)+([0-9]{8})$/)]]
     });
     // this.activatedRoute.params.subscribe( data => {
     // this.idToFind = data;
@@ -51,8 +51,9 @@ export class UpdateInfoAccountComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(ChangePassComponent, {
-      width: '700px',
+      width: '750px',
       data: this.userData,
+      disableClose: true,
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

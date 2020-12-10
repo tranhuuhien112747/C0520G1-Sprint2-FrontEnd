@@ -13,6 +13,7 @@ export class LogoutComponent implements OnInit {
   showAdminBoard = false;
   showUserBoard = true;
   username: string;
+  url: string;
 
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router) {
@@ -25,6 +26,7 @@ export class LogoutComponent implements OnInit {
       this.role = user.role;
       console.log('name');
       console.log(user.username);
+      this.url = this.tokenStorageService.getUser().photoUrl;
       // this.showAdminBoard = this.role.includes('ROLE_ADMIN');
       // this.showUserBoard = this.role.includes('ROLE_USER');
       this.username = user.username;

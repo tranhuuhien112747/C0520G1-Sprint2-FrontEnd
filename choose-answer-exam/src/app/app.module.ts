@@ -13,6 +13,7 @@ import {QuestionManagerModule} from './question-manager/question-manager.module'
 import {ResultExamManagerModule} from './result-exam-manager/result-exam-manager.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     PageRoutingModule,
     QuestionManagerModule,
     AppRoutingModule,
+    ToastrModule.forRoot({timeOut: 2000, positionClass : 'toast-center-center', preventDuplicates: true})
   ],
   providers: [],
   bootstrap: [AppComponent]

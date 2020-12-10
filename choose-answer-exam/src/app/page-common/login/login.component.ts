@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: string;
+  showPassword = false;
+
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -45,13 +47,12 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
-        // this.tokenStorage.saveUser(data);
-        const token = new TokenDTO(this.user.idToken);
-        console.log(token);
+        const token = new TokenDTO(this.user.authToken);
+        console.log(data);
         this.authenticationService.facebook(token).subscribe(next => {
           this.tokenStorage.saveToken(next.accessToken);
           this.tokenStorage.saveUser(next);
-          console.log(next);
+        //   console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           this.reloadPage();
@@ -67,6 +68,8 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
+        console.log('data');
+        console.log(data);
         // this.tokenStorage.saveUser(data);
         const token = new TokenDTO(this.user.idToken);
         console.log(token);

@@ -2,14 +2,14 @@
   <div class="my-3 mr-3 pt-3 d-flex justify-content-between">
     <div class="col-sm-6 p-3 mr-3" style="border: 2px solid darkgray; box-shadow: 3px 6px 6px 6px #d5d5d5">
       <h5>Kết quả bài thi</h5>
-      <p>Môn học: <span class="text-primary">Toán</span></p>
-      <p>Đề số: <span class="text-primary">Đề 001</span></p>
+      <p>Môn học: <span class="text-primary">{{subjectName | titlecase}}</span></p>
+      <p>Đề số: <span class="text-primary">{{examName}}</span></p>
     </div>
 
     <div class="col-sm-6 p-3" style="border: 2px solid darkgray; box-shadow: 3px 6px 6px 6px #d5d5d5">
-      <h5>Điểm số: <span class="text-danger">{{resultMark}}/10.0</span></h5>
+      <h5>Điểm số: <span class="text-danger">{{resultMark | number:'1.0-2'}}/10.0</span></h5>
       <p>Số câu đúng: {{trueQty}}/{{questionQty}}</p>
-      <p>Thời gian: <span class="text-primary">[chưa tính]</span></p>
+      <p>Thời gian: <span class="text-primary">{{takenDuration}}</span></p>
     </div>
   </div>
   <hr class="my-3">

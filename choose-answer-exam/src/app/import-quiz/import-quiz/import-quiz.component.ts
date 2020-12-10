@@ -12,11 +12,10 @@ export class ImportQuizComponent implements OnInit {
 
   public questionList;
   public number = 0;
-
-  selectedFiles: FileList;
-  currentFile: File;
-  message = '';
-  p = 0;
+  public selectedFiles: FileList;
+  public currentFile: File;
+  public message = '';
+  public p = 0;
 
   constructor(
     private importQuizService: ImportQuizService,
@@ -37,7 +36,7 @@ export class ImportQuizComponent implements OnInit {
         this.router.navigate(['question-list']);
       },
       error => {
-        this.message = ' Không thể lưu câu hỏi';
+        this.message = ' Không thể lưu câu hỏi. Vui lòng kiểm tra lại !';
         this.currentFile = undefined;
       });
 
@@ -59,7 +58,7 @@ export class ImportQuizComponent implements OnInit {
         this.message = error.error.message;
         setTimeout(() => {
           this.message = '';
-        }, 2000);
+        }, 4000);
       });
   }
 }

@@ -40,7 +40,7 @@ export class StatisticsMemberComponent implements OnInit {
     const dialogRef = this.dialog.open(StatisticsDetailDataComponent, {
       panelClass: 'app-full-bleed-dialog',
       width: '1000px',
-      height: '530px',
+      height: '480px',
       disableClose: true
     });
 
