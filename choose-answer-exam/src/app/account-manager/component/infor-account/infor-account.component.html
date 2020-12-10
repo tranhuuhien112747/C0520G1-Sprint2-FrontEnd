@@ -24,7 +24,7 @@
                 <label for="name" class="col-form-label">Người dùng</label>
               </div>
               <div class="col-sm-9">
-                <input type="text" disabled class="form-control" id="name" value="{{accountInfo.userName}}">
+                <input type="text" disabled class="form-control" id="name" value="{{accountInfo.username}}">
               </div>
             </div>
             <div class="form-group row mt-4">
@@ -69,7 +69,7 @@
                     </button>
                   </div>
                   <div>
-                    <button class="btn btn-primary ml-3">Lịch sử</button>
+                    <button class="btn btn-primary ml-3" [routerLink]="['/exam-history']">Lịch sử</button>
                   </div>
                 </div>
               </div>

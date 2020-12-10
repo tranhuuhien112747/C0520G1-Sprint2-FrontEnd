@@ -8,18 +8,17 @@
       <div class="col-md-2">
         <div class="dropdown">
           <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
-            <i class='fas fa-align-left mr-2'></i>Danh sách đề thi&nbsp;&nbsp;
+            <i class='fas fa-align-left mr-2' [routerLink]="['/exam-list']"></i>Danh sách đề thi&nbsp;&nbsp;
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Danh sách thành viên</a></li>
-            <li><a class="dropdown-item" href="#">Ngân hàng câu hỏi</a></li>
+            <li><a class="dropdown-item">Danh sách thành viên</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/question-list']">Ngân hàng câu hỏi</a></li>
             <li><a class="dropdown-item" href="#">TOP</a></li>
           </ul>
         </div>
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-5"></div>
       <div class="col-md-5 mt-4 d-flex justify-content-end">
-        <button class="btn" style="background: black; color: white">Thêm từ tập tin<i class='far fa-file-excel ml-2'></i></button>
       </div>
     </div>
   </div>
@@ -35,16 +34,25 @@
         <th class="font-weight-bold text-center">Chi tiết</th>
       </tr>
       </thead>
-      <tbody>
-      <tr *ngFor="let element of listExam | paginate: { itemsPerPage: 4, currentPage: p }; let i=index">
-        <td class="text-center">{{i+1}}</td>
+      <tbody *ngIf="listExam; else blockList">
+      <tr *ngFor="let element of listExam | paginate: { itemsPerPage: 8, currentPage: p }; let i=index">
+        <td class="text-center">{{i + 1}}</td>
         <td class="text-center">{{element.idExam | IdConvertExam: 'MD'}}</td>
         <td class="text-center">{{element.examName}}</td>
         <td class="text-center">{{element.questions[0].subject.subjectName}}</td>
-        <td class="text-center"><input type="checkbox" [(ngModel)]="element.selected"></td>
+
+        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked" (change)="changeSelection()"></td>
+
         <td class="text-center"><a [routerLink]="['/detail/'+ element.idExam]">Xem</a></td>
       </tr>
       </tbody>
+      <ng-template #blockList>
+        <tbody>
+        <tr>
+          <td colspan="6"><h4 class="font-weight-bold  text-center">Không có dữ liệu!</h4></td>
+        </tr>
+        </tbody>
+      </ng-template>
     </table>
     <nav aria-label="Page navigation example" class="d-flex justify-content-center">
       <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
@@ -60,6 +68,17 @@
       <div class="mx-1"></div>
       <button class="btn col-md-1 btn-secondary">Đóng</button>
     </div>
+    <div  *ngIf="message == ''; else blockMessage" ></div>
+    <ng-template #blockMessage>
+      <div class="alert alert-danger mt-1 offset-9" role="alert" >{{message}}</div>
+    </ng-template>
+    <div  *ngIf="messageAddSuccess == ''; else blockMessageSuccess" ></div>
+    <ng-template #blockMessageSuccess>
+      <div class="alert alert-success mt-1 offset-9" role="alert" >{{messageAddSuccess}}</div>
+    </ng-template>
+    <div  *ngIf="messageDeleteSuccess == ''; else blockDeleteSuccess" ></div>
+    <ng-template #blockDeleteSuccess>
+      <div class="alert alert-success mt-1 offset-9" role="alert" >{{messageDeleteSuccess}}</div>
+    </ng-template>
   </div>
-
 </div>

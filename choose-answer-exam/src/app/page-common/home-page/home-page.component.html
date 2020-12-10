@@ -1,4 +1,4 @@
-<div class="container-fluid my-5">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-3 col-xs-12">
       <app-statistics-point></app-statistics-point>
@@ -27,7 +27,7 @@
     <div class="col-md-6 col-xs-12">
       <div class="mx-auto col-md-12 row">
         <div class="mx-auto col-md-6 p-3">
-          <a href="#">
+          <a [routerLink]="['exam-list-by-subject/'+'java']">
             <div class="card">
               <img class="card-img-top" src="../../../assets/home-page/java.jpg" alt="Java">
               <div class="card-body text-center">
@@ -39,7 +39,7 @@
           </a>
         </div>
         <div class="mx-auto col-md-6 p-3">
-          <a href="#">
+          <a [routerLink]="['exam-list-by-subject/'+'javascript']">
             <div class="card">
               <img class="card-img-top" src="../../../assets/home-page/javascript.jpg" alt="JavaScript">
               <div class="card-body text-center">
@@ -54,7 +54,7 @@
 
       <div class="mx-auto col-md-12 row">
         <div class="mx-auto col-md-6 p-3">
-          <a href="#">
+          <a [routerLink]="['exam-list-by-subject/'+'html']">
             <div class="card">
               <img class="card-img-top" src="../../../assets/home-page/html.jpg" alt="HTML">
               <div class="card-body text-center">
@@ -66,7 +66,7 @@
           </a>
         </div>
         <div class="mx-auto col-md-6 p-3">
-          <a href="#">
+          <a [routerLink]="['exam-list-by-subject/'+'angular']">
             <div class="card">
               <img class="card-img-top" src="../../../assets/home-page/angular.jpg" alt="Angular">
               <div class="card-body text-center">

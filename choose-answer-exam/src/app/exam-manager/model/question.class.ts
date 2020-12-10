@@ -9,4 +9,5 @@ export class Question {
   public answerD: string;
   public trueAnswer: string;
   public subject: number;
+  public isChecked: boolean;
 }

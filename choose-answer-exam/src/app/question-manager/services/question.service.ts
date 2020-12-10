@@ -10,7 +10,9 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 export class QuestionService {
   public API = 'http://localhost:8080/question';
 
-  public message: string;
+  public messageDeleteSuccess = '';
+  public messageAddSuccess = '';
+  public messageUpload = '';
   constructor(private http: HttpClient) {}
   deleteQuestion(id: number): Observable<Question>{
     return this.http.delete<Question>(`${this.API}/delete/${id}`);
@@ -20,6 +22,9 @@ export class QuestionService {
   }
   addNewQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(`${this.API}/create-question`, question);
+  }
+  updateQuestion(question: Question): Observable<Question> {
+    return this.http.put<Question>(`${this.API}/update-question`, question);
   }
   getQuestionById(id: number): Observable<Question> {
     return this.http.get<Question>(`${this.API}/find/${id}`);

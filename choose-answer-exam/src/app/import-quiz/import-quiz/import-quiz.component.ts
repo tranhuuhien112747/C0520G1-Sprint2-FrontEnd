@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ImportQuizService} from '../service/import-quiz.service';
-import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {QuestionService} from '../../question-manager/services/question.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -11,13 +12,16 @@ export class ImportQuizComponent implements OnInit {
 
   public questionList;
   public number = 0;
+  public selectedFiles: FileList;
+  public currentFile: File;
+  public message = '';
+  public p = 0;
 
-  selectedFiles: FileList;
-  currentFile: File;
-  message = '';
-  p = 0;
-
-  constructor(private importQuizService: ImportQuizService) {
+  constructor(
+    private importQuizService: ImportQuizService,
+    private router: Router,
+    private questionService: QuestionService
+  ) {
   }
 
   ngOnInit(): void {
@@ -25,12 +29,14 @@ export class ImportQuizComponent implements OnInit {
 
   saveFile() {
     this.currentFile = this.selectedFiles.item(0);
-    this.importQuizService.upload(this.currentFile).subscribe(
-      event => {
-        this.message = 'Lưu câu hỏi thành công';
+    this.importQuizService.upload(this.currentFile).subscribe(data => {
+        console.log(data);
+        this.message = data.message;
+        this.questionService.messageUpload = this.message;
+        this.router.navigate(['question-list']);
       },
-      err => {
-        this.message = 'Không thể lưu câu hỏi!';
+      error => {
+        this.message = ' Không thể lưu câu hỏi. Vui lòng kiểm tra lại !';
         this.currentFile = undefined;
       });
 
@@ -45,8 +51,14 @@ export class ImportQuizComponent implements OnInit {
     this.number = 1;
     this.currentFile = this.selectedFiles.item(0);
     this.importQuizService.getAll(this.currentFile).subscribe(data => {
-      console.log(data);
-      this.questionList = data;
-    });
+        console.log(data);
+        this.questionList = data;
+      },
+      error => {
+        this.message = error.error.message;
+        setTimeout(() => {
+          this.message = '';
+        }, 4000);
+      });
   }
 }

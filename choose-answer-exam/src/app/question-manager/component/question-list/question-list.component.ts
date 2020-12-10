@@ -15,14 +15,31 @@ import {Router} from '@angular/router';
 export class QuestionListComponent implements OnInit {
   public listQuestion: Question[] = [];
   public p: number;
+  public messageDeleteSuccess = '';
+  public messageAddSuccess = '';
+  public messageUpload = '';
 
   constructor(private questionService: QuestionService, private dialog: MatDialog, public router: Router) {
   }
 
   ngOnInit(): void {
+    this.messageUpload = this.questionService.messageUpload;
+    setTimeout(() => {
+      this.questionService.messageUpload = '';
+      this.messageUpload = '';
+    }, 2000);
+    this.messageDeleteSuccess = this.questionService.messageDeleteSuccess;
+    setTimeout(() => {
+      this.questionService.messageDeleteSuccess = '';
+      this.messageDeleteSuccess = '';
+    }, 2000);
+    this.messageAddSuccess = this.questionService.messageAddSuccess;
+    setTimeout(() => {
+      this.questionService.messageAddSuccess = '';
+      this.messageAddSuccess = '';
+    }, 2000);
     this.questionService.getAllQuestion().subscribe(data => {
       this.listQuestion = data;
-      console.log(data);
     });
   }
 
@@ -35,23 +52,18 @@ export class QuestionListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
   }
   openDialogDelete(id) {
     this.questionService.getQuestionById(id).subscribe(data => {
-      console.log('data');
-      console.log(data);
-      console.log('data');
       const dialogRef = this.dialog.open(DeleteQuestionComponent, {
         width: '500px',
         data: {data1: data},
         disableClose: true
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
@@ -66,7 +78,6 @@ export class QuestionListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });

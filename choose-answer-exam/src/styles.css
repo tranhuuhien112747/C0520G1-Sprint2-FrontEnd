@@ -7,3 +7,7 @@
 .app-full-bleed-dialog .mat-dialog-container {
   padding: 0;
 }
+.toast-center-center {
+  height: 30px;
+}
+
