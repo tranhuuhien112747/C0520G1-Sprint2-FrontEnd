@@ -1,7 +1,7 @@
 export class ResultExam {
    takenDate: string;
    takenDuration: string;
-   mark: number;
+   mark: string;
    userId: number;
    examId: number;
 }

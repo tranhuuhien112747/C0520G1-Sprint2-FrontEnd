@@ -8,12 +8,15 @@ import {ResultExam} from '../model/result-exam.class';
   providedIn: 'root'
 })
 export class ResultExamService {
-  public answerList = [];
-  public questionList = [];
-  public mark = 0;
-  public examId = 0;
-  public trueQuantity = 0;
-  public questionQuantity = 0;
+  public answerListSV = [];
+  public questionListSV = [];
+  public markSV = 0;
+  public examIdSV = 0;
+  public examNameSV = '';
+  public trueQuantitySV = 0;
+  public questionQuantitySV = 0;
+  public takenDurationSV = 0;
+  public subjectNameSV = '';
 
   public RESULT_EXAM_API = 'http://localhost:8080/resultExam';
 
