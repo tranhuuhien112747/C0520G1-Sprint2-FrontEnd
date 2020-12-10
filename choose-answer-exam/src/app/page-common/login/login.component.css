@@ -1,9 +1,18 @@
-.eye {
-  top: 36px;
-  right: 12px;
+#eye {
+  top: 16px;
+  right: 8px;
+  font-size: 15px;
   position: absolute;
 }
-
+#eye1 {
+  top: 16px;
+  right: 8px;
+  font-size: 15px;
+  position: absolute;
+}
+.i1{
+  left: 8px
+}
 .fb {
   background-color: #415dae;
   color: white;
@@ -32,14 +41,14 @@
 
 }
 .form-horizontal .form-icon{
-  color: #FF5B61;
+  color: #0E7886;
   text-align: center;
-  text-shadow: 5px 5px 3px #0E7886;
+  text-shadow: 5px 5px 3px gainsboro;
 }
 .form-horizontal .heading{
   color: #0E7886;
   margin: 0 0 5px 0;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 600;
   text-align: center;
 }
@@ -57,10 +66,9 @@
 }
 .form-horizontal .form-group>i{
   color: #0E7886;
-  font-size: 23px;
+  font-size: 20px;
   position: absolute;
-  left: 8px;
-  top: 7px;
+  top: 10px;
 }
 .form-horizontal .form-control{
   color: #0E7886;
@@ -108,3 +116,4 @@
   display: inline-block;
 }
 .form-horizontal .register:hover{ color: #FF5B61; }
+

@@ -34,6 +34,11 @@ export class ExamService {
   getAllExam(): Observable<Exam[]>{
     return this.http.get<Exam[]>(this.API);
   }
+  getAllExamByName(valueName: string): Observable<Exam[]>{
+    let params = new HttpParams();
+    params = params.append('valueName', valueName);
+    return this.http.get<Exam[]>(`${this.API}/allExamByName`, {params});
+  }
   getAllQuestion(idExam: string): Observable<Question[]>{
     let params = new HttpParams();
     params = params.append('idExam', idExam);

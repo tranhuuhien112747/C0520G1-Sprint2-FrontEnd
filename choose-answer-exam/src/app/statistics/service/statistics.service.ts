@@ -24,4 +24,8 @@ export class StatisticsService {
     params = params.append('codeSubject', code);
     return this.http.get(this.API_STATISTICS + '/search-by-subject', {params});
   }
+
+  getSearch(): Observable<any> {
+    return this.http.get(this.API_STATISTICS + '/search-container-subject');
+  }
 }

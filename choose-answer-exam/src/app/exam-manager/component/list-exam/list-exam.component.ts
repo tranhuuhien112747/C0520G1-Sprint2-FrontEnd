@@ -16,6 +16,7 @@ export class ListExamComponent implements OnInit {
   public listExam: Exam[] = [];
   public p: number;
   public message = '';
+  public valueName = '';
   public messageAddSuccess = '';
   public messageDeleteSuccess = '';
   selectedItemsList = [];
@@ -24,6 +25,7 @@ export class ListExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.p = 0;
     this.messageAddSuccess = this.examService.messageAddSuccess;
     setTimeout (() => {
       this.examService.messageAddSuccess = '';
@@ -83,6 +85,12 @@ export class ListExamComponent implements OnInit {
   fetchSelectedItems() {
     this.selectedItemsList = this.listExam.filter((value, index) => {
       return value.isChecked;
+    });
+  }
+
+  getAllByName() {
+    this.examService.getAllExamByName(this.valueName).subscribe( data => {
+      this.listExam = data;
     });
   }
 }

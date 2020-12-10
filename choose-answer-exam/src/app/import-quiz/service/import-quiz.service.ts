@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Question} from '../model/model.question';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,6 @@ export class ImportQuizService {
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router,
   ) {
   }
 
@@ -25,15 +22,6 @@ export class ImportQuizService {
       responseType: 'json'
     });
   }
-
-  // upload(file: File): Observable<HttpEvent<any>> {
-  //   const formData: FormData = new FormData();
-  //   formData.append('file', file);
-  //   return this.httpClient.post<HttpEvent<any>>(this.saveFile, formData, {
-  //     reportProgress: true,
-  //     responseType: 'json'
-  //   });
-  // }
 
   upload(file: File): Observable<any> {
     const formData: FormData = new FormData();

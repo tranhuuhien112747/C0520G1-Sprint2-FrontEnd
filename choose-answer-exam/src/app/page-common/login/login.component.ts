@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: string;
-  showPassword = false;
-
+  private this: any;
+  showPasswordChange: boolean;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.facebook(token).subscribe(next => {
           this.tokenStorage.saveToken(next.accessToken);
           this.tokenStorage.saveUser(next);
-        //   console.log(next);
+          //   console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           this.reloadPage();
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
           console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.ngOnInit();
+          this.reloadPage();
         }, err => {
           console.log('error');
           this.isLoginFailed = true;
@@ -117,11 +117,22 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 
+
   openDialogCreate() {
     const dialog = this.dialog.open(UserCreateComponent, {
       disableClose: true, panelClass: 'app-full-bleed-dialog',
       width: '740px',
       maxHeight: '80vh',
     });
+
+  showPassword(): void {
+    const ipnElement = document.querySelector('#password1');
+    if (this.showPasswordChange) {
+      ipnElement.setAttribute('type', 'password');
+      this.showPasswordChange = false;
+    } else {
+      ipnElement.setAttribute('type', 'text');
+      this.showPasswordChange = true;
+    }
   }
 }

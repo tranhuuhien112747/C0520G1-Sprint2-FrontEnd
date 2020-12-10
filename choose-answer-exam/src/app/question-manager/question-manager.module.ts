@@ -10,11 +10,12 @@ import {IdConvert} from './common/convert-id';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteErrorComponent } from './component/delete-error/delete-error.component';
 
 
 
 @NgModule({
-  declarations: [QuestionListComponent, DeleteQuestionComponent, EditQuestionComponent, AddNewQuestionComponent, IdConvert],
+  declarations: [QuestionListComponent, DeleteQuestionComponent, EditQuestionComponent, AddNewQuestionComponent, IdConvert, DeleteErrorComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(questionRoutes),

@@ -9,14 +9,15 @@ import {FormsModule} from '@angular/forms';
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LogoutComponent} from './logout/logout.component';
+import { MessageComponent } from './message/message.component';
 
 export const CommonRoute: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: MessageComponent}
 ];
 
 @NgModule({
-  declarations: [HeaderComponent, HomePageComponent, FooterComponent, LoginComponent, LogoutComponent],
+  declarations: [HeaderComponent, HomePageComponent, FooterComponent, LoginComponent, LogoutComponent, MessageComponent],
   exports: [
     HeaderComponent,
     FooterComponent,
