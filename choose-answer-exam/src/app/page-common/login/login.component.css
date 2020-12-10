@@ -4,6 +4,12 @@
   font-size: 15px;
   position: absolute;
 }
+#eye1 {
+  top: 16px;
+  right: 8px;
+  font-size: 15px;
+  position: absolute;
+}
 .i1{
   left: 8px
 }

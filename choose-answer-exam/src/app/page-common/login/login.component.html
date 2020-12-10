@@ -1,4 +1,4 @@
-<div class="m-1 mb-4" style="background: rgba(210,211,227,0.19); border: 1px solid lightgray;border-radius:3px ">
+<div class="m-1 mb-4" style="background: rgba(210,211,227,0.19); border: 1px solid #2b68f2 ;border-radius:3px ">
   <form class="form-horizontal  mx-3 mt-3 mb-3" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
         novalidate>
     <div class="form-icon"><i class="fa fa-key" style="font-size: 35px"></i></div>
@@ -19,8 +19,10 @@
       <i class="fa fa-lock i1"></i> <input type="password" class="form-control" name="password" placeholder="Mật khẩu"
                                            id="password1"
                                            autocomplete="off" [(ngModel)]="form.password" required
-                                           #password="ngModel"/> <i class="far fa-eye" id="eye"></i>
-      <div class="alert-danger ml-1 small" *ngIf="f.submitted && password.invalid">
+                                           #password="ngModel"/> <i class="far fa-eye" id="eye" *ngIf="showPasswordChange == true; else hidden"
+                                                                    (click)="showPassword()"></i>
+      <ng-template #hidden><i class="far fa-eye-slash" id="eye1" (click)="showPassword()"></i></ng-template>
+      <div class=" alert-danger ml-1 small" *ngIf="f.submitted && password.invalid">
 
         <div *ngIf="password.errors.required">
           Mật khẩu là bắt buộc.
@@ -54,23 +56,6 @@
 
 </div>
 
-<script>
-  let showPassword = false;
-  const ipnElement = document.querySelector('#password1');
-  const btnElement = document.querySelector('#btnPassword');
 
-  btnElement.addEventListener('click', togglePassword);
-
-  function togglePassword() {
-    alert("abc");
-    if (showPassword) {
-      ipnElement.setAttribute('type', 'password');
-      showPassword = false
-    } else {
-      ipnElement.setAttribute('type', 'text');
-      showPassword = true
-    }
-  }
-</script>
 
 
