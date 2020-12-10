@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { HomePageComponent } from './home-page/home-page.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import {NgModule} from '@angular/core';
+import {HomePageComponent} from './home-page/home-page.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 import {RouterModule, Routes} from '@angular/router';
 import {StatisticsModule} from '../statistics/statistics.module';
 import {LoginComponent} from './login/login.component';
@@ -11,7 +11,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LogoutComponent} from './logout/logout.component';
 
 export const CommonRoute: Routes = [
-  { path: '', component: HomePageComponent}
+  {path: '', component: HomePageComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -43,4 +44,5 @@ export const CommonRoute: Routes = [
     } as SocialAuthServiceConfig,
   }],
 })
-export class PageRoutingModule { }
+export class PageRoutingModule {
+}

@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   private role: string;
   isLoggedIn = false;
   showAdminBoard = false;
-  showUserBoard = true;
+  showUserBoard = false;
   username: string;
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router) {
