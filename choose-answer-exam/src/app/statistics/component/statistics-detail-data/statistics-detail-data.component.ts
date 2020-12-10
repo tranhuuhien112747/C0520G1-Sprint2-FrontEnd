@@ -116,12 +116,12 @@ export class StatisticsDetailDataComponent implements OnInit {
   }
 
   selectChartColumn() {
-    this.countSubjectList = [];
-    this.subject = [];
-    this.nameSubject = [];
-    this.countSubject = [];
-    this.flag = 0;
     this.statisticsService.getStatisticsCountExamSubject().subscribe(data => {
+      this.countSubjectList = [];
+      this.subject = [];
+      this.nameSubject = [];
+      this.countSubject = [];
+      this.flag = 0;
       this.countSubjectList = data;
       console.log(this.countSubjectList);
       if (this.countSubjectList != null) {
@@ -177,12 +177,12 @@ export class StatisticsDetailDataComponent implements OnInit {
           labels: {
             style: {
               colors: [
-                '#008FFB',
-                '#00E396',
-                '#FEB019',
-                '#FF4560',
+                '#0b05fb',
+                '#21e322',
+                '#fedd00',
+                '#ff090f',
               ],
-              fontSize: '13px'
+              fontSize: '20px'
             }
           }
         }
@@ -191,12 +191,12 @@ export class StatisticsDetailDataComponent implements OnInit {
   }
 
   selectChartPie() {
-    this.countSubjectList = [];
-    this.subject = [];
-    this.nameSubject = [];
-    this.countSubject = [];
-    this.flag = 0;
     this.statisticsService.getStatisticsCountExamSubject().subscribe(data => {
+      this.countSubjectList = [];
+      this.subject = [];
+      this.nameSubject = [];
+      this.countSubject = [];
+      this.flag = 0;
       this.countSubjectList = data;
       console.log(this.countSubjectList);
       if (this.countSubjectList != null) {
@@ -251,19 +251,19 @@ export class StatisticsDetailDataComponent implements OnInit {
         series: [
           {
             name: 'Angular',
-            data: [quarter1[0][1], quarter2[0][1], quarter3[1][1], quarter4[0][1]]
+            data: [quarter1[0][1], quarter2[0][1], quarter3[0][1], quarter4[0][1]]
           },
           {
             name: 'Java',
-            data: [quarter1[1][1], quarter2[1][1], quarter3[2][1], quarter4[3][1]]
+            data: [quarter1[2][1], quarter2[2][1], quarter3[2][1], quarter4[2][1]]
           },
           {
             name: 'Javascript',
-            data: [quarter1[2][1], quarter2[3][1], quarter3[0][1], quarter4[1][1]]
+            data: [quarter1[3][1], quarter2[3][1], quarter3[3][1], quarter4[3][1]]
           },
           {
             name: 'HTML5',
-            data: [quarter1[3][1], quarter2[2][1], quarter3[3][1], quarter4[2][1]]
+            data: [quarter1[1][1], quarter2[1][1], quarter3[1][1], quarter4[1][1]]
           }
         ],
         chart: {
@@ -291,6 +291,7 @@ export class StatisticsDetailDataComponent implements OnInit {
         ],
         plotOptions: {
           bar: {
+            columnWidth: '45%',
             horizontal: false
           }
         },
@@ -301,9 +302,21 @@ export class StatisticsDetailDataComponent implements OnInit {
             'Qúy 2',
             'Qúy 3',
             'Qúy 4'
-          ]
+          ],
+          labels: {
+            style: {
+              colors: [
+                '#0500fb',
+                '#0500fb',
+                '#0500fb',
+                '#0500fb',
+              ],
+              fontSize: '20px'
+            }
+          }
         },
         legend: {
+          fontWeight: '1px',
           position: 'right',
           offsetY: 40
         },
@@ -312,5 +325,22 @@ export class StatisticsDetailDataComponent implements OnInit {
         }
       };
     });
+  }
+
+  event(event) {
+    const value = event.target.value;
+    switch (value) {
+      case '1':
+        this.selectChartPie();
+        break;
+      case '2':
+        this.selectChartColumn();
+        break;
+      case '3':
+        this.selectChartBar();
+        break;
+      default:
+        break;
+    }
   }
 }
