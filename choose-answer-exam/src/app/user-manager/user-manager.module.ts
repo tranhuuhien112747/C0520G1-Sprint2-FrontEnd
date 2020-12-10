@@ -11,6 +11,7 @@ import {UserListComponent} from './component/user-list/user-list.component';
 import {UserCreateComponent} from './component/user-create/user-create.component';
 import {UserEditComponent} from './component/user-edit/user-edit.component';
 import {UserDeleteComponent} from './component/user-delete/user-delete.component';
+import {FormDirective} from './formDirective';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {UserDeleteComponent} from './component/user-delete/user-delete.component
     UserListComponent,
     UserCreateComponent,
     UserEditComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    FormDirective
   ],
   imports: [
     RouterModule.forChild(UserRoutes),
