@@ -23,6 +23,8 @@ export class HomePageComponent implements OnInit {
       this.token = 'false';
     } else {
       const user = this.tokenStorageService.getUser();
+      console.log('data');
+      console.log(user);
       this.token = this.tokenStorageService.getToken();
       this.token = 'true';
       console.log('this.token');
