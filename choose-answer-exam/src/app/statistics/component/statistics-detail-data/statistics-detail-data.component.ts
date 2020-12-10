@@ -234,7 +234,6 @@ export class StatisticsDetailDataComponent implements OnInit {
     });
   }
 
-
   selectChartBar() {
     let dataList = [];
     let quarter1 = [];

@@ -125,6 +125,7 @@ export class LoginComponent implements OnInit {
       maxHeight: '80vh',
     });
   }
+
   showPassword(): void {
     const ipnElement = document.querySelector('#password1');
     if (this.showPasswordChange) {
