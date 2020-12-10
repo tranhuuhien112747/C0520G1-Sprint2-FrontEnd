@@ -10,7 +10,6 @@
     </div>
     <div class="row d-flex justify-content-center ml-4">
       <div class="mt-3">
-<!--        <a href="question-list" class="btn btn-secondary" type="submit">Hủy</a>-->
         <button  class="btn btn-secondary" [routerLink]="['/question-list']" >Hủy</button>
         <button class="btn btn-success mx-4" [disabled]="!selectedFiles" (click)="viewFile()"> Xác nhận</button>
       </div>
@@ -20,7 +19,7 @@
 
 <div class="container-fluid " style="padding-top: 3%">
   <div *ngIf="number == 1">
-    <div class="text-primary d-flex justify-content-end">{{message}}</div>
+    <div class="text-danger d-flex justify-content-end">{{message}}</div>
     <small class="font-weight-bold text-primary" *ngIf="questionList != null; else block">Tổng số câu hỏi
       là: {{questionList.length}}</small>
     <ng-template #block>
@@ -36,7 +35,7 @@
         <th>Đáp án đúng</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="questionList; else blockList">
       <tr *ngFor="let question of questionList |paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
         <td style="width: 50px">{{i + 1}}</td>
         <td style="width: 400px">{{question.questionContent}}</td>
@@ -50,6 +49,13 @@
         <td style="width: 350px">{{question.trueAnswer}}</td>
       </tr>
       </tbody>
+      <ng-template #blockList>
+        <tbody>
+        <tr>
+          <td colspan="5"><h4 class="font-weight-bold  text-center">Không có dữ liệu!</h4></td>
+        </tr>
+        </tbody>
+      </ng-template>
     </table>
 
     <pagination-controls class=" d-flex justify-content-center " (pageChange)="p = $event" previousLabel="Trước"
