@@ -26,10 +26,10 @@ export class UpdateInfoAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.formEditAccount = this.formBuilder.group({
-      fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9\s]{1,30}$/)]],
-      email: ['', [Validators.required, Validators.pattern(/^([a-zA-Z_0-9]{3,10})+([@]+[a-zA-Z_0-9]{1,5})+(.com)$/)]],
-      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9-\s]{1,30}$/)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^(09|03)+([0-9]{8})$/)]]
+      fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9\s]{3,30}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{3,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],
+      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9-\s]{3,60}$/)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9\\-\\+]{10}$/)]]
     });
     // this.activatedRoute.params.subscribe( data => {
     // this.idToFind = data;
