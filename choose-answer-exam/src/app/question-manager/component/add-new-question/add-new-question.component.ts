@@ -39,7 +39,6 @@ export class AddNewQuestionComponent implements OnInit {
     });
     this.questionService.getAllSubject().subscribe(data => {
       this.subjects = data;
-      console.log(data);
     });
   }
 

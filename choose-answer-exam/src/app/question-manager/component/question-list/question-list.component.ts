@@ -40,7 +40,6 @@ export class QuestionListComponent implements OnInit {
     }, 2000);
     this.questionService.getAllQuestion().subscribe(data => {
       this.listQuestion = data;
-      console.log(data);
     });
   }
 
@@ -53,23 +52,18 @@ export class QuestionListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
   }
   openDialogDelete(id) {
     this.questionService.getQuestionById(id).subscribe(data => {
-      console.log('data');
-      console.log(data);
-      console.log('data');
       const dialogRef = this.dialog.open(DeleteQuestionComponent, {
         width: '500px',
         data: {data1: data},
         disableClose: true
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
@@ -84,7 +78,6 @@ export class QuestionListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
