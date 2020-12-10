@@ -23,6 +23,9 @@ export class QuestionService {
   addNewQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(`${this.API}/create-question`, question);
   }
+  updateQuestion(question: Question): Observable<Question> {
+    return this.http.put<Question>(`${this.API}/update-question`, question);
+  }
   getQuestionById(id: number): Observable<Question> {
     return this.http.get<Question>(`${this.API}/find/${id}`);
   }

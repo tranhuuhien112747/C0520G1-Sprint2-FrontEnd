@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: string;
+  showPassword = false;
+
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -53,8 +55,7 @@ export class LoginComponent implements OnInit {
         //   console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.ngOnInit();
-          // this.reloadPage();
+          this.reloadPage();
         }, err => {
           console.log('error');
           this.isLoginFailed = true;
@@ -67,6 +68,8 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
+        console.log('data');
+        console.log(data);
         // this.tokenStorage.saveUser(data);
         const token = new TokenDTO(this.user.idToken);
         console.log(token);
@@ -98,7 +101,7 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/']).then(() => this.ngOnInit());
+        this.router.navigate(['/']).then(() => this.reloadPage());
       },
       err => {
         this.errorMessage = err.error.message;
