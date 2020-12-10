@@ -12,7 +12,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 export const accountRoute: Routes = [
   { path: 'infor-account',
     component: InforAccountComponent},
-  { path: 'update-infor',
+  { path: 'update-infor/:id',
     component: UpdateInfoAccountComponent},
   { path: 'exam-history',
     component: ExamHistoryComponent}

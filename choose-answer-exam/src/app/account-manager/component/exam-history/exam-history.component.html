@@ -28,7 +28,7 @@
             <h4>Tổng điểm: <span class="text-danger mt-2">{{num}}</span></h4>
           </div>
           <div class="ml-4">
-            <h4>Trung bình: <span class="text-danger mt-2">{{avg}}</span></h4>
+            <h4>Trung bình: <span class="text-danger mt-2">{{avg | number: '1.2-2'}}</span></h4>
           </div>
           <div class="ml-4 mb-3">
             <button class="btn btn-secondary" [routerLink]="['/infor-account']">Đóng</button>
