@@ -46,9 +46,9 @@ export class UserCreateComponent implements OnInit {
       username: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUsername)]],
       password: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
       confirmPassword: ['', [Validators.required]],
-      fullName: ['', [Validators.required, Validators.maxLength(30)]],
+      fullName: ['', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9\s]{1,30}$/)]],
       email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],
-      address: ['', Validators.required],
+      address: ['', Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9-\s]{1,60}$/)],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9\-\+]{10,15}$/)]],
     }, {validator: comparePassword});
     // {validator: comparePassword});
