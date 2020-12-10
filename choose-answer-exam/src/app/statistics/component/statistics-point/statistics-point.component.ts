@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StatisticsService} from '../../service/statistics.service';
 import {SumPoint} from '../../model/sum-point';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-statistics-point',
@@ -15,25 +14,25 @@ export class StatisticsPointComponent implements OnInit {
   public pointTOP = [];
   public code: string;
 
-  constructor(public statisticsService: StatisticsService,
-              public route: Router) {
+  constructor(public statisticsService: StatisticsService) {
   }
 
   ngOnInit(): void {
     this.code = '0';
     this.statisticsService.getStatisticsSumPoint().subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
         this.pointTOP.push(e.sumPoint);
       }
-      console.log('-----------------');
+      this.getNameUserTop(this.nameTOP);
       console.log(this.sumPoint);
-      console.log('-----------------');
     });
   }
 
@@ -45,14 +44,17 @@ export class StatisticsPointComponent implements OnInit {
     this.code = '0';
     this.statisticsService.getStatisticsSumPoint().subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
         this.pointTOP.push(e.sumPoint);
       }
+      this.getNameUserTop(this.nameTOP);
       console.log(this.sumPoint);
     });
   }
@@ -65,14 +67,17 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
         this.pointTOP.push(e.sumPoint);
       }
+      this.getNameUserTop(this.nameTOP);
       console.log(this.sumPoint);
     });
   }
@@ -85,14 +90,17 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
         this.pointTOP.push(e.sumPoint);
       }
+      this.getNameUserTop(this.nameTOP);
       console.log(this.sumPoint);
     });
   }
@@ -105,14 +113,17 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
         this.pointTOP.push(e.sumPoint);
       }
+      this.getNameUserTop(this.nameTOP);
       console.log(this.sumPoint);
     });
   }
@@ -125,16 +136,31 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
         this.pointTOP.push(e.sumPoint);
       }
+      this.getNameUserTop(this.nameTOP);
       console.log(this.sumPoint);
     });
   }
+
+  getNameUserTop(array: string []) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].length > 15) {
+        if (array[i].includes('@')) {
+          array[i] = array[i].slice(0, array[i].indexOf('@'));
+        }
+      }
+    }
+    return array;
+  }
+
 
 }

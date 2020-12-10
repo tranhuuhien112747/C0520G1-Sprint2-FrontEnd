@@ -3,5 +3,5 @@ export class Exam {
   examName: string;
   examDuration: string;
   questions: any;
-  checked?: boolean;
+  isChecked: boolean;
 }

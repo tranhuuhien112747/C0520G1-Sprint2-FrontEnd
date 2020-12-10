@@ -28,6 +28,7 @@ export class DeleteQuestionComponent implements OnInit {
 
   deleteQuestion() {
     this.questionService.deleteQuestion(this.questionFullId).subscribe(data => {
+      this.questionService.messageDeleteSuccess = 'Xóa câu hỏi thành công.';
       this.dialogRef.close();
     });
   }

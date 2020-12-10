@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -35,13 +36,14 @@ export class UserCreateComponent implements OnInit {
     public userService: UserService,
     public router: Router,
     public formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private toastr: ToastrService
   ) {
   }
 
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
-      userName: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUserName)]],
+      username: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUserName)]],
       password: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
       confirmPassword: ['', [Validators.required]],
       fullName: ['', [Validators.required, Validators.maxLength(30)]],
@@ -77,6 +79,7 @@ export class UserCreateComponent implements OnInit {
     if (this.createUserForm.valid) {
       this.userService.addNewUser(this.createUserForm.value).subscribe(data => {
         this.dialogRef.close();
+        this.toastr.success('Create Successfully!!');
       }, error => console.log(error.message));
     }
   }

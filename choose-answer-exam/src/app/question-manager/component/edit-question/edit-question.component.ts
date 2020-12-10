@@ -18,6 +18,11 @@ export class EditQuestionComponent implements OnInit {
   public subject: Observable<Subject>;
   public subjects: Subject[] = [];
   public correct = '';
+  public subjectName = '';
+  public answerA = '';
+  public answerB = '';
+  public subjectC = '';
+  public subjectD = '';
 
   constructor(private fb: FormBuilder,
               private questionService: QuestionService,
@@ -42,6 +47,7 @@ export class EditQuestionComponent implements OnInit {
       console.log(data);
     });
     this.updateQuestion.patchValue(this.data.data1);
+    this.subjectName = this.data.data1.subject.subjectName;
   }
 
   onSubmit() {
@@ -55,8 +61,6 @@ export class EditQuestionComponent implements OnInit {
       this.updateQuestion.value.trueAnswer = this.updateQuestion.value.answerD;
     }
     this.questionService.addNewQuestion(this.updateQuestion.value).subscribe(data => {
-        console.log('hello' + this.updateQuestion.value);
-        console.log(data);
         this.dialogRef.close();
       }
     );

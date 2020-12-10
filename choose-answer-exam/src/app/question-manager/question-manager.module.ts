@@ -8,7 +8,7 @@ import {EditQuestionComponent} from './component/edit-question/edit-question.com
 import {AddNewQuestionComponent} from './component/add-new-question/add-new-question.component';
 import {IdConvert} from './common/convert-id';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 
 
@@ -20,7 +20,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     RouterModule.forChild(questionRoutes),
     NgxPaginationModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   exports: [
     IdConvert

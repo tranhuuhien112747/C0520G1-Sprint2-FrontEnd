@@ -20,8 +20,8 @@ export class UserDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.idUser = this.data.dataE.idUser;
-    this.userName = this.data.dataE.userName;
+    this.idUser = this.data.dataD.idUser;
+    this.userName = this.data.dataD.userName;
     console.log(this.userName);
     console.log(this.idUser);
   }

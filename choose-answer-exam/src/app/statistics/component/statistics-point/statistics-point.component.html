@@ -1,7 +1,7 @@
 <div class="col-md-12 mb-1 m-0 p-0 text-center">
   <button type="button" class=" btn btn-info btn-sm font-weight-bolder" data-toggle="tooltip"
           data-placement="bottom"
-          title="Top 5 Vinh Danh" style="height: 28px;width: 60px" (click)="showTOP()">Top
+          title="Top 5 Vinh Danh" style="height: 28px;width: 56px" (click)="showTOP()">Top
   </button>
   <button type="button" class="btn btn-warning btn-sm font-weight-bolder" data-toggle="tooltip"
           data-placement="bottom" style="height: 28px"
@@ -16,7 +16,7 @@
           title="Top 5 Angular" (click)="showTOPAngular()">Angular
   </button>
   <button type="button" class="btn btn-success btn-sm font-weight-bolder" data-toggle="tooltip"
-          data-placement="bottom" style="height: 28px;width: 61px"
+          data-placement="bottom" style="height: 28px;width: 56px"
           title="Top 5 Java" (click)="showTOPJava()">Java
   </button>
 </div>
@@ -49,37 +49,37 @@
   <ul class=" row list-group border p-1 m-1" style="background-color: lightskyblue"
       *ngIf="nameTOP.length > 0 && pointTOP.length > 0">
     <li class="col-md-12 list-group-item list-group-item-danger d-flex px-1">
-      <label class="col-md-6 font-weight-bolder">
+      <label class="col-md-8 font-weight-bolder" >
         <i class="fas fa-user px-0" style="font-size: 13px"></i> {{nameTOP[0]}}
       </label>
-      <label class="col-md-6 d-flex justify-content-end">
-        <i class=" fas fa-crown mx-2" style="color: #ffc504;font-size: 17px"></i>
-        <span class="badge badge-warning badge-pill" style="font-size: 11px"> {{pointTOP[0]}}</span>
+      <label class="col-md-4 d-flex justify-content-end m-0 p-0">
+        <i class="col-md-5 fas fa-crown mx-3" style="color: #ffc504;font-size: 17px"></i>
+        <span class="col-md-7 badge badge-warning badge-pill mr-0 " style="font-size: 11px;float: right"> {{pointTOP[0]}}</span>
       </label>
     </li>
-    <li class="col-md-12 list-group-item list-group-item-primary d-flex px-1">
-      <label class="col-md-6 font-weight-bolder"><i class="fas fa-user" style="font-size: 13px"></i> {{nameTOP[1]}}
+    <li class="col-md-12 list-group-item list-group-item-primary d-flex px-1 m-0">
+      <label class="col-md-8 font-weight-bolder"><i class="fas fa-user" style="font-size: 13px"></i> {{nameTOP[1]}}
       </label>
-      <label class="col-md-6 d-flex justify-content-end">
-        <i class=" fas fa-crown mx-2" style="color: grey;font-size: 17px"></i>
-        <span class="badge badge-warning badge-pill" style="font-size: 11px">{{pointTOP[1]}}</span>
+      <label class="col-md-4 d-flex justify-content-end">
+        <i class="col-md-5 fas fa-crown mx-3" style="color: grey;font-size: 17px"></i>
+        <span class="col-md-7 badge badge-warning badge-pill mr-0 " style="font-size: 11px"> {{pointTOP[1]}}</span>
       </label>
     </li>
     <li class="col-md-12 list-group-item list-group-item-success d-flex px-1">
-      <label class="col-md-6 font-weight-bolder">
+      <label class="col-md-8 font-weight-bolder">
         <i class="fas fa-user" style="font-size: 13px"></i> {{nameTOP[2]}}
       </label>
-      <label class="col-md-6 d-flex justify-content-end">
-        <i class=" fas fa-crown mx-2" style="color: sandybrown;font-size: 17px"></i>
-        <span class="badge badge-warning badge-pill font-weight-bold" style="font-size: 11px"> {{pointTOP[2]}}</span>
+      <label class="col-md-4 d-flex justify-content-end">
+        <i class="col-md-5 fas fa-crown mx-3" style="color: sandybrown;font-size: 17px"></i>
+        <span class="col-md-7 badge badge-warning badge-pill mr-0 " style="font-size: 11px"> {{pointTOP[2]}}</span>
       </label>
     </li>
     <li class="col-md-12 list-group-item list-group-item-warning d-flex px-1">
-      <label class="col-md-6 font-weight-bolder">
+      <label class="col-md-8 font-weight-bolder">
         <i class="fas fa-user" style="font-size: 13px"></i> {{nameTOP[3]}}
       </label>
-      <label class="col-md-6 d-flex justify-content-end">
-        <span class="badge badge-warning badge-pill" style="font-size: 11px"> {{pointTOP[3]}}</span>
+      <label class="col-md-4 d-flex justify-content-end">
+        <span class="col-md-7 badge badge-warning badge-pill mr-0 " style="font-size: 11px"> {{pointTOP[3]}}</span>
       </label>
     </li>
     <li class="col-md-12 list-group-item list-group-item d-flex px-1">
@@ -87,7 +87,7 @@
         <i class="fas fa-user" style="font-size: 13px"></i> {{nameTOP[4]}}
       </label>
       <label class="col-md-6 d-flex justify-content-end">
-        <span class="badge badge-warning badge-pill" style="font-size: 11px"> {{pointTOP[4]}}</span>
+        <span class="col-md-7 badge badge-warning badge-pill mr-0 " style="font-size: 11px"> {{pointTOP[4]}}</span>
       </label>
     </li>
   </ul>
