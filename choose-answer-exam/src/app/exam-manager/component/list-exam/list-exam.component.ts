@@ -24,6 +24,7 @@ export class ListExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.p = 0;
     this.messageAddSuccess = this.examService.messageAddSuccess;
     setTimeout (() => {
       this.examService.messageAddSuccess = '';
@@ -85,4 +86,5 @@ export class ListExamComponent implements OnInit {
       return value.isChecked;
     });
   }
+
 }

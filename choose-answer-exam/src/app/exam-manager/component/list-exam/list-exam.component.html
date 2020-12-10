@@ -11,9 +11,8 @@
             <i class='fas fa-align-left mr-2' [routerLink]="['/exam-list']"></i>Danh sách đề thi&nbsp;&nbsp;
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item">Danh sách thành viên</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/user/list']">Danh sách thành viên</a></li>
             <li><a class="dropdown-item" [routerLink]="['/question-list']">Ngân hàng câu hỏi</a></li>
-            <li><a class="dropdown-item" href="#">TOP</a></li>
           </ul>
         </div>
       </div>
@@ -23,7 +22,13 @@
     </div>
   </div>
   <div class="container-fluid mr-5" style="overflow-x:auto;">
-    <table class="table  table-bordered table-hover mt-2 ">
+    <div class="my-3"></div>
+    <small class="font-weight-bold" *ngIf="listExam != null; else block">Tổng số câu hỏi
+      là: {{listExam.length}}</small>
+    <ng-template #block>
+      <small class="font-weight-bold">Tổng số câu hỏi là: 0</small>
+    </ng-template>
+    <table class="table  table-bordered table-hover ">
       <thead style="background: #96a2af">
       <tr>
         <th class="font-weight-bold text-center">STT</th>
@@ -35,7 +40,7 @@
       </tr>
       </thead>
       <tbody *ngIf="listExam; else blockList">
-      <tr *ngFor="let element of listExam | paginate: { itemsPerPage: 8, currentPage: p }; let i=index">
+      <tr *ngFor="let element of listExam | paginate: { itemsPerPage: 12, currentPage: p }; let i=index">
         <td class="text-center">{{i + 1}}</td>
         <td class="text-center">{{element.idExam | IdConvertExam: 'MD'}}</td>
         <td class="text-center">{{element.examName}}</td>

@@ -15,6 +15,7 @@ import {Router} from '@angular/router';
 export class QuestionListComponent implements OnInit {
   public listQuestion: Question[] = [];
   public p: number;
+  public index: number;
   public messageDeleteSuccess = '';
   public messageAddSuccess = '';
   public messageUpload = '';
@@ -23,6 +24,9 @@ export class QuestionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if ( this.index === 0){
+      this.p = this.p - 1;
+    }
     this.messageUpload = this.questionService.messageUpload;
     setTimeout(() => {
       this.questionService.messageUpload = '';
@@ -56,8 +60,9 @@ export class QuestionListComponent implements OnInit {
       });
     });
   }
-  openDialogDelete(id) {
+  openDialogDelete(id, index) {
     this.questionService.getQuestionById(id).subscribe(data => {
+      this.index = index;
       const dialogRef = this.dialog.open(DeleteQuestionComponent, {
         width: '500px',
         data: {data1: data},
