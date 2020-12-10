@@ -124,6 +124,7 @@ export class LoginComponent implements OnInit {
       width: '740px',
       maxHeight: '80vh',
     });
+  }
 
   showPassword(): void {
     const ipnElement = document.querySelector('#password1');
