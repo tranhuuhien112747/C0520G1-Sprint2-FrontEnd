@@ -46,12 +46,29 @@
     </div>
   </div>
   <div class="container-fluid mr-5" style="overflow-x:auto;">
+
     <div class="my-3"></div>
-    <small class="font-weight-bold " *ngIf="listQuestion != null; else block">Tổng số câu hỏi
-      là: {{listQuestion.length}}</small>
-    <ng-template #block>
-      <small class="font-weight-bold ">Tổng số câu hỏi là: 0</small>
-    </ng-template>
+    <div class="form-inline active-cyan-4 ">
+      <small class="font-weight-bold " *ngIf="listQuestion != null; else block">Tổng số câu hỏi
+        là: {{listQuestion.length}}</small>
+      <ng-template #block>
+        <small class="font-weight-bold ">Tổng số câu hỏi là: 0</small>
+      </ng-template>
+      <div class="offset-md-8 d-flex">
+        <select class="form-control-sm" [(ngModel)]="selectSubject" (click)="getAllByName()">
+          <option value="1">Java</option>
+          <option value="2">JavaScript</option>
+          <option value="3">HTML</option>
+          <option value="4">Angular</option>
+        </select>
+        <div class="mx-1"></div>
+        <input  class="form-control form-control-sm w-50 " type="text" placeholder="Tên đề thi" (keyup)="getAllByName()" [(ngModel)]="valueName"
+                aria-label="Search">
+        <i class="fas fa-search mt-2" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="my-1"></div>
+
     <table class="table table-bordered table-hover">
       <thead style="background: #96a2af">
       <tr>

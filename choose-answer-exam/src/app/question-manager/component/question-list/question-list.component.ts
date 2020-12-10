@@ -19,6 +19,8 @@ export class QuestionListComponent implements OnInit {
   public messageDeleteSuccess = '';
   public messageAddSuccess = '';
   public messageUpload = '';
+  public valueName = '';
+  public selectSubject = '1';
 
   constructor(private questionService: QuestionService, private dialog: MatDialog, public router: Router) {
   }
@@ -85,6 +87,13 @@ export class QuestionListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         this.ngOnInit();
       });
+    });
+  }
+
+  getAllByName() {
+    this.questionService.getAllQuestionByNameAndSubject(this.valueName, this.selectSubject).subscribe( data => {
+      this.p = 0;
+      this.listQuestion = data;
     });
   }
 }

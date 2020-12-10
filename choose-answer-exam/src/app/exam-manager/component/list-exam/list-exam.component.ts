@@ -16,6 +16,7 @@ export class ListExamComponent implements OnInit {
   public listExam: Exam[] = [];
   public p: number;
   public message = '';
+  public valueName = '';
   public messageAddSuccess = '';
   public messageDeleteSuccess = '';
   selectedItemsList = [];
@@ -87,4 +88,9 @@ export class ListExamComponent implements OnInit {
     });
   }
 
+  getAllByName() {
+    this.examService.getAllExamByName(this.valueName).subscribe( data => {
+      this.listExam = data;
+    });
+  }
 }
