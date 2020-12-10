@@ -11,7 +11,8 @@ import {
   ApexPlotOptions,
   ApexYAxis,
   ApexLegend,
-  ApexGrid
+  ApexGrid,
+  ApexFill
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
@@ -44,6 +45,17 @@ export type ChartOptionsColumn = {
   legend: ApexLegend;
 };
 
+export type ChartOptionsBar = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  responsive: ApexResponsive[];
+  xaxis: ApexXAxis;
+  legend: ApexLegend;
+  fill: ApexFill;
+};
+
 @Component({
   selector: 'app-statistics-detail-data',
   templateUrl: './statistics-detail-data.component.html',
@@ -53,6 +65,7 @@ export class StatisticsDetailDataComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   public chartOptionsColumn: Partial<ChartOptionsColumn>;
+  public chartOptionsBar: Partial<ChartOptionsBar>;
 
   public countSubjectList = [];
   public subject = [];
@@ -100,7 +113,6 @@ export class StatisticsDetailDataComponent implements OnInit {
         ]
       };
     });
-
   }
 
   selectChartColumn() {
@@ -178,7 +190,7 @@ export class StatisticsDetailDataComponent implements OnInit {
     });
   }
 
-  selectChartBar() {
+  selectChartPie() {
     this.countSubjectList = [];
     this.subject = [];
     this.nameSubject = [];
@@ -223,6 +235,83 @@ export class StatisticsDetailDataComponent implements OnInit {
   }
 
 
-  selectChartPie() {
+  selectChartBar() {
+    let dataList = [];
+    let quarter1 = [];
+    let quarter2 = [];
+    let quarter3 = [];
+    let quarter4 = [];
+    this.statisticsService.getSearch().subscribe(data => {
+      dataList = data;
+      quarter1 = dataList[0];
+      quarter2 = dataList[1];
+      quarter3 = dataList[2];
+      quarter4 = dataList[3];
+      this.flag = 3;
+      this.chartOptionsBar = {
+        series: [
+          {
+            name: 'Angular',
+            data: [quarter1[0][1], quarter2[0][1], quarter3[1][1], quarter4[0][1]]
+          },
+          {
+            name: 'Java',
+            data: [quarter1[1][1], quarter2[1][1], quarter3[2][1], quarter4[3][1]]
+          },
+          {
+            name: 'Javascript',
+            data: [quarter1[2][1], quarter2[3][1], quarter3[0][1], quarter4[1][1]]
+          },
+          {
+            name: 'HTML5',
+            data: [quarter1[3][1], quarter2[2][1], quarter3[3][1], quarter4[2][1]]
+          }
+        ],
+        chart: {
+          type: 'bar',
+          height: 310,
+          stacked: true,
+          toolbar: {
+            show: true
+          },
+          zoom: {
+            enabled: true
+          }
+        },
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              legend: {
+                position: 'bottom',
+                offsetX: -10,
+                offsetY: 0
+              }
+            }
+          }
+        ],
+        plotOptions: {
+          bar: {
+            horizontal: false
+          }
+        },
+        xaxis: {
+          type: 'category',
+          categories: [
+            'Qúy 1',
+            'Qúy 2',
+            'Qúy 3',
+            'Qúy 4'
+          ]
+        },
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        fill: {
+          opacity: 1
+        }
+      };
+    });
   }
 }
