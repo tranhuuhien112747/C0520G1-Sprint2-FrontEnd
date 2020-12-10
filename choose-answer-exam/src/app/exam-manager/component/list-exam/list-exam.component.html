@@ -8,7 +8,7 @@
       <div class="col-md-2">
         <div class="dropdown">
           <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
-            <i class='fas fa-align-left mr-2' [routerLink]="['/exam-list']"></i>Danh sách đề thi&nbsp;&nbsp;
+            <i class='fas fa-align-left mr-2'></i>Danh sách đề thi&nbsp;&nbsp;
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['/user/list']">Danh sách thành viên</a></li>
@@ -16,8 +16,29 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-5"></div>
-      <div class="col-md-5 mt-4 d-flex justify-content-end">
+      <div class="col-md-4"></div>
+      <div class="col-md-6 mt-2 d-flex justify-content-end">
+        <div class="col-md-6">
+          <div *ngIf="message == ''; else blockMessage"></div>
+          <ng-template #blockMessage>
+            <div class="alert alert-danger  " role="alert">{{message}}</div>
+          </ng-template>
+          <div *ngIf="messageAddSuccess == ''; else blockMessageSuccess"></div>
+          <ng-template #blockMessageSuccess>
+            <div class="alert alert-success  " role="alert">{{messageAddSuccess}}</div>
+          </ng-template>
+          <div *ngIf="messageDeleteSuccess == ''; else blockDeleteSuccess"></div>
+          <ng-template #blockDeleteSuccess>
+            <div class="alert alert-success  "  role="alert">{{messageDeleteSuccess}}</div>
+          </ng-template>
+        </div>
+        <button class="btn col-md-2 btn-success" style="height: 30px" (click)="openDialogAdd()">Tạo đề
+        </button>
+        <div class="mx-1"></div>
+        <button class="btn col-md-2 btn-danger" style="height: 30px" (click)="openDialogDelete()">Xóa
+        </button>
+        <div class="mx-1"></div>
+        <button class="btn col-md-1 btn-secondary" style="height: 30px" [routerLink]="['']">Đóng</button>
       </div>
     </div>
   </div>
@@ -46,7 +67,8 @@
         <td class="text-center">{{element.examName}}</td>
         <td class="text-center">{{element.questions[0].subject.subjectName}}</td>
 
-        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked" (change)="changeSelection()"></td>
+        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked"
+                                       (change)="changeSelection()"></td>
 
         <td class="text-center"><a [routerLink]="['/detail/'+ element.idExam]">Xem</a></td>
       </tr>
@@ -64,26 +86,5 @@
                            nextLabel="Sau"
                            responsive="true"></pagination-controls>
     </nav>
-    <div class="d-flex justify-content-end row">
-      <button class="btn col-md-1 btn-success" (click)="openDialogAdd()">Tạo đề
-      </button>
-      <div class="mx-1"></div>
-      <button class="btn col-md-1 btn-danger" (click)="openDialogDelete()">Xóa
-      </button>
-      <div class="mx-1"></div>
-      <button class="btn col-md-1 btn-secondary">Đóng</button>
-    </div>
-    <div  *ngIf="message == ''; else blockMessage" ></div>
-    <ng-template #blockMessage>
-      <div class="alert alert-danger mt-1 offset-9" role="alert" >{{message}}</div>
-    </ng-template>
-    <div  *ngIf="messageAddSuccess == ''; else blockMessageSuccess" ></div>
-    <ng-template #blockMessageSuccess>
-      <div class="alert alert-success mt-1 offset-9" role="alert" >{{messageAddSuccess}}</div>
-    </ng-template>
-    <div  *ngIf="messageDeleteSuccess == ''; else blockDeleteSuccess" ></div>
-    <ng-template #blockDeleteSuccess>
-      <div class="alert alert-success mt-1 offset-9" role="alert" >{{messageDeleteSuccess}}</div>
-    </ng-template>
   </div>
 </div>

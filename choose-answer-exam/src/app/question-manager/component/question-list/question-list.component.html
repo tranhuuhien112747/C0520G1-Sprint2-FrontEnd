@@ -41,17 +41,18 @@
         <button class="btn mr-2 btn-success" style="height: 30px" (click)="openDialogAddNew()">Thêm mới
         </button>
         <div class="mx-1"></div>
-        <button class="btn btn-secondary" style="height: 30px" [routerLink]="['/**']">Đóng</button>
+        <button class="btn btn-secondary" style="height: 30px" [routerLink]="['']">Đóng</button>
       </div>
     </div>
   </div>
   <div class="container-fluid mr-5" style="overflow-x:auto;">
-    <small class="font-weight-bold mt-2" *ngIf="listQuestion != null; else block">Tổng số câu hỏi
+    <div class="my-3"></div>
+    <small class="font-weight-bold " *ngIf="listQuestion != null; else block">Tổng số câu hỏi
       là: {{listQuestion.length}}</small>
     <ng-template #block>
-      <small class="font-weight-bold mt-2">Tổng số câu hỏi là: 0</small>
+      <small class="font-weight-bold ">Tổng số câu hỏi là: 0</small>
     </ng-template>
-    <table class="table mt-4 table-bordered table-hover">
+    <table class="table table-bordered table-hover">
       <thead style="background: #96a2af">
       <tr>
         <th class="font-weight-bold text-center">STT</th>
