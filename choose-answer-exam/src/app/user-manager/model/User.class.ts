@@ -15,6 +15,10 @@ export class User{
   private _phoneNumber: string;
   // tslint:disable-next-line:variable-name
   private _image: string;
+  // tslint:disable-next-line:variable-name
+  private _point: string;
+  // tslint:disable-next-line:variable-name
+  private _times: string;
 
   get idUser(): number {
     return this._idUser;
@@ -79,6 +83,30 @@ export class User{
 
   set image(value: string) {
     this._image = value;
+  }
+
+  get username(): string {
+    return this._username;
+  }
+
+  set username(value: string) {
+    this._username = value;
+  }
+
+  get point(): string {
+    return this._point;
+  }
+
+  set point(value: string) {
+    this._point = value;
+  }
+
+  get times(): string {
+    return this._times;
+  }
+
+  set times(value: string) {
+    this._times = value;
   }
 }
 

@@ -3,7 +3,7 @@
 .app-full-bleed-dialog .mat-dialog-container {
   padding: 0;
 }
-.toast-top-center {
-  top: 50px;
+.toast-center-center {
+  height: 30px;
 }
 

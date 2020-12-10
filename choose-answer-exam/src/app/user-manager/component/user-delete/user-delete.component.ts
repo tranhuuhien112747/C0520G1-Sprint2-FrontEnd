@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-delete',
@@ -15,6 +16,7 @@ export class UserDeleteComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<UserDeleteComponent>,
               public userService: UserService,
               public router: Router,
+              private toastr: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
@@ -31,6 +33,7 @@ export class UserDeleteComponent implements OnInit {
       if (data == null) {
         this.dialogRef.close();
       }
+      this.toastr.success('Delete Successfully!!');
     });
   }
 }

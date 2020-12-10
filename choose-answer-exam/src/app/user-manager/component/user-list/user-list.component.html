@@ -39,13 +39,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of users|paginate :{itemsPerPage:6,currentPage:p}; let i = index">
+      <tr *ngFor="let user of users|paginate :{itemsPerPage:4,currentPage:p}; let i = index">
         <td class="text-center">{{i+1}}</td>
         <td class="text-center">{{user.username}}</td>
         <td class="text-center">{{user.fullName}}</td>
         <td class="text-center">{{user.address}}</td>
         <td class="text-center">{{user.phoneNumber}}</td>
-        <td class="text-center"></td>
+        <td class="text-center">{{user.point}}/{{user.times}}</td>
         <td class="text-center">
           <!--                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
           <!--                        Launch demo modal-->
@@ -65,6 +65,6 @@
                          responsive="true"></pagination-controls>
   </nav>
   <div class="d-flex justify-content-end">
-    <button class="btn btn-secondary">Đóng</button>
+    <button class="btn btn-secondary" [routerLink]="['']">Đóng</button>
   </div>
 </div>

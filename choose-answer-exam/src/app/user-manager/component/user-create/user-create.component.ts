@@ -29,7 +29,7 @@ export function checkUserName(userName = []) {
 export class UserCreateComponent implements OnInit {
   createUserForm: FormGroup;
   public userList;
-  public listUserName = [];
+  public listUsername = [];
 
   constructor(
     public dialogRef: MatDialogRef<UserCreateComponent>,
@@ -43,20 +43,13 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUserName)]],
+      username: ['', [Validators.required, Validators.pattern('^[a-z0-9]{3,30}$'), checkUserName(this.listUsername)]],
       password: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
       confirmPassword: ['', [Validators.required]],
       fullName: ['', [Validators.required, Validators.maxLength(30)]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],
       address: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      // userName: ['', [Validators.required]],
-      // password: ['', [Validators.required]],
-      // confirmPassword: ['', [Validators.required]],
-      // fullName: ['', [Validators.required]],
-      // email: ['', [Validators.required]],
-      // address: ['', Validators.required],
-      // phoneNumber: ['', Validators.required]
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9\-\+]{10,15}$/)]],
     }, {validator: comparePassword});
     // {validator: comparePassword});
     this.userService.getAllUser().subscribe(data => {
@@ -69,7 +62,7 @@ export class UserCreateComponent implements OnInit {
   getAllUserName() {
     if (!this.userList.isEmpty) {
       for (const element of this.userList) {
-        this.listUserName.push(element.userName);
+        this.listUsername.push(element.username);
       }
     }
   }
