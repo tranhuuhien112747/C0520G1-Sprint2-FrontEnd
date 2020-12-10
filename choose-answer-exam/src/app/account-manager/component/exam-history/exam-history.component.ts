@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountManagerService} from '../../service/account-manager.service';
+import {TokenStorageService} from '../../../page-common/service/token-storage/token-storage.service';
 
 @Component({
   selector: 'app-exam-history',
@@ -7,7 +8,8 @@ import {AccountManagerService} from '../../service/account-manager.service';
   styleUrls: ['./exam-history.component.css']
 })
 export class ExamHistoryComponent implements OnInit {
-  public id = 1;
+  public idToFind: number;
+  public isLoggedIn = false;
   public num = 0;
   public avg = 0;
   public examHistory: any[];
@@ -15,11 +17,17 @@ export class ExamHistoryComponent implements OnInit {
 
   constructor(
     private accountManagerService: AccountManagerService,
+    private tokenStorage: TokenStorageService,
   ) {
   }
 
   ngOnInit(): void {
-    this.accountManagerService.findExamHistoryById(this.id).subscribe(data => {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.idToFind = this.tokenStorage.getUser().id;
+      console.log(this.idToFind);
+    }
+    this.accountManagerService.findExamHistoryById(this.idToFind).subscribe(data => {
       this.examHistory = data;
       console.log('data');
       console.log(data);
