@@ -21,9 +21,11 @@ export class StatisticsPointComponent implements OnInit {
     this.code = '0';
     this.statisticsService.getStatisticsSumPoint().subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
@@ -42,9 +44,11 @@ export class StatisticsPointComponent implements OnInit {
     this.code = '0';
     this.statisticsService.getStatisticsSumPoint().subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
@@ -63,9 +67,11 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
@@ -84,9 +90,11 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
@@ -105,9 +113,11 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);
@@ -126,9 +136,11 @@ export class StatisticsPointComponent implements OnInit {
     this.sumPoint = [];
     this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
       this.dataPoint = data;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.dataPoint.length; i++) {
-        this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+      if (this.dataPoint != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataPoint.length; i++) {
+          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
+        }
       }
       for (const e of this.sumPoint) {
         this.nameTOP.push(e.username);

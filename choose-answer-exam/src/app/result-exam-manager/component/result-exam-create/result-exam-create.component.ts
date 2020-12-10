@@ -11,10 +11,13 @@ import {ResultExam} from '../../model/result-exam.class';
 })
 export class ResultExamCreateComponent implements OnInit {
   public resultMark = 0;
+  public takenDuration = 0;
   public trueQty = 0;
   public questionQty = 0;
   public questionList = [];
   public answerList = [];
+  public subjectName = '';
+  public examName = '';
 
   constructor(
     private resultExamService: ResultExamService,
@@ -24,11 +27,13 @@ export class ResultExamCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.resultMark = this.resultExamService.mark;
-    this.trueQty = this.resultExamService.trueQuantity;
-    this.questionQty = this.resultExamService.questionQuantity;
-    this.questionList = this.resultExamService.questionList;
-    this.answerList = this.resultExamService.answerList;
-    console.log('answer-list -->onInit: ' + this.answerList);
+    this.resultMark = this.resultExamService.markSV;
+    this.trueQty = this.resultExamService.trueQuantitySV;
+    this.questionQty = this.resultExamService.questionQuantitySV;
+    this.questionList = this.resultExamService.questionListSV;
+    this.answerList = this.resultExamService.answerListSV;
+    this.subjectName = this.resultExamService.subjectNameSV;
+    this.examName = this.resultExamService.examNameSV;
+    this.takenDuration = this.resultExamService.takenDurationSV;
   }
 }

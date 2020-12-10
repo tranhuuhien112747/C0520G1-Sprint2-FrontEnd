@@ -21,9 +21,9 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     // tslint:disable-next-line:no-unused-expression
-    this.p = 0;
     this.userService.getAllUser().subscribe(data => {
       this.users = data;
+      console.log(data);
     }, error => console.log(error));
   }
 
@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(UserCreateComponent, {
       panelClass: 'app-full-bleed-dialog',
       width: '740px',
-      maxHeight: '90vh',
+      maxHeight: '80vh',
       disableClose: true
     });
 
@@ -44,7 +44,7 @@ export class UserListComponent implements OnInit {
     this.userService.getUserById(idUser).subscribe(dataEdit => {
       const dialogRef = this.dialog.open(UserEditComponent, {
         panelClass: 'app-full-bleed-dialog',
-        width: '600px',
+        width: '60%',
         data: {dataE: dataEdit.idUser},
         disableClose: true
       });
@@ -56,15 +56,13 @@ export class UserListComponent implements OnInit {
     });
   }
   openDialogDelete(idUser) {
-    this.userService.getUserById(idUser).subscribe(dataEdit => {
+    this.userService.getUserById(idUser).subscribe(dataDelete => {
       const dialogRef = this.dialog.open(UserDeleteComponent, {
         // panelClass: 'app-full-bleed-dialog',
         width: '570px',
-        height: '200px',
-        data: {dataE: dataEdit},
+        data: {dataD: dataDelete},
         disableClose: true
       });
-
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.ngOnInit();
