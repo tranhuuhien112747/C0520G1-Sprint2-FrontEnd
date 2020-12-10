@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
           console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.ngOnInit();
+          this.reloadPage();
         }, err => {
           console.log('error');
           this.isLoginFailed = true;
