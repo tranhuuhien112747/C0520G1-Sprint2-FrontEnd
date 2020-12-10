@@ -12,17 +12,18 @@
   <div class="row col-md-12 m-0 p-0" style="border-bottom:1px solid darkblue;border-top: 1px solid darkblue "
        *ngIf="countSubjectList.length > 0">
     <div class="col-md-1 m-0 p-0 text-center">
-      <div class="btn-group-vertical text-center mt-4" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px" (click)="selectChartColumn()"> Java</button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px" (click)="selectChartBar()">HTML5</button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px" (click)="selectChartPie()">JavaScript</button>
+      <div class="btn-group-vertical text-center mt-5" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"> Java</button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px">HTML5</button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px">JavaScript</button>
         <button type="button" class="btn btn-outline-dark" style="width: 75px">Angular</button>
       </div>
     </div>
-    <div class="col-md-10">
-      <div class="col-md-12 " *ngIf="flag == 1" >
+    <div class="col-md-11 d-flex">
+      <div class="col-md-10 " *ngIf="flag == 1">
         <div class="mt-4 text-center">
-          <label style="color: darkblue;font-size: 15px"> Biểu đồ tổng thể hiện tỉ lệ được chọn của các môn học</label>
+          <label style="color: darkblue;font-size: 15px;font-weight: bolder"> Biểu đồ tổng thể hiện tỉ lệ được chọn của
+            các môn học</label>
           <label class="mx-2" style="font-size: 12px"> (Đơn vị: /bài thi) </label>
         </div>
         <div id="chart" style="background: snow">
@@ -34,9 +35,10 @@
           ></apx-chart>
         </div>
       </div>
-      <div class="col-md-12" *ngIf="flag == 2">
+      <div class="col-md-10" *ngIf="flag == 2">
         <div class="col-md-12 mt-4 text-center">
-          <label style="color: darkblue;font-size: 15px"> Biểu đồ tổng thể hiện số lượng được chọn của các môn học</label>
+          <label style="color: darkblue;font-size: 15px;font-weight: bolder"> Biểu đồ tổng thể hiện số lượng được chọn
+            của các môn học</label>
           <label class="mx-2" style="font-size: 12px"> (Đơn vị: /bài thi) </label>
         </div>
         <div class="col-md-12" id="chart1" style="background: snow">
@@ -53,12 +55,13 @@
           ></apx-chart>
         </div>
       </div>
-      <div class="col-md-12" *ngIf="flag == 3">
+      <div class="col-md-10" *ngIf="flag == 3">
         <div class="col-md-12 mt-4 text-center">
-          <label style="color: darkblue;font-size: 15px"> Biểu đồ tổng thể hiện số lượng được chọn của các môn học theo quý</label>
+          <label style="color: darkblue;font-size: 15px;font-weight: bolder"> Biểu đồ tổng thể hiện số lượng được chọn
+            của các môn học theo quý</label>
           <label class="mx-2" style="font-size: 12px"> (Đơn vị: /bài thi) </label>
         </div>
-        <div class="col-md-12" id="chart3" style="background: snow">
+        <div class="col-md-12" id="chart3" style="background: snow ">
           <apx-chart
             [series]="chartOptionsBar.series"
             [chart]="chartOptionsBar.chart"
@@ -71,15 +74,13 @@
           ></apx-chart>
         </div>
       </div>
-
-    </div>
-    <div class="col-md-1 m-0 p-0 mt-4">
-      <select style="color: purple;height: 25px;font-weight: bolder">
-        <option>Biểu đồ</option>
-        <option>Biểu đồ</option>
-        <option>Biểu đồ</option>
-
-      </select>
+      <div class="col-md-2 m-0 p-0 mt-5 d-flex justify-content-end">
+        <select style="color: purple;height: 25px;font-weight: bolder" (change)="event($event)">
+          <option value="1">Biểu đồ tròn</option>
+          <option value="2">Biểu đồ cột</option>
+          <option value="3">Biểu đồ theo quý</option>
+        </select>
+      </div>
     </div>
   </div>
   <div class="text-center  m-0 p-0 mt-4" style="background: #fffab3">
