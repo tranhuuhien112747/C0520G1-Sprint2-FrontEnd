@@ -20,22 +20,22 @@
           title="Top 5 Java" (click)="showTOPJava()">Java
   </button>
 </div>
-<div class="card border border-info pb-5 ">
+<div class="card border border-info pb ">
   <div class="row col-md-12  list-group p-0 m-1 pt-2 text-center">
     <label><i style="font-size: 25px" class="fas fa-medal text-info"></i>
-      <span *ngIf="code == '0'" class="justify-content-center text-info " style="font-size: 18px"> Top 5 Vinh Danh
+      <span *ngIf="code == '0'" class="justify-content-center text-info " style="font-size: 18px"> TOP 5 VINH DANH
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="code == '1'" class="justify-content-center text-info " style="font-size: 18px"> BXH Top 5 JavaScript
+      <span *ngIf="code == '1'" class="justify-content-center text-info " style="font-size: 18px"> BXH JAVASCRIPT
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="code == '2'" class="justify-content-center text-info " style="font-size: 18px"> BXH Top 5 HTML5
+      <span *ngIf="code == '2'" class="justify-content-center text-info " style="font-size: 18px"> BXH HTML5
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="code == '3'" class="justify-content-center text-info " style="font-size: 18px"> BXH Top 5 Angular
+      <span *ngIf="code == '3'" class="justify-content-center text-info " style="font-size: 18px"> BXH ANGULAR
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="code == '4'" class="justify-content-center text-info " style="font-size: 18px"> BXH Top 5 Java
+      <span *ngIf="code == '4'" class="justify-content-center text-info " style="font-size: 18px"> BXH JAVA
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
     </label>
@@ -49,12 +49,13 @@
   <ul class=" row list-group border p-1 m-1" style="background-color: lightskyblue"
       *ngIf="nameTOP.length > 0 && pointTOP.length > 0">
     <li class="col-md-12 list-group-item list-group-item-danger d-flex px-1">
-      <label class="col-md-8 font-weight-bolder" >
+      <label class="col-md-8 font-weight-bolder">
         <i class="fas fa-user px-0" style="font-size: 13px"></i> {{nameTOP[0]}}
       </label>
       <label class="col-md-4 d-flex justify-content-end m-0 p-0">
         <i class="col-md-5 fas fa-crown mx-3" style="color: #ffc504;font-size: 17px"></i>
-        <span class="col-md-7 badge badge-warning badge-pill mr-0 " style="font-size: 11px;float: right"> {{pointTOP[0]}}</span>
+        <span class="col-md-7 badge badge-warning badge-pill mr-0 "
+              style="font-size: 11px;float: right"> {{pointTOP[0]}}</span>
       </label>
     </li>
     <li class="col-md-12 list-group-item list-group-item-primary d-flex px-1 m-0">
@@ -91,4 +92,16 @@
       </label>
     </li>
   </ul>
+  <div class="p-1 text-center">
+    <marquee direction="left" style="height: 30px;
+    background:seagreen ;font-family: Tiffany-Heavy, sans-serif;font-size: 15px ;color: white" scrolldelay="70" behavior="loop">
+      Đua top vinh danh. Nhận quà xứng đáng !. <i class="fas fa-grin-wink text-warning font-weight-bold"></i> .<i
+      class="fas fa-heart text-danger font-weight-bold"></i>. <i
+      class="fas fa-grin-wink text-warning font-weight-bold"></i> .<i
+      class="fas fa-heart text-danger font-weight-bold"></i>. <i
+      class="fas fa-grin-wink text-warning font-weight-bold"></i>.<i
+      class="fas fa-heart text-danger font-weight-bold"></i>.</marquee>
+  </div>
 </div>
+
+
