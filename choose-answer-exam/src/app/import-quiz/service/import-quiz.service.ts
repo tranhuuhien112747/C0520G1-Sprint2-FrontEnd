@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class ImportQuizService {
-  public uploadFile = 'http://localhost:8080/upload';
-  public saveFile = 'http://localhost:8080/saveFile';
+  private uploadFile = 'http://localhost:8080/upload';
+  private saveFile = 'http://localhost:8080/saveFile';
 
   constructor(
     private httpClient: HttpClient,

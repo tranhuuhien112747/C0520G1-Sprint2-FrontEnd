@@ -1,7 +1,7 @@
 <div class="container w-50 pt-5" style="margin-top:50px; background-color: lavenderblush; box-shadow: 5px 10px 8px 10px #d5d5d5">
   <div class="d-flex justify-content-center" style="padding: 5px; background-color: lightblue; border-radius: 8px;">
     <div class="col-sm-6">Thời gian làm bài: <span class="text-primary">01</span> phút</div>
-    <div class="col-sm-6 d-flex justify-content-end">Thời gian còn lại:&nbsp;<span class="text-primary" id="timeElapsed">01:00</span></div>
+    <div class="col-sm-6 d-flex justify-content-end">Thời gian còn lại:&nbsp;<span class="text-primary" id="timeElapsed">{{durationDisplay}}</span></div>
   </div>
   <hr>
 
@@ -17,7 +17,7 @@
     </div>
 
   <div class="d-flex justify-content-center">
-    <p>Thời gian còn lại: <span class="text-primary" id="timeElapsed2">01:00</span></p>
+    <p>Thời gian còn lại: <span class="text-primary" id="timeElapsed2">{{durationDisplay}}</span></p>
   </div>
 
   <div class="d-flex justify-content-center">
@@ -26,31 +26,3 @@
   </form>
   <div style="clear: both; margin-bottom: 200px"></div>
 </div>
-
-<script>
-  function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-      minutes = parseInt(timer / 60, 10);
-      seconds = parseInt(timer % 60, 10);
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.textContent = minutes + ":" + seconds;
-
-      if (--timer < 0) {
-        timer = 0;
-        document.getElementById('formResultExam').submit();
-      }
-    }, 1000);
-  }
-
-  window.onload = function () {
-    var oneMinutes = 1500 * 1,
-      display = document.querySelector('#timeElapsed');
-    display2 = document.querySelector('#timeElapsed2');
-    startTimer(oneMinutes, display);
-    startTimer(oneMinutes, display2);
-  };
-</script>
