@@ -20,7 +20,7 @@
           title="Top 5 Java" (click)="showTOPJava()">Java
   </button>
 </div>
-<div class="card border border-info pb ">
+<div class="card border border-info pt-1 ">
   <div class="row col-md-12  list-group p-0 m-1 pt-2 text-center">
     <label><i style="font-size: 25px" class="fas fa-medal text-info"></i>
       <span *ngIf="code == '0'" class="justify-content-center text-info " style="font-size: 18px"> TOP 5 VINH DANH
@@ -42,8 +42,8 @@
   </div>
   <ul class=" row list-group border p-1 m-2 text-center" style="background-color: #d6faf8;height: 224px"
       *ngIf="nameTOP.length == 0 && pointTOP.length == 0">
-    <h5 style="color: crimson;font-style: italic;margin-top: 45px">Kết quả
-      <span style="color: darkblue ;font-weight: bolder;font-size: 18px">TOP 5 Vinh Danh</span>
+    <h5 style="color: crimson;margin-top: 45px">Kết quả
+      <span style="color: darkblue ;font-weight: bolder;font-size: 16px">TOP 5 Vinh Danh</span>
       đang được chúng tôi cập nhật. Vui lòng quay lại sau!</h5>
   </ul>
   <ul class=" row list-group border p-1 m-1" style="background-color: lightskyblue"
