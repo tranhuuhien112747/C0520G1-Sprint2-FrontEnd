@@ -1,0 +1,14 @@
+.drop{
+  color: white;
+}
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: black;
+}
+.font-text{
+  font-size: 15px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
