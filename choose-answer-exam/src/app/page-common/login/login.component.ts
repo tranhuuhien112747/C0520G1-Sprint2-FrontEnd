@@ -5,6 +5,8 @@ import {TokenStorageService} from '../service/token-storage/token-storage.servic
 import {Title} from '@angular/platform-browser';
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login';
 import {TokenDTO} from '../model/TokenDTO';
+import {MatDialog} from '@angular/material/dialog';
+import {UserCreateComponent} from '../../user-manager/component/user-create/user-create.component';
 
 
 @Component({
@@ -27,6 +29,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private tokenStorage: TokenStorageService,
     private router: Router,
+    private dialog: MatDialog,
     private title: Title,
     private authService: SocialAuthService) {
   }
@@ -112,6 +115,15 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+
+  openDialogCreate() {
+    const dialog = this.dialog.open(UserCreateComponent, {
+      disableClose: true, panelClass: 'app-full-bleed-dialog',
+      width: '740px',
+      maxHeight: '80vh',
+    });
   }
 
   showPassword(): void {

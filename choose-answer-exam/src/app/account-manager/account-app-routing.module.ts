@@ -21,6 +21,7 @@ export const accountRoute: Routes = [
     canActivate: [AuthGuard],
     data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}
     },
+
   { path: 'exam-history',
     component: ExamHistoryComponent,
     canActivate: [AuthGuard],

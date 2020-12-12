@@ -44,7 +44,7 @@ export class UserEditComponent implements OnInit {
         if (data == null) {
           this.dialogRef.close();
         }
-        this.toastr.success('Edit Successfully!!');
+        this.toastr.success('Edit Successfully!!', 'Congratulations!');
       });
     }
   }
