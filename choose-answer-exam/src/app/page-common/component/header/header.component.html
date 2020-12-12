@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-0" style="background-color: #5f5f5f">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <img class="ml-3" src="../../../../assets/home-page/C0520G1.png" style="width: 14%" [routerLink]="['C0520G1']">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav topnav ml-auto">
+      <li class="nav-item text-center" style="width: 125px">
+        <a class="nav-link text-white font-text" href="/"><i class="fa fa-home font-text"><span class="font-text"> Trang chủ</span></i></a>
+      </li>
+      <li class="nav-item text-center" style="width: 125px">
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'java']">JAVA</a>
+      </li>
+      <li class="nav-item text-center" style="width: 125px">
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'javascript']">JAVASCRIPT</a>
+      </li>
+      <li class="nav-item text-center" style="width: 125px">
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'html']">HTML</a>
+      </li>
+      <li class="nav-item text-center" style="width: 125px">
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'angular']">ANGULAR</a>
+      </li>
+      <li class="nav-item text-center mr-2"  *ngIf="showAdminBoard; else use">
+        <a data-toggle="dropdown" class="nav-link text-white font-text" style="width: 125px">Quản lý</a>
+        <ul class="dropdown-menu dropdown-menu-right" style=" background-color: #5f5f5f; font-size: 12px">
+          <li><a class="dropdown-item text-white" href="#">Danh sách tài khoản</a></li>
+          <li><a class="dropdown-item text-white" href="#">Tài khoản của tôi</a></li>
+        </ul>
+      </li>
+      <ng-template #use>
+      <li class="nav-item text-center mr-2" style="width: 125px">
+        <a class="nav-link text-white font-text" [routerLink]="['/infor-account']" *ngIf="showUserBoard">Thông tin</a>
+      </li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>

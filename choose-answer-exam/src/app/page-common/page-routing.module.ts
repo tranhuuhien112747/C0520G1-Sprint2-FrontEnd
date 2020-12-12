@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
-import {HomePageComponent} from './home-page/home-page.component';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
+import {HomePageComponent} from './component/home-page/home-page.component';
+import {HeaderComponent} from './component/header/header.component';
+import {FooterComponent} from './component/footer/footer.component';
 import {RouterModule, Routes} from '@angular/router';
 import {StatisticsModule} from '../statistics/statistics.module';
 import {LoginComponent} from './login/login.component';
@@ -10,14 +10,16 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, Soc
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LogoutComponent} from './logout/logout.component';
 import { MessageComponent } from './message/message.component';
+import { C0520g1Component } from './c0520g1/c0520g1.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 export const CommonRoute: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'login', component: MessageComponent}
+  {path: 'C0520G1', component: C0520g1Component}
 ];
 
 @NgModule({
-  declarations: [HeaderComponent, HomePageComponent, FooterComponent, LoginComponent, LogoutComponent, MessageComponent],
+  declarations: [HeaderComponent, HomePageComponent, FooterComponent, LoginComponent, LogoutComponent, MessageComponent, C0520g1Component],
   exports: [
     HeaderComponent,
     FooterComponent,
@@ -27,7 +29,8 @@ export const CommonRoute: Routes = [
     StatisticsModule,
     FormsModule,
     SocialLoginModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
