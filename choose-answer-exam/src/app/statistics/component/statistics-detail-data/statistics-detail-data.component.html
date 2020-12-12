@@ -11,12 +11,20 @@
 
   <div class="row col-md-12 m-0 p-0" style="border-bottom:1px solid darkblue;border-top: 1px solid darkblue "
        *ngIf="countSubjectList.length > 0">
-    <div class="col-md-1 m-0 p-0 text-center">
+    <div class="col-md-1 m-0 p-0 text-center"> TOP 10
       <div class="btn-group-vertical text-center mt-5" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"> Java</button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px">HTML5</button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px">JavaScript</button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px">Angular</button>
+        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"
+                (click)="onSearchTop10User('java')"> Java
+        </button>
+        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"
+                (click)="onSearchTop10User('html')">HTML5
+        </button>
+        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"
+                (click)="onSearchTop10User('javaScript')">JavaScript
+        </button>
+        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"
+                (click)="onSearchTop10User('angular')">Angular
+        </button>
       </div>
     </div>
     <div class="col-md-11 d-flex">
@@ -74,8 +82,34 @@
           ></apx-chart>
         </div>
       </div>
+      <div class="col-md-10 p-5" style="margin-top: 4%" *ngIf="flag == 4">
+        <table class="table table-bordered table-hover">
+          <thead style="background: #96a2af">
+          <tr>
+            <th class="font-weight-bold text-center">STT</th>
+            <th class="font-weight-bold text-center">Tài khoản</th>
+            <th class="font-weight-bold text-center">Tổng Điểm</th>
+            <th class="font-weight-bold text-center">Số lần thi</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let top of top10UserList|paginate :{itemsPerPage:5,currentPage:p}; let i=index">
+            <td class="text-right">{{i + 1}}</td>
+            <td class="text-center">{{top.username}}</td>
+            <td class="text-right">{{top.sumPoint}}</td>
+            <td class="text-right">{{top.countExam}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <nav class="d-flex justify-content-center">
+          <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+                               nextLabel="Sau"
+                               responsive="true"></pagination-controls>
+        </nav>
+      </div>
       <div class="col-md-2 m-0 p-0 mt-5 d-flex justify-content-end">
         <select style="color: purple;height: 25px;font-weight: bolder" (change)="event($event)">
+          <option selected disabled>--Biểu đồ--</option>
           <option value="1">Biểu đồ tròn</option>
           <option value="2">Biểu đồ cột</option>
           <option value="3">Biểu đồ theo quý</option>
