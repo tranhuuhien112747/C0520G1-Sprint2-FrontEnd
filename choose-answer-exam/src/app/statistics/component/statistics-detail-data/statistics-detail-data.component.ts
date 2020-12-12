@@ -14,6 +14,7 @@ import {
   ApexGrid,
   ApexFill
 } from 'ng-apexcharts';
+import {SumPoint} from '../../model/sum-point';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -71,57 +72,61 @@ export class StatisticsDetailDataComponent implements OnInit {
   public subject = [];
   public nameSubject = [];
   public countSubject = [];
+  public top10UserList = [];
+  public dataTop = [];
   public flag: number;
+  p: any;
 
   constructor(public statisticsService: StatisticsService) {
   }
 
   ngOnInit(): void {
-    this.statisticsService.getStatisticsCountExamSubject().subscribe(data => {
-      this.countSubjectList = data;
-      console.log(this.countSubjectList);
-      if (this.countSubjectList != null) {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.countSubjectList.length; i++) {
-          this.subject.push(new CountSubject(this.countSubjectList[i][0], this.countSubjectList[i][1]));
-        }
-      }
-      for (const s of this.subject) {
-        this.nameSubject.push(s.subjectName);
-        this.countSubject.push(s.countSubject);
-      }
-      this.flag = 1;
-      this.chartOptions = {
-        series: [this.countSubject[0], this.countSubject[1], this.countSubject[2], this.countSubject[3]],
-        chart: {
-          width: 400,
-          type: 'pie'
-        },
-        labels: [this.nameSubject[0], this.nameSubject[1], this.nameSubject[2], this.nameSubject[3]],
-        responsive: [
-          {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 300
-              },
-              legend: {
-                position: 'bottom'
-              }
-            }
-          }
-        ]
-      };
-    });
+    this.selectChartPie();
+    // this.statisticsService.getStatisticsCountExamSubject().subscribe(data => {
+    //   this.countSubjectList = data;
+    //   console.log(this.countSubjectList);
+    //   if (this.countSubjectList != null) {
+    //     // tslint:disable-next-line:prefer-for-of
+    //     for (let i = 0; i < this.countSubjectList.length; i++) {
+    //       this.subject.push(new CountSubject(this.countSubjectList[i][0], this.countSubjectList[i][1]));
+    //     }
+    //   }
+    //   for (const s of this.subject) {
+    //     this.nameSubject.push(s.subjectName);
+    //     this.countSubject.push(s.countSubject);
+    //   }
+    //   this.flag = 1;
+    //   this.chartOptions = {
+    //     series: [this.countSubject[0], this.countSubject[1], this.countSubject[2], this.countSubject[3]],
+    //     chart: {
+    //       width: 400,
+    //       type: 'pie'
+    //     },
+    //     labels: [this.nameSubject[0], this.nameSubject[1], this.nameSubject[2], this.nameSubject[3]],
+    //     responsive: [
+    //       {
+    //         breakpoint: 480,
+    //         options: {
+    //           chart: {
+    //             width: 300
+    //           },
+    //           legend: {
+    //             position: 'bottom'
+    //           }
+    //         }
+    //       }
+    //     ]
+    //   };
+    // });
   }
 
   selectChartColumn() {
     this.statisticsService.getStatisticsCountExamSubject().subscribe(data => {
+      this.flag = 2;
       this.countSubjectList = [];
       this.subject = [];
       this.nameSubject = [];
       this.countSubject = [];
-      this.flag = 0;
       this.countSubjectList = data;
       console.log(this.countSubjectList);
       if (this.countSubjectList != null) {
@@ -134,7 +139,6 @@ export class StatisticsDetailDataComponent implements OnInit {
         this.nameSubject.push(s.subjectName);
         this.countSubject.push(s.countSubject);
       }
-      this.flag = 2;
       this.chartOptionsColumn = {
         series: [
           {
@@ -196,8 +200,8 @@ export class StatisticsDetailDataComponent implements OnInit {
       this.subject = [];
       this.nameSubject = [];
       this.countSubject = [];
-      this.flag = 0;
       this.countSubjectList = data;
+      this.flag = 1;
       console.log(this.countSubjectList);
       if (this.countSubjectList != null) {
         // tslint:disable-next-line:prefer-for-of
@@ -209,7 +213,6 @@ export class StatisticsDetailDataComponent implements OnInit {
         this.nameSubject.push(s.subjectName);
         this.countSubject.push(s.countSubject);
       }
-      this.flag = 1;
       this.chartOptions = {
         series: [this.countSubject[0], this.countSubject[1], this.countSubject[2], this.countSubject[3]],
         chart: {
@@ -342,5 +345,21 @@ export class StatisticsDetailDataComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  onSearchTop10User(subjectName: string) {
+    this.flag = 4;
+    this.statisticsService.getStatisticsResultExamTop10UserBySubject(subjectName).subscribe(data => {
+      this.dataTop = [];
+      this.top10UserList = [];
+      this.dataTop = data;
+      if (this.dataTop != null) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.dataTop.length; i++) {
+          this.top10UserList.push(new SumPoint(this.dataTop[i][0], this.dataTop[i][1], this.dataTop[i][2]));
+        }
+      }
+      console.log(this.top10UserList);
+    });
   }
 }
