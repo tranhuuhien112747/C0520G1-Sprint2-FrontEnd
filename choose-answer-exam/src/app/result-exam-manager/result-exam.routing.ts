@@ -9,12 +9,19 @@ export const resultExamRoutes: Routes = [
     path: 'exam-list-by-subject/:subject', component: ExamListComponent,
     canActivate: [AuthGuard],
     data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}
-  },
-  {path: 'take-exam/:id', component: ExamTakingComponent,
+    },
+  {
+    path: 'result-exam-create/exam-list-by-subject/:subject', component: ExamListComponent,
     canActivate: [AuthGuard],
     data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}
     },
-  {path: 'result-exam-create', component: ResultExamCreateComponent,
+  {
+    path: 'take-exam/:id', component: ExamTakingComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}
+    },
+  {
+    path: 'result-exam-create', component: ResultExamCreateComponent,
     canActivate: [AuthGuard],
     data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}
   }
