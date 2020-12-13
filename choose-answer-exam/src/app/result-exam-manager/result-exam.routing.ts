@@ -5,6 +5,7 @@ import {ResultExamCreateComponent} from './component/result-exam-create/result-e
 
 export const resultExamRoutes: Routes = [
   {path: 'exam-list-by-subject/:subject', component: ExamListComponent},
+  {path: 'result-exam-create/exam-list-by-subject/:subject', component: ExamListComponent},
   {path: 'take-exam/:id', component: ExamTakingComponent},
   {path: 'result-exam-create', component: ResultExamCreateComponent}
 ];

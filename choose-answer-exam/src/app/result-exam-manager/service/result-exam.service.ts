@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Exam} from '../../exam-manager/model/exam.class';
-import {ResultExam} from '../model/result-exam.class';
 
 @Injectable({
   providedIn: 'root'

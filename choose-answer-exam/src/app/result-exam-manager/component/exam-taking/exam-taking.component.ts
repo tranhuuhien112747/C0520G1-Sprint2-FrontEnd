@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Exam} from '../../../exam-manager/model/exam.class';
 import {ResultExamService} from '../../service/result-exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -24,6 +24,8 @@ export class ExamTakingComponent implements OnInit {
   public startTime: number;
   public endTime: number;
   public takenDuration = 15;
+  public saveOption = '';
+
   constructor(
     private resultExamService: ResultExamService,
     private router: Router,
@@ -35,19 +37,22 @@ export class ExamTakingComponent implements OnInit {
 
   ngOnInit(): void {
     this.startTime = new Date().getTime();
-    this.startTimer(15);
+    this.saveOption = 'DEFAULT';
+    this.resultExamService.markSV = 0;
+    this.startTimer(90);
     this.formResultExam = this.formBuilder.group({
-        answer1: '',
-        answer2: '',
-        answer3: '',
-        answer4: '',
-        answer5: '',
-        answer6: '',
-        answer7: '',
-        answer8: '',
-        answer9: '',
-        answer10: '',
+      answer1: '',
+      answer2: '',
+      answer3: '',
+      answer4: '',
+      answer5: '',
+      answer6: '',
+      answer7: '',
+      answer8: '',
+      answer9: '',
+      answer10: '',
     });
+
     this.activatedRoute.params.subscribe(data => {
       this.idExam = data.id;
       console.log('id found: ' + this.idExam);
@@ -56,7 +61,7 @@ export class ExamTakingComponent implements OnInit {
     this.resultExamService.getExamById(this.idExam).subscribe(data => {
       this.exam = data;
     }, error => {
-      console.log('error happended...');
+      console.log('Oops! error happened...');
     }, () => {
       this.questionList = this.exam.questions;
       this.resultExamService.questionQuantitySV = this.questionList.length;
@@ -64,11 +69,13 @@ export class ExamTakingComponent implements OnInit {
       this.resultExamService.examIdSV = this.exam.idExam;
       this.resultExamService.examNameSV = this.exam.examName;
     });
+
     this.resultExamService.markSV = 0;
     this.resultExamService.trueQuantitySV = 0;
   }
 
   createNewResultExam(): void {
+    this.saveOption = 'BEFORE_TIME';
     // get endTime
     this.endTime = new Date().getTime();
     this.takenDuration = Math.round((this.endTime - this.startTime) / 1000) - 1;
@@ -85,8 +92,7 @@ export class ExamTakingComponent implements OnInit {
     this.answerList.push(this.formResultExam.value.answer8);
     this.answerList.push(this.formResultExam.value.answer9);
     this.answerList.push(this.formResultExam.value.answer10);
-    console.log('answer-list');
-    console.log(this.answerList);
+
     this.resultExamService.answerListSV = this.answerList;
     for (let i = 0; i < this.questionList.length; i++) {
       console.log('True-answer: ' + this.questionList[i].trueAnswer);
@@ -98,6 +104,7 @@ export class ExamTakingComponent implements OnInit {
         this.resultExamService.trueQuantitySV += 1;
       }
     }
+
     this.answerList = [];
     console.log('mark: ' + this.resultExamService.markSV);
     console.log('true-quantity: ' + this.resultExamService.trueQuantitySV);
@@ -115,9 +122,10 @@ export class ExamTakingComponent implements OnInit {
     console.log(this.resultExam);
 
     this.resultExamService.saveResultExam(this.resultExam).subscribe(data => {
+      // this.resultExamService.markSV = 0;
       console.log('save into db successfully');
+      this.router.navigate(['/result-exam-create']);
     });
-    this.router.navigate(['/result-exam-create']);
   }
 
   startTimer(duration): void {
@@ -136,13 +144,12 @@ export class ExamTakingComponent implements OnInit {
       if (--timer < 0) {
         timer = 0;
         clearInterval(myVar);
-        this.createNewResultExam();
+        if (this.saveOption === 'DEFAULT') {
+          this.createNewResultExam();
+          this.saveOption = '';
+        }
       }
     }, 1000);
-
-    // if (timer === 0){
-    //   this.createNewResultExam();
-    // }
   }
 }
 

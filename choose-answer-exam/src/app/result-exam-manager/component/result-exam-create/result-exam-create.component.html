@@ -1,9 +1,12 @@
-<div class="container w-50 pt-1 pb-3" style="margin-top:50px; background-color: lavenderblush; box-shadow: 5px 10px 8px 10px #d5d5d5">
+<div class="container w-50 pt-1 pb-3" style="margin-top:50px; margin-bottom: 70px; background-color: lavenderblush; box-shadow: 5px 10px 8px 10px #d5d5d5">
+  <div class="my-3 mr-3 pt-3" style="text-align: center">
+    <h5><i class="fas fa-medal text-success mr-2" style="font-size: large"></i>KẾT QUẢ THI<i class="fas fa-medal text-success ml-2" style="font-size: large"></i></h5>
+  </div>
   <div class="my-3 mr-3 pt-3 d-flex justify-content-between">
     <div class="col-sm-6 p-3 mr-3" style="border: 2px solid darkgray; box-shadow: 3px 6px 6px 6px #d5d5d5">
       <h5>Kết quả bài thi</h5>
       <p>Môn học: <span class="text-primary">{{subjectName | titlecase}}</span></p>
-      <p>Đề số: <span class="text-primary">{{examName}}</span></p>
+      <p>Mã đề: <span class="text-primary">{{examName}}</span></p>
     </div>
 
     <div class="col-sm-6 p-3" style="border: 2px solid darkgray; box-shadow: 3px 6px 6px 6px #d5d5d5">
@@ -17,9 +20,10 @@
     <p class="font-weight-bold">{{i+1}}. {{question.questionContent}}</p>
     <p class="ml-3">Lựa chọn của bạn: {{answerList[i]}}<i [ngClass]="(answerList[i]===question.trueAnswer)? 'fas fa-check-circle text-success ml-2':'fas fa-times-circle text-danger ml-2'"></i></p>
     <p class="ml-3"><span class="text-primary">Đáp án đúng:</span><span class="ml-1">{{question.trueAnswer}}</span></p>
+    <hr class="m-2"/>
   </div>
 
-  <div class="d-flex justify-content-center" style="margin-bottom: 50px;">
-    <a role="button" class="btn btn-sm btn-success" [routerLink]="['exam-list-by-subject/'+'java']">Thi bài khác</a>
+  <div class="d-flex justify-content-center mb-2">
+    <a role="button" class="btn btn-sm btn-success" [routerLink]="['exam-list-by-subject/'+ subjectName]">Thi bài khác</a>
   </div>
 </div>

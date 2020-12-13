@@ -6,6 +6,7 @@ import { ExamTakingComponent } from './component/exam-taking/exam-taking.compone
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {resultExamRoutes} from './result-exam.routing';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -14,10 +15,11 @@ import {resultExamRoutes} from './result-exam.routing';
     ResultExamCreateComponent,
     ExamTakingComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(resultExamRoutes),
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(resultExamRoutes),
+        ReactiveFormsModule,
+        NgxPaginationModule
+    ]
 })
 export class ResultExamManagerModule { }

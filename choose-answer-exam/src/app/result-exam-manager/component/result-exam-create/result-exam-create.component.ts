@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ResultExamService} from '../../service/result-exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
-import {ResultExam} from '../../model/result-exam.class';
 
 @Component({
   selector: 'app-result-exam-create',
@@ -22,8 +20,6 @@ export class ResultExamCreateComponent implements OnInit {
   constructor(
     private resultExamService: ResultExamService,
     private router: Router,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

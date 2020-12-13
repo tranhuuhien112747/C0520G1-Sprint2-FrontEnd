@@ -1,27 +1,39 @@
 <div class="container pt-5">
-  <table class="w-50 mx-auto my-5 justify-content-center table">
-    <thead class="thead-light">
-    <tr class="row h-3">
-      <th class="col-2" style="text-align: center">STT</th>
-      <th class="col-3" style="text-align: center">Môn học</th>
-      <th class="col-3" style="text-align: center">Đề số</th>
-      <th class="col-4" style="text-align: center">Tác vụ</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="row">
-      <td class="col-2" style="text-align: center">[0]</td>
-      <td class="col-3" style="text-align: center">[subject]</td>
-      <td class="col-3" style="text-align: center">[Đề 000]</td>
-      <td class="col-4" style="text-align: center"><a role="button" class="btn btn-sm btn-success" [routerLink]="['/take-exam/'+0]">Làm bài thi</a></td>
-    </tr>
-    <tr class="row" *ngFor="let exam of examListBySubject; let i = index;">
-      <td class="col-2" style="text-align: center">{{i+1}}</td>
-      <td class="col-3" style="text-align: center">{{subjectName}}</td>
-      <td class="col-3" style="text-align: center">{{exam.examName}}</td>
-      <td class="col-4" style="text-align: center"><a role="button" class="btn btn-sm btn-success" [routerLink]="['/take-exam/' + exam.idExam]">Làm bài thi</a></td>
-    </tr>
+  <div class="w-50 mx-auto my-5 justify-content-center">
+    <table class="table">
+      <thead class="thead-light">
+      <tr class="row h-3">
+        <th class="col-2" style="text-align: center">STT</th>
+        <th class="col-3" style="text-align: center">Môn học</th>
+        <th class="col-3" style="text-align: center">Đề số</th>
+        <th class="col-4" style="text-align: center">Tác vụ</th>
+      </tr>
+      </thead>
 
-    </tbody>
-  </table>
+      <tbody>
+      <tr class="row">
+        <td class="col-2" style="text-align: center">[0]</td>
+        <td class="col-3" style="text-align: center">[subject]</td>
+        <td class="col-3" style="text-align: center">[Đề 000]</td>
+        <td class="col-4" style="text-align: center"><a role="button" class="btn btn-sm btn-success"
+                                                        [routerLink]="['/take-exam/'+0]">Làm bài thi</a></td>
+      </tr>
+
+      <tr class="row"
+          *ngFor="let exam of examListBySubject| paginate : { itemsPerPage: 4, currentPage: p }; let i = index;">
+        <td class="col-2" style="text-align: center">{{i + 1}}</td>
+        <td class="col-3" style="text-align: center">{{subjectName | uppercase}}</td>
+        <td class="col-3" style="text-align: center">{{exam.examName}}</td>
+        <td class="col-4" style="text-align: center"><a role="button" class="btn btn-sm btn-success"
+                                                        [routerLink]="['/take-exam/' + exam.idExam]">Làm bài thi</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="p = $event" previousLabel="Trước" nextLabel="Sau" responsive="true"></pagination-controls>
+    </div>
+  </div>
+
+
 </div>
