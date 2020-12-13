@@ -15,14 +15,37 @@ import {Router} from '@angular/router';
 export class QuestionListComponent implements OnInit {
   public listQuestion: Question[] = [];
   public p: number;
+  public index: number;
+  public messageDeleteSuccess = '';
+  public messageAddSuccess = '';
+  public messageUpload = '';
+  public valueName = '';
+  public selectSubject = '1';
 
   constructor(private questionService: QuestionService, private dialog: MatDialog, public router: Router) {
   }
 
   ngOnInit(): void {
+    if ( this.index === 0){
+      this.p = this.p - 1;
+    }
+    this.messageUpload = this.questionService.messageUpload;
+    setTimeout(() => {
+      this.questionService.messageUpload = '';
+      this.messageUpload = '';
+    }, 2000);
+    this.messageDeleteSuccess = this.questionService.messageDeleteSuccess;
+    setTimeout(() => {
+      this.questionService.messageDeleteSuccess = '';
+      this.messageDeleteSuccess = '';
+    }, 2000);
+    this.messageAddSuccess = this.questionService.messageAddSuccess;
+    setTimeout(() => {
+      this.questionService.messageAddSuccess = '';
+      this.messageAddSuccess = '';
+    }, 2000);
     this.questionService.getAllQuestion().subscribe(data => {
       this.listQuestion = data;
-      console.log(data);
     });
   }
 
@@ -35,23 +58,19 @@ export class QuestionListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
   }
-  openDialogDelete(id) {
+  openDialogDelete(id, index) {
     this.questionService.getQuestionById(id).subscribe(data => {
-      console.log('data');
-      console.log(data);
-      console.log('data');
+      this.index = index;
       const dialogRef = this.dialog.open(DeleteQuestionComponent, {
         width: '500px',
         data: {data1: data},
         disableClose: true
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
     });
@@ -66,9 +85,15 @@ export class QuestionListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
       });
+    });
+  }
+
+  getAllByName() {
+    this.questionService.getAllQuestionByNameAndSubject(this.valueName, this.selectSubject).subscribe( data => {
+      this.p = 0;
+      this.listQuestion = data;
     });
   }
 }

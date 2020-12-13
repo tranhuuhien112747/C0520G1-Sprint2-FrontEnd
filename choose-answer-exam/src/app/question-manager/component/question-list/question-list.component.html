@@ -1,37 +1,70 @@
-<div class="container-fluid">
-  <button class="btn btn-secondary w-100">Header</button>
-  <hr>
-</div>
-
 <div class="container-fluid justify-content-center">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
         <div class="dropdown">
-          <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+          <a class="btn btn-info dropdown-toggle" role="button" type="button" data-toggle="dropdown"
+             [routerLink]="['/question-list']">
             <i class='fas fa-align-left mr-2'></i>Ngân hàng câu hỏi
-          </button>
+          </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Danh sách thành viên</a></li>
-            <li><a class="dropdown-item" href="#">Danh sách đề thi</a></li>
-            <li><a class="dropdown-item" href="#">TOP</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/user/list']">Danh sách thành viên</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/exam-list']">Danh sách đề thi</a></li>
           </ul>
         </div>
       </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-5 mt-4 d-flex justify-content-end">
-        <button class="btn" style="background: black; color: white" [routerLink]="['/upload']">Thêm từ tập tin<i
-          class='far fa-file-excel ml-2'></i></button>
+      <div class="col-md-5"></div>
+      <div class="col-md-5 mt-2 d-flex justify-content-end">
+        <div class="col-md-6">
+          <div  *ngIf="messageDeleteSuccess == ''; else deleteSuccess" ></div>
+          <ng-template #deleteSuccess>
+            <div class="alert alert-success" role="alert" >{{messageDeleteSuccess}}</div>
+          </ng-template>
+          <div  *ngIf="messageAddSuccess == ''; else AddSuccess" ></div>
+          <ng-template #AddSuccess>
+            <div class="alert alert-success" role="alert" >{{messageAddSuccess}}</div>
+          </ng-template>
+          <div  *ngIf="messageUpload == ''; else Upload" ></div>
+          <ng-template #Upload>
+            <div class="alert alert-success" role="alert" >{{messageUpload}}</div>
+          </ng-template>
+        </div>
+        <button class="btn" style="background: black; color: white; height: 30px" [routerLink]="['/upload']">Thêm từ tập tin
+          <i class='far fa-file-excel ml-2'></i>
+        </button>
+        <div class="mx-2"></div>
+        <button class="btn mr-2 btn-success" style="height: 30px" (click)="openDialogAddNew()">Thêm mới
+        </button>
+        <div class="mx-1"></div>
+        <button class="btn btn-secondary" style="height: 30px" [routerLink]="['']">Đóng</button>
       </div>
     </div>
   </div>
   <div class="container-fluid mr-5" style="overflow-x:auto;">
 
-    <small class="font-weight-bold" *ngIf="listQuestion != null; else block">Tổng số câu hỏi là: {{listQuestion.length}}</small>
-    <ng-template #block>
-      <small class="font-weight-bold">Tổng số câu hỏi là: 0</small>
-    </ng-template>
-    <table class="table  table-bordered table-hover mt-2 ">
+    <div class="my-3"></div>
+    <div class="form-inline active-cyan-4 ">
+      <small class="font-weight-bold " *ngIf="listQuestion != null; else block">Tổng số câu hỏi
+        là: {{listQuestion.length}}</small>
+      <ng-template #block>
+        <small class="font-weight-bold ">Tổng số câu hỏi là: 0</small>
+      </ng-template>
+      <div class="offset-md-8 d-flex">
+        <select class="form-control-sm" [(ngModel)]="selectSubject" (click)="getAllByName()">
+          <option value="1">Java</option>
+          <option value="2">JavaScript</option>
+          <option value="3">HTML</option>
+          <option value="4">Angular</option>
+        </select>
+        <div class="mx-1"></div>
+        <input  class="form-control form-control-sm w-50 " type="text" placeholder="Tên đề thi" (keyup)="getAllByName()" [(ngModel)]="valueName"
+                aria-label="Search">
+        <i class="fas fa-search mt-2" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="my-1"></div>
+
+    <table class="table table-bordered table-hover">
       <thead style="background: #96a2af">
       <tr>
         <th class="font-weight-bold text-center">STT</th>
@@ -57,7 +90,7 @@
         <td class="text-center">
           <button (click)="openDialogEdit(element.idQuestion)" class="btn btn-warning">sửa</button>
           <div class="my-4"></div>
-          <button (click)="openDialogDelete(element.idQuestion)" class="btn btn-danger">Xóa</button>
+          <button (click)="openDialogDelete(element.idQuestion, i)" class="btn btn-danger">Xóa</button>
         </td>
       </tr>
       </tbody>
@@ -75,15 +108,8 @@
                            nextLabel="Sau"
                            responsive="true"></pagination-controls>
     </nav>
-    <div class="d-flex justify-content-end">
-      <button class="btn mr-2 btn-success" (click)="openDialogAddNew()">Thêm mới
-      </button>
-      <button class="btn btn-secondary">Đóng</button>
-    </div>
   </div>
 </div>
-<br>
-<br>
 <br>
 <br>
 <br>

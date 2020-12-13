@@ -19,9 +19,19 @@ export class StatisticsService {
     return this.http.get(this.API_STATISTICS + '/count-subject');
   }
 
-  getStatisticsResultExamUserBySubject(code: string): Observable<any> {
+  getStatisticsResultExamUserBySubject(subject: string): Observable<any> {
     let params = new HttpParams();
-    params = params.append('codeSubject', code);
+    params = params.append('subject', subject);
     return this.http.get(this.API_STATISTICS + '/search-by-subject', {params});
+  }
+
+  getSearch(): Observable<any> {
+    return this.http.get(this.API_STATISTICS + '/search-container-subject');
+  }
+
+  getStatisticsResultExamTop10UserBySubject(subject: string): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('subject', subject);
+    return this.http.get(this.API_STATISTICS + '/search-result-top10', {params});
   }
 }

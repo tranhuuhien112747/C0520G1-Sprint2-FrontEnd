@@ -1,24 +1,22 @@
-<div class="m-1" style="background: #dcf4dc; border: 1px solid #2da145">
-    <div class="row">
-      <div class="col-12 ml-3 mt-3" style="color: #167115">
-        <p class="text-center mr-3"><b>Xin Chào!</b></p>
-      </div>
-    </div>
-    <div class="form-group" style="color: #167115">
-      <label class="ml-3" for="user1">Tài khoản</label>
-      <input type="text" class="form-control ml-3" style="width: 200px; background: white" id="user1"
-             value="{{username}}" readonly>
-    </div>
-    <div class="form-group" style="color: #167115">
-      <label class="ml-3" for="information">Thông tin</label><br>
-      <button href="#" id="information" class="btn btn-outline-info mb-2 ml-3" style="width: 200px"><i
-        class="far fa-user"></i> Tài khoản của tôi
-      </button>
-    </div>
-    <div class="d-flex justify-content-center m-3">
-      <button type="button" class="btn btn-secondary btn-sm" (click)="logout()">Đăng xuất</button>
+<div class="m-1 form-horizontal"style="background: rgba(210,211,227,0.19); border: 1px solid lightgray;border-radius:3px">
+  <div class="row">
+    <div class="col-12 mt-3" style="color: #167115">
+     <img src="../../../assets/home-page/user.png" class="center">
+<!--     <img src="{{url}}" class="center">-->
+      <p class="text-center mt-2"><i class="far fa-hand-peace fa-lg mr-1"></i><b style="font-size: 18px"> Xin chào! </b><i
+        class="far fa-hand-peace fa-lg ml-1"></i></p>
     </div>
   </div>
+
+  <div class="form-group row" style="color:#165f08 ">
+    <input type="text" class="form-control mx-3 text-center" value="{{username}}" readonly>
+  </div>
+  <div class="d-flex justify-content-center m-3">
+    <button type="button" class="btn btn-secondary" (click)="logout()">Đăng xuất</button>
+  </div>
+
+</div>
+
 
 
 

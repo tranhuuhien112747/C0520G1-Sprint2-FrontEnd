@@ -7,6 +7,7 @@
     <label class="font-weight-bold  col-md-2">Câu hỏi:</label>
     <input class="form-control  col-md-8 " formControlName="questionContent">
   </div>
+  <span class="text-danger offset-md-2 mt-2 col-md-8" *ngIf="createQuestion.get('questionContent').errors?.required && createQuestion.get('questionContent').touched">Vui lòng nhập nội dung câu hỏi.</span>
   <div class="row mt-4 ml-2">
     <label class="font-weight-bold  col-md-2">Phương án:</label>
     <div class="col-md-8" style="border: 1px solid black; border-radius: 4px">
@@ -16,49 +17,53 @@
         </div>
         <input type="text" class="form-control" formControlName="answerA">
       </div>
+      <span class="text-danger col-md-8" *ngIf="createQuestion.get('answerA').errors?.required && createQuestion.get('answerA').touched">Vui lòng nhập đáp án A.</span>
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend">
           <span class="input-group-text">B</span>
         </div>
         <input type="text" class="form-control" formControlName="answerB">
       </div>
+      <span class="text-danger col-md-8" *ngIf="createQuestion.get('answerB').errors?.required && createQuestion.get('answerB').touched">Vui lòng nhập đáp án B.</span>
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend">
           <span class="input-group-text">C</span>
         </div>
         <input type="text" class="form-control" formControlName="answerC">
       </div>
+      <span class="text-danger col-md-8" *ngIf="createQuestion.get('answerC').errors?.required && createQuestion.get('answerC').touched">Vui lòng nhập đáp án C.</span>
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend">
           <span class="input-group-text">D</span>
         </div>
         <input type="text" class="form-control" formControlName="answerD">
       </div>
+      <span class="text-danger col-md-8" *ngIf="createQuestion.get('answerD').errors?.required && createQuestion.get('answerD').touched">Vui lòng nhập đáp án D.</span>
     </div>
   </div>
   <div class="row mt-4 ml-2">
     <label class="font-weight-bold  col-md-2">Đáp án đúng:</label>
     <div class="col-md-8 ml-3  d-flex">
-      <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'A'">&nbsp;A
+      <label class="font-weight-bold offset-1 "><input class="mt-2" type="radio" (click)="chosseTrueAswer()" formControlName="trueAnswer" [value]="'A'">&nbsp;A
       </label>
-      <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'B'">&nbsp;B
+      <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" (click)="chosseTrueAswer()" formControlName="trueAnswer" [value]="'B'">&nbsp;B
       </label>
-      <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'C'">&nbsp;C
+      <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" (click)="chosseTrueAswer()" formControlName="trueAnswer" [value]="'C'">&nbsp;C
       </label>
-      <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" formControlName="trueAnswer" [value]="'D'">&nbsp;D
+      <label class="font-weight-bold offset-2 mr-1"><input class="mt-2" type="radio" (click)="chosseTrueAswer()" formControlName="trueAnswer" [value]="'D'">&nbsp;D
       </label>
     </div>
   </div>
+  <span class="text-danger offset-md-3 col-md-8">{{messageErrTrueAnswer}}</span>
   <div class="row mt-4 ml-2">
     <label class="font-weight-bold   col-md-2">Môn học:</label>
     <div class="col-md-8 ml-3  d-flex">
       <label class="font-weight-bold mr-1 offset-1" *ngFor="let element of subjects">
-        <input class="mt-2" type="radio" formControlName="subject" [value]="element">{{element.subjectName}}
+        <input class="mt-2" type="radio" (click)="chosseSubject()" formControlName="subject" [value]="element">{{element.subjectName}}
       </label>
     </div>
   </div>
-
-
+  <span class="text-danger offset-md-3 col-md-8">{{messageErrSubject}}</span>
 </div>
 <div class="row d-flex justify-content-end">
   <button mat-dialog-close class="btn btn-secondary" >Đóng</button>

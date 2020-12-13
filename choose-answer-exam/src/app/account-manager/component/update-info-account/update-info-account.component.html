@@ -10,6 +10,10 @@
             </div>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="name" formControlName="fullName">
+              <p *ngIf="formEditAccount.controls.fullName.errors?.required && formEditAccount.controls.fullName.touched"
+                 class="text-danger">Vui lòng nhập tên người dùng</p>
+              <p *ngIf="formEditAccount.controls.fullName.errors?.pattern && formEditAccount.controls.fullName.touched"
+                 class="text-danger">Tên người dùng không có ký tự đặc biệt (@,!,#,..) và nhỏ hơn 30 ký tự!</p>
             </div>
           </div>
           <div class="form-group row mt-4">
@@ -18,6 +22,10 @@
             </div>
             <div class="col-sm-9">
               <input type="email" class="form-control" id="inputEmail" formControlName="email">
+              <p *ngIf="formEditAccount.controls.email.errors?.required && formEditAccount.controls.email.touched"
+                 class="text-danger">Vui lòng nhập email</p>
+              <p *ngIf="formEditAccount.controls.email.errors?.pattern && formEditAccount.controls.email.touched"
+                 class="text-danger">Tên email phải theo định dạng abcd@abc.abc!</p>
             </div>
           </div>
           <div class="form-group row mt-4">
@@ -26,6 +34,10 @@
             </div>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="address" formControlName="address">
+              <p *ngIf="formEditAccount.controls.address.errors?.required && formEditAccount.controls.address.touched"
+                 class="text-danger">Vui lòng nhập địa chỉ</p>
+              <p *ngIf="formEditAccount.controls.address.errors?.pattern && formEditAccount.controls.address.touched"
+                 class="text-danger">Tên địa chỉ không có ký tự đặc biệt (@,!,#,..) và nhỏ hơn 60 ký tự!</p>
             </div>
           </div>
           <div class="form-group row mt-4">
@@ -34,6 +46,10 @@
             </div>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="phone" formControlName="phoneNumber">
+              <p *ngIf="formEditAccount.controls.phoneNumber.errors?.required && formEditAccount.controls.phoneNumber.touched"
+                 class="text-danger">Vui lòng nhập số điện thoại</p>
+              <p *ngIf="formEditAccount.controls.phoneNumber.errors?.pattern && formEditAccount.controls.phoneNumber.touched"
+                 class="text-danger">Số điện thoại phải có 10 chữ số!</p>
             </div>
           </div>
           <div class="form-group row mt-4">
@@ -41,7 +57,7 @@
             <div class="col-sm-9">
               <div class="row">
                 <div>
-                  <button type="submit" class="btn btn-success ml-3" style="width: 121px" (click) = update()>Chấp nhận
+                  <button type="submit" class="btn btn-success ml-3" [disabled]="formEditAccount.invalid" style="width: 121px" (click) = update()>Chấp nhận
                   </button>
                 </div>
                 <div>

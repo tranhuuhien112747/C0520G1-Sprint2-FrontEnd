@@ -5,6 +5,8 @@ import {TokenStorageService} from '../service/token-storage/token-storage.servic
 import {Title} from '@angular/platform-browser';
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login';
 import {TokenDTO} from '../model/TokenDTO';
+import {MatDialog} from '@angular/material/dialog';
+import {UserCreateComponent} from '../../user-manager/component/user-create/user-create.component';
 
 
 @Component({
@@ -20,11 +22,14 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: string;
+  private this: any;
+  showPasswordChange: boolean;
 
   constructor(
     private authenticationService: AuthenticationService,
     private tokenStorage: TokenStorageService,
     private router: Router,
+    private dialog: MatDialog,
     private title: Title,
     private authService: SocialAuthService) {
   }
@@ -45,13 +50,12 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
-        // this.tokenStorage.saveUser(data);
-        const token = new TokenDTO(this.user.idToken);
-        console.log(token);
+        const token = new TokenDTO(this.user.authToken);
+        console.log(data);
         this.authenticationService.facebook(token).subscribe(next => {
           this.tokenStorage.saveToken(next.accessToken);
           this.tokenStorage.saveUser(next);
-          console.log(next);
+          //   console.log(next);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           this.reloadPage();
@@ -67,6 +71,8 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
+        console.log('data');
+        console.log(data);
         // this.tokenStorage.saveUser(data);
         const token = new TokenDTO(this.user.idToken);
         console.log(token);
@@ -109,5 +115,25 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+
+  openDialogCreate() {
+    const dialog = this.dialog.open(UserCreateComponent, {
+      disableClose: true, panelClass: 'app-full-bleed-dialog',
+      width: '740px',
+      maxHeight: '80vh',
+    });
+  }
+
+  showPassword(): void {
+    const ipnElement = document.querySelector('#password1');
+    if (this.showPasswordChange) {
+      ipnElement.setAttribute('type', 'password');
+      this.showPasswordChange = false;
+    } else {
+      ipnElement.setAttribute('type', 'text');
+      this.showPasswordChange = true;
+    }
   }
 }

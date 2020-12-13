@@ -5,15 +5,52 @@
 <div class="container-fluid justify-content-center">
   <div class="container-fluid">
     <div class="row">
+
+    </div>
+
+    <div class="row">
       <div class="col-md-2">
         <div class="dropdown">
           <button class="btn btn-info w-100" type="button">
-            Đề số 1 - Hóa học 12
+            Đề thi: {{examName}}
           </button>
         </div>
       </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-6 mt-2 d-flex justify-content-end">
+        <div class="col-md-6">
+          <div  *ngIf="messageDelete == ''; else blockMessageDelete" ></div>
+          <ng-template #blockMessageDelete>
+            <div class="alert alert-danger  " role="alert" >{{messageDelete}}</div>
+          </ng-template>
+          <div  *ngIf="messageDeleteQuestionSuccess == ''; else DeleteQuestionSuccess" ></div>
+          <ng-template #DeleteQuestionSuccess>
+            <div class="alert alert-success  " role="alert" >{{messageDeleteQuestionSuccess}}</div>
+          </ng-template>
+          <div  *ngIf="messageAddQuestionSuccess == ''; else AddQuestionSuccess" ></div>
+          <ng-template #AddQuestionSuccess>
+            <div class="alert alert-success  " role="alert" >{{messageAddQuestionSuccess}}</div>
+          </ng-template>
+          <div  *ngIf="messageAddQuestionErr == ''; else AddQuestionErr" ></div>
+          <ng-template #AddQuestionErr>
+            <div class="alert alert-danger  " role="alert" >{{messageAddQuestionErr}}</div>
+          </ng-template>
+          <div  *ngIf="messageErrBack == ''; else errBack" ></div>
+          <ng-template #errBack>
+            <div class="alert alert-danger  " role="alert" >{{messageErrBack}}</div>
+          </ng-template>
+        </div>
+        <button class="btn col-md-2 btn-success" style="height: 30px" (click)="openDialogAddQuestionInExam()">Thêm mới
+        </button>
+        <div class="mx-1"></div>
+        <button class="btn col-md-2 btn-danger" style="height: 30px" (click)="openDialogDeleteQuestionInExam()" >Xóa
+        </button>
+        <div class="mx-1"></div>
+        <button class="btn col-md-1 btn-secondary" style="height: 30px" (click)="checkBack()">Đóng</button>
+      </div>
     </div>
   </div>
+  <div class="my-3"></div>
   <div class="container-fluid mr-5" style="overflow-x:auto;">
     <table class="table  table-bordered table-hover mt-2 ">
       <thead style="background: #96a2af">
@@ -31,18 +68,9 @@
         <td class="text-center">{{element.idQuestion | IdConvertExam: 'CH'}}</td>
         <td>{{element.questionContent}}</td>
         <td>{{element.trueAnswer}}</td>
-        <td class="text-center"><input type="checkbox"></td>
+        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked" (change)="changeSelection()"></td>
       </tr>
       </tbody>
     </table>
-    <div class="d-flex justify-content-end row">
-      <button class="btn col-md-1 btn-success" data-toggle="modal" data-target="#myModal">Thêm mới
-      </button>
-      <div class="mx-1"></div>
-      <button class="btn col-md-1 btn-danger" data-toggle="modal" data-target="#myModalDelete" >Xóa
-      </button>
-      <div class="mx-1"></div>
-      <button class="btn col-md-1 btn-secondary">Đóng</button>
-    </div>
   </div>
 </div>

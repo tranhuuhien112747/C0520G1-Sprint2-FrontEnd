@@ -7,6 +7,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {NgApexchartsModule} from 'ng-apexcharts';
 import {RouterModule} from '@angular/router';
 import {StatisticsRoutes} from './statistics-routing.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -16,11 +17,12 @@ import {StatisticsRoutes} from './statistics-routing.module';
         StatisticsPointComponent,
         StatisticsMemberComponent
     ],
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    NgApexchartsModule,
-    RouterModule.forChild(StatisticsRoutes),
-  ]
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        NgApexchartsModule,
+        RouterModule.forChild(StatisticsRoutes),
+        NgxPaginationModule,
+    ]
 })
 export class StatisticsModule { }

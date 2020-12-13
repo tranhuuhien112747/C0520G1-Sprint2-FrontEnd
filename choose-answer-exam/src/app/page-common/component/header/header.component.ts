@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from '../service/token-storage/token-storage.service';
+import {TokenStorageService} from '../../service/token-storage/token-storage.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   private role: string;
   isLoggedIn = false;
   showAdminBoard = false;
-  showUserBoard = true;
+  showUserBoard = false;
   username: string;
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router) {
@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
       this.role = user.role;
       console.log('abc');
       console.log(this.role);
-      console.log(this.tokenStorageService.getToken());
       this.showAdminBoard = this.role.includes('ROLE_ADMIN');
       this.showUserBoard = this.role.includes('ROLE_USER');
       this.username = user.username;

@@ -1,15 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {AuthenticationService} from '../service/auth/authentication.service';
 import {TokenStorageService} from '../service/token-storage/token-storage.service';
+import {MatDialog} from '@angular/material/dialog';
+import {MessageComponent} from '../message/message.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authenticationService: AuthenticationService, private router: Router, private token: TokenStorageService) {
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router,
+              private token: TokenStorageService,
+              public dialog: MatDialog) {
   }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -31,8 +37,12 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     // not logged in so redirect to login page with the return url
-    this.router.navigate(['/login']);
+    this.dialog.open(MessageComponent, {
+          disableClose: true
+        });
+    this.router.navigate(['/'], );
     return false;
+
   }
 
 }

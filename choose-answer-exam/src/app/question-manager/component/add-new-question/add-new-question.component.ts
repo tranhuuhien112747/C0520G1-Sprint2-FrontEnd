@@ -14,7 +14,11 @@ import {Subject} from '../../model/subject.class';
 export class AddNewQuestionComponent implements OnInit {
   public createQuestion: FormGroup;
   public question: Question;
+  public boolean = false;
   public subjects: Subject[] = [];
+  public messageErrSubject = '';
+  public messageErrTrueAnswer = '';
+
   constructor(private fb: FormBuilder,
               private questionService: QuestionService,
               private router: Router,
@@ -35,7 +39,6 @@ export class AddNewQuestionComponent implements OnInit {
     });
     this.questionService.getAllSubject().subscribe(data => {
       this.subjects = data;
-      console.log(data);
     });
   }
 
@@ -49,11 +52,28 @@ export class AddNewQuestionComponent implements OnInit {
     } else if (this.createQuestion.value.trueAnswer === 'D') {
       this.createQuestion.value.trueAnswer = this.createQuestion.value.answerD;
     }
-    this.questionService.addNewQuestion(this.createQuestion.value).subscribe(data => {
-      console.log('hello' + this.createQuestion.value);
-      console.log(data);
-      this.dialogRef.close();
-      }
-    );
+    if (this.createQuestion.value.trueAnswer === '') {
+      this.messageErrTrueAnswer = 'Vui lòng chọn đáp án đúng.';
+      this.boolean = true;
+    }
+    if (this.createQuestion.value.subject === '') {
+      this.messageErrSubject = 'Vui lòng chọn môn học.';
+      this.boolean = true;
+    }
+    if (this.boolean === false) {
+      this.questionService.addNewQuestion(this.createQuestion.value).subscribe(data => {
+        this.questionService.messageAddSuccess = 'Thêm mới câu hỏi thành công.',
+          this.dialogRef.close();
+        }
+      );
+    }
+  }
+
+  chosseSubject() {
+    this.messageErrSubject = '';
+  }
+
+  chosseTrueAswer() {
+    this.messageErrTrueAnswer = '';
   }
 }

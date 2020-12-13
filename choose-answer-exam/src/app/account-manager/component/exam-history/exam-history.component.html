@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card border mt-3 w-75 mx-auto">
+      <div class="card-body">
+        <h3 class="card-title" style="color: #4e555b">Lịch sử thi</h3>
+        <table class="table table-hover" style="font-size: 16px">
+          <thead>
+          <tr style="background:#ebebeb" class="text-center">
+            <th>Stt</th>
+            <th>Bài thi</th>
+            <th>Điểm số</th>
+            <th>Ngày thi</th>
+          </tr>
+          </thead>
+          <tbody class="text-center">
+          <tr *ngFor="let item of examHistory | paginate : { itemsPerPage: 5, currentPage: p }, let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{item.subject}} - {{item.examName}}</td>
+            <td>{{item.mark}}</td>
+            <td>{{item.takenDate}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="row">
+          <div class="ml-4">
+            <h4>Tổng điểm: <span class="text-danger mt-2">{{num}}</span></h4>
+          </div>
+          <div class="ml-4">
+            <h4>Trung bình: <span class="text-danger mt-2">{{avg | number: '1.2-2'}}</span></h4>
+          </div>
+          <div class="ml-4 mb-3">
+            <button class="btn btn-secondary" [routerLink]="['/infor-account']">Đóng</button>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+                             nextLabel="Sau"
+                             responsive="true"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
