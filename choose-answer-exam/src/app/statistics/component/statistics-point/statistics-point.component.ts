@@ -19,8 +19,7 @@ export class StatisticsPointComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.flag = 0;
-    this.code = '0';
+    this.code = 'TOP';
     this.statisticsService.getStatisticsSumPoint().subscribe(data => {
       this.nameTOP = [];
       this.pointTOP = [];
@@ -42,86 +41,13 @@ export class StatisticsPointComponent implements OnInit {
     });
   }
 
-  showTOP() {
+  showTOPAll() {
     this.ngOnInit();
   }
 
-  showTOPJs() {
-    this.code = '1';
-    this.flag = 1;
-    this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
-      this.nameTOP = [];
-      this.pointTOP = [];
-      this.dataPoint = [];
-      this.sumPoint = [];
-      this.dataPoint = data;
-      if (this.dataPoint != null) {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.dataPoint.length; i++) {
-          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
-        }
-      }
-      for (const e of this.sumPoint) {
-        this.nameTOP.push(e.username);
-        this.pointTOP.push(e.sumPoint);
-      }
-      this.getNameUserTop(this.nameTOP);
-      console.log(this.sumPoint);
-    });
-  }
-
-  showTOPHTML5() {
-    this.code = '2';
-    this.flag = 2;
-    this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
-      this.nameTOP = [];
-      this.pointTOP = [];
-      this.dataPoint = [];
-      this.sumPoint = [];
-      this.dataPoint = data;
-      if (this.dataPoint != null) {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.dataPoint.length; i++) {
-          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
-        }
-      }
-      for (const e of this.sumPoint) {
-        this.nameTOP.push(e.username);
-        this.pointTOP.push(e.sumPoint);
-      }
-      this.getNameUserTop(this.nameTOP);
-      console.log(this.sumPoint);
-    });
-  }
-
-  showTOPAngular() {
-    this.code = '3';
-    this.flag = 3;
-    this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
-      this.nameTOP = [];
-      this.pointTOP = [];
-      this.dataPoint = [];
-      this.sumPoint = [];
-      this.dataPoint = data;
-      if (this.dataPoint != null) {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.dataPoint.length; i++) {
-          this.sumPoint.push(new SumPoint(this.dataPoint[i][0], this.dataPoint[i][1], this.dataPoint[i][2]));
-        }
-      }
-      for (const e of this.sumPoint) {
-        this.nameTOP.push(e.username);
-        this.pointTOP.push(e.sumPoint);
-      }
-      this.getNameUserTop(this.nameTOP);
-      console.log(this.sumPoint);
-    });
-  }
-
-  showTOPJava() {
-    this.code = '4';
-    this.flag = 4;
-    this.statisticsService.getStatisticsResultExamUserBySubject(this.code).subscribe(data => {
+  showTOPSubject(nameSubject) {
+    this.code = nameSubject;
+    this.statisticsService.getStatisticsResultExamUserBySubject(nameSubject).subscribe(data => {
       this.nameTOP = [];
       this.pointTOP = [];
       this.dataPoint = [];

@@ -1,41 +1,41 @@
 <div class="col-md-12 mb-1 mt-2 m-0 p-0 text-center">
   <button type="button" class=" btn btn-info btn-sm font-weight-bolder" data-toggle="tooltip"
-          data-placement="bottom"
-          title="Top 5 Vinh Danh" style="height: 28px;width: 57px;border-radius: 0" (click)="showTOP()">Top
+          data-placement="bottom" style="height: 28px;width: 57px;border-radius: 0"
+          title="Top 5 Vinh Danh" (click)="showTOPAll()">Top
   </button>
   <button type="button" class="btn btn-warning btn-sm font-weight-bolder" data-toggle="tooltip"
           data-placement="bottom" style="height: 28px;border-radius: 0"
-          title="Top 5 JavaScript" (click)="showTOPJs()">JavaScript
+          title="Top 5 JavaScript" (click)="showTOPSubject('JavaScript')">JavaScript
   </button>
   <button type="button" class="btn btn-danger  btn-sm font-weight-bolder" data-toggle="tooltip"
           data-placement="bottom" style="height: 28px;border-radius: 0"
-          title="Top 5 HTML5" (click)="showTOPHTML5()">HTML5
+          title="Top 5 HTML5" (click)="showTOPSubject('HTML')">HTML5
   </button>
   <button type="button" class="btn btn-primary btn-sm font-weight-bolder" data-toggle="tooltip"
           data-placement="bottom" style="height: 28px;border-radius: 0"
-          title="Top 5 Angular" (click)="showTOPAngular()">Angular
+          title="Top 5 Angular" (click)="showTOPSubject('Angular')">Angular
   </button>
   <button type="button" class="btn btn-success btn-sm font-weight-bolder" data-toggle="tooltip"
           data-placement="bottom" style="height: 28px;width: 57px;border-radius: 0"
-          title="Top 5 Java" (click)="showTOPJava()">Java
+          title="Top 5 Java" (click)="showTOPSubject('Java')">Java
   </button>
 </div>
 <div class="card border border-info pt-1 ">
   <div class="row col-md-12  list-group p-0 m-1 pt-2 text-center">
     <label><i style="font-size: 25px" class="fas fa-medal text-info"></i>
-      <span *ngIf="flag == 0" class="justify-content-center text-info " style="font-size: 18px"> TOP 5 VINH DANH
+      <span *ngIf="code == 'TOP'" class="justify-content-center text-info " style="font-size: 18px"> TOP 5 VINH DANH
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="flag == 1" class="justify-content-center text-info " style="font-size: 18px"> BXH JAVASCRIPT
+      <span *ngIf="code == 'JavaScript'" class="justify-content-center text-info " style="font-size: 18px"> BXH JAVASCRIPT
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="flag == 2" class="justify-content-center text-info " style="font-size: 18px"> BXH HTML5
+      <span *ngIf="code == 'HTML'" class="justify-content-center text-info " style="font-size: 18px"> BXH HTML5
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="flag == 3" class="justify-content-center text-info " style="font-size: 18px"> BXH ANGULAR
+      <span *ngIf="code == 'Angular'" class="justify-content-center text-info " style="font-size: 18px"> BXH ANGULAR
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
-      <span *ngIf="flag == 4" class="justify-content-center text-info " style="font-size: 18px"> BXH JAVA
+      <span *ngIf="code == 'Java'" class="justify-content-center text-info " style="font-size: 18px"> BXH JAVA
        <i style="font-size: 25px" class="fas fa-medal text-info"></i>
       </span>
     </label>
@@ -101,13 +101,15 @@
   </ul>
   <div class="p-1 text-center">
     <marquee direction="left" style="height: 40px;
-    background:seagreen ;font-family: 'Eras Demi ITC', sans-serif;font-size: 15px ;color: white" scrolldelay="70" behavior="loop">
+    background:seagreen ;font-family: 'Eras Demi ITC', sans-serif;font-size: 15px ;color: white" scrolldelay="70"
+             behavior="loop">
       Đua top vinh danh. Nhận quà xứng đáng !. <i class="fas fa-grin-wink text-warning font-weight-bold"></i> .<i
       class="fas fa-heart text-danger font-weight-bold"></i>. <i
       class="fas fa-grin-wink text-warning font-weight-bold"></i> .<i
       class="fas fa-heart text-danger font-weight-bold"></i>. <i
       class="fas fa-grin-wink text-warning font-weight-bold"></i>.<i
-      class="fas fa-heart text-danger font-weight-bold"></i>.</marquee>
+      class="fas fa-heart text-danger font-weight-bold"></i>.
+    </marquee>
   </div>
 </div>
 
