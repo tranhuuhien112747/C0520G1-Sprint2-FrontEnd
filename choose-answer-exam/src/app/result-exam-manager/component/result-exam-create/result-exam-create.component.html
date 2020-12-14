@@ -1,24 +1,24 @@
 <div class="container w-50 pt-1 pb-3" style="margin-top:50px; margin-bottom: 70px; background-color: lavenderblush; box-shadow: 5px 10px 8px 10px #d5d5d5">
   <div class="my-3 mr-3 pt-3" style="text-align: center">
-    <h5><i class="fas fa-medal text-success mr-2" style="font-size: large"></i>KẾT QUẢ THI<i class="fas fa-medal text-success ml-2" style="font-size: large"></i></h5>
+    <h5><i class="fas fa-medal text-success mr-2" style="font-size: large"></i>___KẾT QUẢ THI___<i class="fas fa-medal text-success ml-2" style="font-size: large"></i></h5>
   </div>
   <div class="my-3 mr-3 pt-3 d-flex justify-content-between">
     <div class="col-sm-6 p-3 mr-3" style="border: 2px solid darkgray; box-shadow: 3px 6px 6px 6px #d5d5d5">
-      <h5>Kết quả bài thi</h5>
-      <p>Môn học: <span class="text-primary">{{subjectName | titlecase}}</span></p>
-      <p>Mã đề: <span class="text-primary">{{examName}}</span></p>
+      <h5><i class="fas fa-certificate text-success mr-2"></i>Kết quả bài thi</h5>
+      <p><i class="fas fa-certificate text-success mr-2"></i>Môn học: <span class="text-primary">{{subjectName | titlecase}}</span></p>
+      <p><i class="fas fa-certificate text-success mr-2"></i>Mã đề: <span class="text-primary">{{examName}}</span></p>
     </div>
 
     <div class="col-sm-6 p-3" style="border: 2px solid darkgray; box-shadow: 3px 6px 6px 6px #d5d5d5">
-      <h5>Điểm số: <span class="text-danger">{{resultMark | number:'1.0-2'}}/10.0</span></h5>
-      <p>Số câu đúng: {{trueQty}}/{{questionQty}}</p>
-      <p>Thời gian: <span class="text-primary">{{takenDuration}}</span></p>
+      <h5><i class="fas fa-certificate text-success mr-2"></i>Điểm số: <span class="text-danger">{{resultMark | number:'1.0-2'}}/10.0</span></h5>
+      <p><i class="fas fa-certificate text-success mr-2"></i>Số câu đúng: {{trueQty}}/{{questionQty}}</p>
+      <p><i class="fas fa-certificate text-success mr-2"></i>Thời gian: <span class="text-primary">{{takenDurationDisplay}}</span></p>
     </div>
   </div>
   <hr class="my-3">
   <div *ngFor="let question of questionList; let i = index;">
     <p class="font-weight-bold">{{i+1}}. {{question.questionContent}}</p>
-    <p class="ml-3">Lựa chọn của bạn: {{answerList[i]}}<i [ngClass]="(answerList[i]===question.trueAnswer)? 'fas fa-check-circle text-success ml-2':'fas fa-times-circle text-danger ml-2'"></i></p>
+    <p class="ml-3">Lựa chọn của bạn: {{answerList[i]}}<i [ngClass]="(answerList[i]===question.trueAnswer)? 'fas fa-check-circle text-success ml-3':'fas fa-times-circle text-danger ml-3'"></i></p>
     <p class="ml-3"><span class="text-primary">Đáp án đúng:</span><span class="ml-1">{{question.trueAnswer}}</span></p>
     <hr class="m-2"/>
   </div>
