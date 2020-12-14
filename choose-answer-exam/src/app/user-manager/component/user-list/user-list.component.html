@@ -1,27 +1,26 @@
 <div class="container-fluid justify-content-center">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="dropdown">
-          <a class="btn btn-info dropdown-toggle" role="button" type="button" data-toggle="dropdown">
-            <i class='fas fa-align-left mr-2'></i>Danh sách thành viên
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['/exam-list']">Danh sách đề thi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/question-list']">Ngân hàng câu hỏi</a></li>
+          <button class="btn btn-sm btn-info dropdown-toggle col-12" type="button" data-toggle="dropdown">
+            Danh sách thành viên
+          </button>
+          <ul class="dropdown-menu col-12">
+            <li><a class="dropdown-item" href="#">Danh sách đề thi</a></li>
+            <li><a class="dropdown-item" href="#">Ngân hàng câu hỏi</a></li>
+            <li><a class="dropdown-item" href="#">TOP</a></li>
           </ul>
         </div>
       </div>
-      <div class="col-md-7"></div>
-      <div class="mt-2 col-md-3 d-flex justify-content-end">
+      <div class="col-md-4"></div>
+      <div class="col-md-5 mt-4 d-flex justify-content-end">
         <button class="btn btn-success " type="button" (click)="openDialogCreate()">Thêm tài khoản
         </button>
-        <div class="mx-1"></div>
-        <button class="btn btn-secondary" style="height: 30px" [routerLink]="['']">Đóng</button>
       </div>
     </div>
   </div>
-  <div class="container-fluid mr-5 mt-4" style="overflow-x:auto;">
+  <div>Số thành viên là: {{users.length}}</div>
     <table class="table  table-bordered table-hover mt-2 p-0">
       <thead style="background: #96a2af">
       <tr>
@@ -34,9 +33,9 @@
         <th class="font-weight-bold text-center">Tác vụ</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="users != null; else noList">
       <tr *ngFor="let user of users|paginate :{itemsPerPage:5,currentPage:p}; let i = index">
-        <td class="text-center">{{i+1}}</td>
+        <td class="text-center">{{i + 1}}</td>
         <td class="text-center">{{user.username}}</td>
         <td class="text-center">{{user.fullName}}</td>
         <td class="text-center">{{user.address}}</td>
@@ -49,12 +48,22 @@
         </td>
       </tr>
       </tbody>
+
+      <ng-template #noList>
+        <tbody>
+      <tr>
+        <td colspan="7" class="text-center">Không tìm thấy dữ liệu</td>
+      </tr>
+        </tbody>
+      </ng-template>
     </table>
 
-  </div>
-  <nav class="d-flex justify-content-center">
-    <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
-                         nextLabel="Sau"
-                         responsive="true"></pagination-controls>
-  </nav>
+</div>
+<nav class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+                       nextLabel="Sau"
+                       responsive="true"></pagination-controls>
+</nav>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-secondary" [routerLink]="['']">Đóng</button>
 </div>
