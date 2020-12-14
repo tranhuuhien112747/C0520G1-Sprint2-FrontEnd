@@ -1,6 +1,6 @@
 <div class="col-md-12 mb-1 mt-2 m-0 p-0 text-center">
   <button type="button" class=" btn btn-info btn-sm font-weight-bolder" data-toggle="tooltip"
-          data-placement="bottom" style="height: 28px;width: 57px;border-radius: 0"
+          data-placement="bottom" style="height: 28px;width: 55px;border-radius: 0"
           title="Top 5 Vinh Danh" (click)="showTOPAll()">Top
   </button>
   <button type="button" class="btn btn-warning btn-sm font-weight-bolder" data-toggle="tooltip"
@@ -16,7 +16,7 @@
           title="Top 5 Angular" (click)="showTOPSubject('Angular')">Angular
   </button>
   <button type="button" class="btn btn-success btn-sm font-weight-bolder" data-toggle="tooltip"
-          data-placement="bottom" style="height: 28px;width: 57px;border-radius: 0"
+          data-placement="bottom" style="height: 28px;width: 55px;border-radius: 0"
           title="Top 5 Java" (click)="showTOPSubject('Java')">Java
   </button>
 </div>
@@ -55,7 +55,7 @@
       <label class="col-md-4 d-flex justify-content-end m-0 p-0">
         <i class="col-md-5 fas fa-crown mx-3" style="color: gold ;font-size: 17px"></i>
         <span class="col-md-7 badge badge-warning badge-pill mr-0 "
-              style="font-size: 11px;float: right"> {{pointTOP[0]}}</span>
+              style="font-size: 11px;float: right"> {{pointTOP[0]| number: '1.0-2'}}</span>
       </label>
     </li>
     <li class="col-md-12 list-group-item list-group-item-danger d-flex px-1">
