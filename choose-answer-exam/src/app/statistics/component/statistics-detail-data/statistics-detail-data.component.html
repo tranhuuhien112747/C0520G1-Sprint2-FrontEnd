@@ -22,22 +22,22 @@
       </button>
     </div>
     <div class="card-body">
-      <div class="col-md-12 d-flex">
+      <div class="col-md-12 d-flex" *ngIf="top10UserList.length>0 || countSubjectList.length >0">
         <div class="col-md-2"></div>
         <div class="col-md-5 m-0 p-0 card text-center" style="height: 58px">
           <div class="card-header m-0 p-0" style="height: 23px">Bảng xếp hạng</div>
           <div class="card-body m-0 p-1 text-center">
             <div class="btn-group" role="group" aria-label="Basic outlined example" style="height: 23px">
-              <button type="button" class="btn btn-sm btn-outline-dark" style="width: 85px;color: purple"
+              <button type="button" class="btn btn-sm btn-outline-info" style="width: 85px;color: purple"
                       (click)="onSearchTop10User('java')">Java
               </button>
-              <button type="button" class="btn btn-sm btn-outline-dark" style="width: 85px;color: purple"
+              <button type="button" class="btn btn-sm btn-outline-info" style="width: 85px;color: purple"
                       (click)="onSearchTop10User('html')">HTML5
               </button>
-              <button type="button" class="btn btn-sm btn-outline-dark" style="width: 85px;color: purple"
+              <button type="button" class="btn btn-sm btn-outline-info" style="width: 85px;color: purple"
                       (click)="onSearchTop10User('javaScript')">JavaScript
               </button>
-              <button type="button" class="btn btn-sm btn-outline-dark" style="width: 85px;color: purple"
+              <button type="button" class="btn btn-sm btn-outline-info" style="width: 85px;color: purple"
                       (click)="onSearchTop10User('angular')">Angular
               </button>
             </div>
@@ -47,7 +47,7 @@
         <div class="col-md-2 m-0 p-0 card text-center" style="height: 58px">
           <div class="card-header m-0 p-0" style="height: 23px">Biểu đồ thống kê</div>
           <div class="card-body m-0 p-1 text-center">
-            <select style="color: purple;height: 23px" (change)="event($event)">
+            <select class="btn-outline-info" style="color: purple;height: 23px" (change)="event($event)">
               <option selected>-- Biểu đồ --</option>
               <option value="1">Biểu đồ tròn</option>
               <option value="2">Biểu đồ cột</option>
@@ -131,7 +131,7 @@
               <tbody>
               <tr *ngFor="let top of top10UserList|paginate :{itemsPerPage:5,currentPage:p}; let i=index">
                 <td class="text-right">{{i + 1}}</td>
-                <td class="text-center">{{top.username}}</td>
+                <td class="text-left">{{top.username}}</td>
                 <td class="text-right">{{top.sumPoint}}</td>
                 <td class="text-right">{{top.countExam}}</td>
               </tr>
