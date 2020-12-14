@@ -5,6 +5,7 @@ import {UserCreateComponent} from '../user-create/user-create.component';
 import {MatDialog} from '@angular/material/dialog';
 import {UserEditComponent} from '../user-edit/user-edit.component';
 import {UserDeleteComponent} from '../user-delete/user-delete.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-list',
@@ -16,10 +17,13 @@ export class UserListComponent implements OnInit {
   p: any;
 
   constructor(public userService: UserService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private title: Title
+              ) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('UserList');
     // tslint:disable-next-line:no-unused-expression
     this.userService.getAllUser().subscribe(data => {
       this.users = data;

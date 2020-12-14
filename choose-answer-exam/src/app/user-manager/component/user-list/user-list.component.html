@@ -12,7 +12,6 @@
             <li><a class="dropdown-item" href="#">TOP</a></li>
           </ul>
         </div>
-
       </div>
       <div class="col-md-4"></div>
       <div class="col-md-5 mt-4 d-flex justify-content-end">
@@ -21,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid mr-5 mt-5" style="overflow-x:auto;">
+  <div>Số thành viên là: {{users.length}}</div>
     <table class="table  table-bordered table-hover mt-2 p-0">
       <thead style="background: #96a2af">
       <tr>
@@ -34,9 +33,9 @@
         <th class="font-weight-bold text-center">Tác vụ</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="users != null; else noList">
       <tr *ngFor="let user of users|paginate :{itemsPerPage:5,currentPage:p}; let i = index">
-        <td class="text-center">{{i+1}}</td>
+        <td class="text-center">{{i + 1}}</td>
         <td class="text-center">{{user.username}}</td>
         <td class="text-center">{{user.fullName}}</td>
         <td class="text-center">{{user.address}}</td>
@@ -44,20 +43,27 @@
         <td class="text-center">{{user.point}}/{{user.times}}</td>
         <td class="text-center">
           <button type="submit" class="btn btn-sm btn-warning m-1" (click)="openDialogEdit(user.idUser)">Sửa</button>
-          <button type="submit" class="btn btn-sm btn-danger m-1"  (click)="openDialogDelete(user.idUser)"> Xóa
+          <button type="submit" class="btn btn-sm btn-danger m-1" (click)="openDialogDelete(user.idUser)"> Xóa
           </button>
         </td>
       </tr>
       </tbody>
+
+      <ng-template #noList>
+        <tbody>
+      <tr>
+        <td colspan="7" class="text-center">Không tìm thấy dữ liệu</td>
+      </tr>
+        </tbody>
+      </ng-template>
     </table>
 
-  </div>
-  <nav class="d-flex justify-content-center">
-    <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
-                         nextLabel="Sau"
-                         responsive="true"></pagination-controls>
-  </nav>
-  <div class="d-flex justify-content-end">
-    <button class="btn btn-secondary" [routerLink]="['']">Đóng</button>
-  </div>
+</div>
+<nav class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+                       nextLabel="Sau"
+                       responsive="true"></pagination-controls>
+</nav>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-secondary" [routerLink]="['']">Đóng</button>
 </div>
