@@ -15,14 +15,20 @@ import {Router} from '@angular/router';
 export class QuestionListComponent implements OnInit {
   public listQuestion: Question[] = [];
   public p: number;
+  public index: number;
   public messageDeleteSuccess = '';
   public messageAddSuccess = '';
   public messageUpload = '';
+  public valueName = '';
+  public selectSubject = '1';
 
   constructor(private questionService: QuestionService, private dialog: MatDialog, public router: Router) {
   }
 
   ngOnInit(): void {
+    if ( this.index === 0){
+      this.p = this.p - 1;
+    }
     this.messageUpload = this.questionService.messageUpload;
     setTimeout(() => {
       this.questionService.messageUpload = '';
@@ -56,8 +62,9 @@ export class QuestionListComponent implements OnInit {
       });
     });
   }
-  openDialogDelete(id) {
+  openDialogDelete(id, index) {
     this.questionService.getQuestionById(id).subscribe(data => {
+      this.index = index;
       const dialogRef = this.dialog.open(DeleteQuestionComponent, {
         width: '500px',
         data: {data1: data},
@@ -80,6 +87,13 @@ export class QuestionListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         this.ngOnInit();
       });
+    });
+  }
+
+  getAllByName() {
+    this.questionService.getAllQuestionByNameAndSubject(this.valueName, this.selectSubject).subscribe( data => {
+      this.p = 0;
+      this.listQuestion = data;
     });
   }
 }

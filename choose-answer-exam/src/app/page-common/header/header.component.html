@@ -20,12 +20,20 @@
       <li class="nav-item text-center" style="width: 200px">
         <a class="nav-link text-white" [routerLink]="['exam-list-by-subject/'+'angular']">Angular</a>
       </li>
-      <li class="nav-item text-center" style="width: 200px" *ngIf="showAdminBoard">
-        <a class="nav-link text-white" href="#">Quản lý</a>
-      </li>
-      <li class="nav-item text-center" style="width: 200px">
+      <li class="nav-item text-center mr-2" *ngIf="showAdminBoard">
+        <a class="btn btn-secondary dropdown-toggle drop" data-bs-toggle="dropdown" aria-expanded="false" type="button"
+           data-toggle="dropdown">
+          Quản lý
+        </a>
+        <ul class="dropdown-menu col-12">
+          <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
+          <li><a class="dropdown-item" href="#">Tài khoản của tôi</a></li>
+        </ul>
+
+      <li class="nav-item text-center mr-2">
         <a class="nav-link text-white" [routerLink]="['/infor-account']" *ngIf="showUserBoard">Thông tin</a>
       </li>
     </ul>
   </div>
 </nav>
+

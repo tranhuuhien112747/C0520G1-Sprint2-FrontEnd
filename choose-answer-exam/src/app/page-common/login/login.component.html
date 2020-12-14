@@ -1,74 +1,61 @@
-<div class="m-1" style="background: rgba(210,211,227,0.19); border: 1px solid lightgray;border-radius:3px ">
+<div class="m-1 mb-4" style="background: rgba(210,211,227,0.19); border: 1px solid #2b68f2 ;border-radius:3px ">
   <form class="form-horizontal  mx-3 mt-3 mb-3" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
         novalidate>
     <div class="form-icon"><i class="fa fa-key" style="font-size: 35px"></i></div>
-     <div class="heading">Đăng nhập</div>
-    <div class="form-group mt-4">
-      <i class="fa fa-user fa-sm"></i> <input type="text" class="form-control" name="username" placeholder="Tên Đăng Nhập"
-                                        autofocus="" autocomplete="off" [(ngModel)]="form.username"
-                                        required
-                                        #username="ngModel"/>
+    <div class="heading mt-1">Đăng nhập</div>
+    <div class="form-group mt-3">
+      <i class="fa fa-user fa-sm i1"></i> <input type="text" class="form-control" name="username"
+                                                 placeholder="Tên đăng nhập"
+                                                 autofocus="" autocomplete="off" [(ngModel)]="form.username"
+                                                 required
+                                                 #username="ngModel"/>
       <div class="alert-danger mx-1 small" *ngIf="f.submitted && username.invalid">
         <div *ngIf="username.errors.required">
-          Tên Đăng Nhập là bắt buộc.
+          Tên đăng nhập là bắt buộc.
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <i class="fa fa-lock"></i> <input type="password" class="form-control" name="password" placeholder="Mật Khẩu"
-                                        id="password1"
-                                        autocomplete="off" [(ngModel)]="form.password" required
-                                        #password="ngModel"/>
-      <div class="alert-danger ml-1 small" *ngIf="f.submitted && password.invalid">
+    <div class="form-group" style="position: relative">
+      <i class="fa fa-lock i1"></i> <input type="password" class="form-control" name="password" placeholder="Mật khẩu"
+                                           id="password1"
+                                           autocomplete="off" [(ngModel)]="form.password" required
+                                           #password="ngModel"/> <i class="far fa-eye" id="eye" *ngIf="showPasswordChange == true; else hidden"
+                                                                    (click)="showPassword()"></i>
+      <ng-template #hidden><i class="far fa-eye-slash" id="eye1" (click)="showPassword()"></i></ng-template>
+      <div class=" alert-danger ml-1 small" *ngIf="f.submitted && password.invalid">
+
         <div *ngIf="password.errors.required">
-          Mật Khẩu là bắt buộc.
+          Mật khẩu là bắt buộc.
         </div>
       </div>
     </div>
 
     <div class="form-group row d-flex justify-content-center m-2">
       <div class="col-6 px-0">
-        <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+        <button type="submit" class="btn btn-primary btn-block mr-1">Đăng nhập</button>
       </div>
       <div class="col-6 px-0">
         <button type="button" class="btn btn-primary btn-block ml-1" style="" (click)="openDialogCreate()">Đăng ký</button>
       </div>
     </div>
     <div class="alert alert-danger mt-2 small" *ngIf="f.submitted && isLoginFailed">
-      Tên Đăng Nhập hoặc Mật Khẩu không đúng.
+      Tên đăng nhập hoặc Mật khẩu không đúng.
     </div>
   </form>
   <div class="hr-sect">Hoặc</div>
   <div class="form-group row d-flex justify-content-center m-3">
     <button class="btn mb-2 mx-2 fb btn-block" (click)="signInWithFB()"><i
-      class="fab fa-facebook-square fa-lg mr-3"></i> Đăng nhập
+      class="fab fa-facebook-square fa-lg mr-1"></i> Đăng nhập
       với Facebook
     </button>
     <button class="btn btn-danger mx-2 mb-2 btn-block" (click)="signInWithGoogle()"><i
-      class="fab fa-google-plus-g fa-lg mr-4"></i> Đăng
+      class="fab fa-google-plus-g fa-lg mr-2"></i> Đăng
       nhập với Google
     </button>
   </div>
 
 </div>
 
-<script>
-  let showPassword = false;
-  const ipnElement = document.querySelector('#password1');
-  const btnElement = document.querySelector('#btnPassword');
 
-  btnElement.addEventListener('click', togglePassword);
-
-  function togglePassword() {
-    alert("abc");
-    if (showPassword) {
-      ipnElement.setAttribute('type', 'password');
-      showPassword = false
-    } else {
-      ipnElement.setAttribute('type', 'text');
-      showPassword = true
-    }
-  }
-</script>
 
 

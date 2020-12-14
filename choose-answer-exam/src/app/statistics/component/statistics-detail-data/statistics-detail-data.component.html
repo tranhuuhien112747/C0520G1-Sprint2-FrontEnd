@@ -15,7 +15,7 @@
       <div class="btn-group-vertical text-center mt-4" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px" (click)="selectChartColumn()"> Java</button>
         <button type="button" class="btn btn-outline-dark" style="width: 75px" (click)="selectChartBar()">HTML5</button>
-        <button type="button" class="btn btn-outline-dark" style="width: 75px">JavaScript</button>
+        <button type="button" class="btn btn-outline-dark" style="width: 75px" (click)="selectChartPie()">JavaScript</button>
         <button type="button" class="btn btn-outline-dark" style="width: 75px">Angular</button>
       </div>
     </div>
@@ -50,6 +50,24 @@
             [legend]="chartOptionsColumn.legend"
             [colors]="chartOptionsColumn.colors"
             [grid]="chartOptionsColumn.grid"
+          ></apx-chart>
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="flag == 3">
+        <div class="col-md-12 mt-4 text-center">
+          <label style="color: darkblue;font-size: 15px"> Biểu đồ tổng thể hiện số lượng được chọn của các môn học theo quý</label>
+          <label class="mx-2" style="font-size: 12px"> (Đơn vị: /bài thi) </label>
+        </div>
+        <div class="col-md-12" id="chart3" style="background: snow">
+          <apx-chart
+            [series]="chartOptionsBar.series"
+            [chart]="chartOptionsBar.chart"
+            [dataLabels]="chartOptionsBar.dataLabels"
+            [plotOptions]="chartOptionsBar.plotOptions"
+            [responsive]="chartOptionsBar.responsive"
+            [xaxis]="chartOptionsBar.xaxis"
+            [legend]="chartOptionsBar.legend"
+            [fill]="chartOptionsBar.fill"
           ></apx-chart>
         </div>
       </div>

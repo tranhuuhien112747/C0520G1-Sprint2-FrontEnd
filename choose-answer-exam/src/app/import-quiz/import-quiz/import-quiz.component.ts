@@ -39,7 +39,6 @@ export class ImportQuizComponent implements OnInit {
         this.message = ' Không thể lưu câu hỏi. Vui lòng kiểm tra lại !';
         this.currentFile = undefined;
       });
-
     this.selectedFiles = undefined;
   }
 
