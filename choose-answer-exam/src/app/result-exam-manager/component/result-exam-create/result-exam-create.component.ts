@@ -16,6 +16,7 @@ export class ResultExamCreateComponent implements OnInit {
   public answerList = [];
   public subjectName = '';
   public examName = '';
+  public takenDurationDisplay = '';
 
   constructor(
     private resultExamService: ResultExamService,
@@ -31,5 +32,6 @@ export class ResultExamCreateComponent implements OnInit {
     this.subjectName = this.resultExamService.subjectNameSV;
     this.examName = this.resultExamService.examNameSV;
     this.takenDuration = this.resultExamService.takenDurationSV;
+    this.takenDurationDisplay = this.resultExamService.takenDurationDisplaySV;
   }
 }
