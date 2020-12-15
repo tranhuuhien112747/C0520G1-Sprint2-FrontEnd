@@ -16,7 +16,7 @@ export const accountRoute: Routes = [
     canActivate: [AuthGuard],
     data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}
   },
-  { path: 'update-infor',
+  { path: 'update-infor/:id',
     component: UpdateInfoAccountComponent,
     canActivate: [AuthGuard],
     data: {roles: ['ROLE_ADMIN', 'ROLE_USER']}

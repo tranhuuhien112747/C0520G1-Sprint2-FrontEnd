@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ResultExamService} from '../../service/result-exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
-import {ResultExam} from '../../model/result-exam.class';
 
 @Component({
   selector: 'app-result-exam-create',
@@ -18,12 +16,11 @@ export class ResultExamCreateComponent implements OnInit {
   public answerList = [];
   public subjectName = '';
   public examName = '';
+  public takenDurationDisplay = '';
 
   constructor(
     private resultExamService: ResultExamService,
     private router: Router,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +32,6 @@ export class ResultExamCreateComponent implements OnInit {
     this.subjectName = this.resultExamService.subjectNameSV;
     this.examName = this.resultExamService.examNameSV;
     this.takenDuration = this.resultExamService.takenDurationSV;
+    this.takenDurationDisplay = this.resultExamService.takenDurationDisplaySV;
   }
 }

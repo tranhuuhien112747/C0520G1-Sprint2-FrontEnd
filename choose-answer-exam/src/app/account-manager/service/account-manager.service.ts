@@ -29,5 +29,7 @@ export class AccountManagerService {
   findExamHistoryById(id): Observable<any> {
     return this.http.get(this.API_USER_EXAM + '/' + id);
   }
-
+  updateAccountImage(idUser, image): Observable<any> {
+    return this.http.put(this.API_USER + '/' + idUser + '/change-image', image);
+  }
 }

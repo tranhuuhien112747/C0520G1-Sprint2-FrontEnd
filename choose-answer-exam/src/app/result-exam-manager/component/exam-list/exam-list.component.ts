@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ResultExamService} from '../../service/result-exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -7,10 +7,10 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './exam-list.component.html',
   styleUrls: ['./exam-list.component.css']
 })
-export class ExamListComponent implements OnInit, OnChanges {
-
+export class ExamListComponent implements OnInit {
   public examListBySubject = [];
   public subjectName = '';
+  public p: number;
 
   constructor(
     private resultExamService: ResultExamService,
@@ -19,6 +19,7 @@ export class ExamListComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
+    this.p = 1;
     this.activatedRoute.params.subscribe(data => {
       this.subjectName = data.subject;
       console.log('subject is: ' + this.subjectName);
@@ -29,18 +30,5 @@ export class ExamListComponent implements OnInit, OnChanges {
         this.examListBySubject = data2;
       });
     });
-  }
-
-  ngOnChanges(): void {
-  //   this.activatedRoute.params.subscribe(data => {
-  //     this.subjectName = data.subject;
-  //     console.log('subject -changed- is: ' + this.subjectName);
-  //   });
-  //   this.resultExamService.subjectNameSV = this.subjectName;
-  //   this.resultExamService.getExamListBySubject(this.subjectName).subscribe(data => {
-  //     console.log('Changes-->exam-list is: ');
-  //     console.log(data);
-  //     this.examListBySubject = data;
-  //   });
   }
 }

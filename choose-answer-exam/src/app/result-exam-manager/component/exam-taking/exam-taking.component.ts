@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Exam} from '../../../exam-manager/model/exam.class';
 import {ResultExamService} from '../../service/result-exam.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -24,6 +24,9 @@ export class ExamTakingComponent implements OnInit {
   public startTime: number;
   public endTime: number;
   public takenDuration = 15;
+  public takenDurationDisplay = '';
+  public saveOption = '';
+
   constructor(
     private resultExamService: ResultExamService,
     private router: Router,
@@ -35,19 +38,9 @@ export class ExamTakingComponent implements OnInit {
 
   ngOnInit(): void {
     this.startTime = new Date().getTime();
-    this.startTimer(15);
-    this.formResultExam = this.formBuilder.group({
-        answer1: '',
-        answer2: '',
-        answer3: '',
-        answer4: '',
-        answer5: '',
-        answer6: '',
-        answer7: '',
-        answer8: '',
-        answer9: '',
-        answer10: '',
-    });
+    this.saveOption = 'DEFAULT';
+    this.resultExamService.markSV = 0;
+
     this.activatedRoute.params.subscribe(data => {
       this.idExam = data.id;
       console.log('id found: ' + this.idExam);
@@ -56,24 +49,44 @@ export class ExamTakingComponent implements OnInit {
     this.resultExamService.getExamById(this.idExam).subscribe(data => {
       this.exam = data;
     }, error => {
-      console.log('error happended...');
+      console.log('Oops! error happened...');
     }, () => {
+      // initiate the timer
+      this.startTimer(parseFloat(this.exam.examDuration));
+      console.log('Thoi gian thi tinh bang giay = ' + parseFloat(this.exam.examDuration));
+
       this.questionList = this.exam.questions;
       this.resultExamService.questionQuantitySV = this.questionList.length;
       this.resultExamService.questionListSV = this.questionList;
       this.resultExamService.examIdSV = this.exam.idExam;
       this.resultExamService.examNameSV = this.exam.examName;
     });
+
+    this.formResultExam = this.formBuilder.group({
+      answer1: '[không chọn]',
+      answer2: '[không chọn]',
+      answer3: '[không chọn]',
+      answer4: '[không chọn]',
+      answer5: '[không chọn]',
+      answer6: '[không chọn]',
+      answer7: '[không chọn]',
+      answer8: '[không chọn]',
+      answer9: '[không chọn]',
+      answer10: '[không chọn]'
+    });
+
     this.resultExamService.markSV = 0;
     this.resultExamService.trueQuantitySV = 0;
   }
 
   createNewResultExam(): void {
+    this.saveOption = 'BEFORE_TIME';
     // get endTime
-    console.log('lan 1');
     this.endTime = new Date().getTime();
     this.takenDuration = Math.round((this.endTime - this.startTime) / 1000) - 1;
     this.resultExamService.takenDurationSV = this.takenDuration;
+    this.takenDurationDisplay = '' + (Math.floor(this.takenDuration / 60)) + ' phút ' + (this.takenDuration % 60) + ' giây.';
+    this.resultExamService.takenDurationDisplaySV = this.takenDurationDisplay;
     console.log('thoi gian lam bai: ' + this.takenDuration);
 
     this.answerList.push(this.formResultExam.value.answer1);
@@ -86,8 +99,7 @@ export class ExamTakingComponent implements OnInit {
     this.answerList.push(this.formResultExam.value.answer8);
     this.answerList.push(this.formResultExam.value.answer9);
     this.answerList.push(this.formResultExam.value.answer10);
-    console.log('answer-list');
-    console.log(this.answerList);
+
     this.resultExamService.answerListSV = this.answerList;
     for (let i = 0; i < this.questionList.length; i++) {
       console.log('True-answer: ' + this.questionList[i].trueAnswer);
@@ -99,6 +111,7 @@ export class ExamTakingComponent implements OnInit {
         this.resultExamService.trueQuantitySV += 1;
       }
     }
+
     this.answerList = [];
     console.log('mark: ' + this.resultExamService.markSV);
     console.log('true-quantity: ' + this.resultExamService.trueQuantitySV);
@@ -116,34 +129,37 @@ export class ExamTakingComponent implements OnInit {
     console.log(this.resultExam);
 
     this.resultExamService.saveResultExam(this.resultExam).subscribe(data => {
+      // this.resultExamService.markSV = 0;
       console.log('save into db successfully');
+      this.router.navigate(['/result-exam-create']);
     });
-    this.router.navigate(['/result-exam-create']);
   }
 
+  // function of timer (second by second)
   startTimer(duration): void {
-    let timer = duration; // --> seconds
-    let minutes: any;
-    let seconds: any;
+    let timer = duration * 60; // --> seconds
+    let minutes: number;
+    let seconds: number;
+    let minuteStr: any;
+    let secondStr: any;
     const myVar = setInterval(() => {
-      minutes = Math.round(timer / 60);
-      seconds = Math.round(timer % 60);
+      minutes = Math.floor(timer / 60);
+      seconds = Math.floor(timer % 60);
 
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      seconds = seconds < 10 ? '0' + seconds : seconds;
+      if (seconds === 0) { minutes = minutes - 1; }
+      minuteStr = minutes < 10 ? '0' + minutes : minutes;
+      secondStr = seconds < 10 ? '0' + seconds : seconds;
 
-      this.durationDisplay = minutes + ':' + seconds;
-      console.log('lan 1');
+      this.durationDisplay = minuteStr + ' phút ' + secondStr + ' giây.';
       if (--timer < 0) {
         timer = 0;
         clearInterval(myVar);
-        this.createNewResultExam();
+        if (this.saveOption === 'DEFAULT') {
+          this.createNewResultExam();
+          this.saveOption = '';
+        }
       }
     }, 1000);
-
-    // if (timer === 0){
-    //   this.createNewResultExam();
-    // }
   }
 }
 
