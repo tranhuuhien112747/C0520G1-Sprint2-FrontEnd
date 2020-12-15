@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-6 col-xs-12" style="background: white">
       <div class="mx-auto col-md-12 row p-0 zoom">
-        <div class="mx-auto col-md-6 p-3 ">
+        <div class="mx-auto col-md-6 p-2">
           <a [routerLink]="['exam-list-by-subject/'+'java']">
             <div class="card">
               <img class="card-img-top" src="../../../../assets/home-page/java.jpg" alt="Java">
@@ -18,7 +18,7 @@
             </div>
           </a>
         </div>
-        <div class="mx-auto col-md-6 p-3">
+        <div class="mx-auto col-md-6 p-2">
           <a [routerLink]="['exam-list-by-subject/'+'javascript']">
             <div class="card">
               <img class="card-img-top" src="../../../../assets/home-page/javascript.jpg" alt="JavaScript">
@@ -33,7 +33,7 @@
       </div>
 
       <div class="mx-auto col-md-12 row p-0">
-        <div class="mx-auto col-md-6 p-3">
+        <div class="mx-auto col-md-6 p-2">
           <a [routerLink]="['exam-list-by-subject/'+'html']">
             <div class="card">
               <img class="card-img-top" src="../../../../assets/home-page/html.jpg" alt="HTML">
@@ -45,7 +45,7 @@
             </div>
           </a>
         </div>
-        <div class="mx-auto col-md-6 p-3">
+        <div class="mx-auto col-md-6 p-2">
           <a [routerLink]="['exam-list-by-subject/'+'angular']">
             <div class="card">
               <img class="card-img-top" src="../../../../assets/home-page/angular.jpg" alt="Angular">
@@ -205,8 +205,6 @@
       </div>
       <div style="height: 40px"></div>
     </div>
-
-
     <div class="col-md-3 col-xs-12">
       <div *ngIf="token === 'false'">
         <app-login></app-login>
@@ -227,52 +225,55 @@
         </div>
       </div>
       <hr/>
-      <div class="fb-group" data-href="https://www.facebook.com/groups/codegymdanang" data-show-social-context="false" data-show-metadata="true">
+      <div class="fb-group" data-href="https://www.facebook.com/groups/codegymdanang" data-show-social-context="false"
+           data-show-metadata="true">
       </div>
-      <div class="fb-group" data-href="https://www.facebook.com/groups/danangagiledeveloper/" style="margin-bottom: 10px; margin-top: 10px" data-show-social-context="true" data-show-metadata="true"></div>
+      <div class="fb-group" data-href="https://www.facebook.com/groups/danangagiledeveloper/"
+           style="margin-bottom: 10px; margin-top: 10px" data-show-social-context="true"
+           data-show-metadata="true"></div>
 
     </div>
   </div>
-<!--  <div class="row mb-2" style="background-color: #909090; color: #fff;font-family: 'Times New Roman'">-->
-<!--    <div class="col-1"></div>-->
-<!--    <div class="col">-->
-<!--      <div class="top10">-->
-<!--        <h4>Top Tutorials</h4>-->
-<!--        <a href="/html/default.asp">HTML Tutorial</a><br>-->
-<!--        <a href="/css/default.asp">CSS Tutorial</a><br>-->
-<!--        <a href="/js/default.asp">JavaScript Tutorial</a><br>-->
-<!--        <a href="/howto/default.asp">How To Tutorial</a><br>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--      <div class="top10">-->
-<!--        <h4>Top References</h4>-->
-<!--        <a href="/tags/default.asp">HTML Reference</a><br>-->
-<!--        <a href="/cssref/default.asp">CSS Reference</a><br>-->
-<!--        <a href="/jsref/default.asp">JavaScript Reference</a><br>-->
-<!--        <a href="/sql/sql_ref_keywords.asp">SQL Reference</a><br>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--      <div class="top10">-->
-<!--        <h4>Top Examples</h4>-->
-<!--        <a href="/html/html_examples.asp">HTML Examples</a><br>-->
-<!--        <a href="/css/css_examples.asp">CSS Examples</a><br>-->
-<!--        <a href="/js/js_examples.asp">JavaScript Examples</a><br>-->
-<!--        <a href="/howto/default.asp">How To Examples</a><br>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--      <div class="top10">-->
-<!--        <h4>Web Certificates</h4>-->
-<!--        <a href="/cert/default.asp">HTML Certificate</a><br>-->
-<!--        <a href="/cert/default.asp">CSS Certificate</a><br>-->
-<!--        <a href="/cert/default.asp">JavaScript Certificate</a><br>-->
-<!--        <a href="/cert/default.asp">SQL Certificate</a><br>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-1"></div>-->
-<!--  </div>-->
+  <div class="row mb-2" style="background-color: #909090; color: #fff;font-family: 'Times New Roman'">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="top10">
+        <h4>Hướng dẫn hàng đầu</h4>
+        <a href="/html/default.asp">HTML Tutorial</a><br>
+        <a href="/css/default.asp">CSS Tutorial</a><br>
+        <a href="/js/default.asp">JavaScript Tutorial</a><br>
+        <a href="/howto/default.asp">How To Tutorial</a><br>
+      </div>
+    </div>
+    <div class="col">
+      <div class="top10">
+        <h4>Tài liệu tham khảo</h4>
+        <a href="/tags/default.asp">HTML Reference</a><br>
+        <a href="/cssref/default.asp">CSS Reference</a><br>
+        <a href="/jsref/default.asp">JavaScript Reference</a><br>
+        <a href="/sql/sql_ref_keywords.asp">SQL Reference</a><br>
+      </div>
+    </div>
+    <div class="col">
+      <div class="top10">
+        <h4>Ví dụ hàng đầu</h4>
+        <a href="/html/html_examples.asp">HTML Examples</a><br>
+        <a href="/css/css_examples.asp">CSS Examples</a><br>
+        <a href="/js/js_examples.asp">JavaScript Examples</a><br>
+        <a href="/howto/default.asp">How To Examples</a><br>
+      </div>
+    </div>
+    <div class="col">
+      <div class="top10">
+        <h4>Chứng chỉ Web</h4>
+        <a href="/cert/default.asp">HTML Certificate</a><br>
+        <a href="/cert/default.asp">CSS Certificate</a><br>
+        <a href="/cert/default.asp">JavaScript Certificate</a><br>
+        <a href="/cert/default.asp">SQL Certificate</a><br>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
 </div>
 
 

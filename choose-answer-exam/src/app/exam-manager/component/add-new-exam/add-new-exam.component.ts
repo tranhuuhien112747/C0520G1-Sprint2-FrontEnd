@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Exam} from '../../model/exam.class';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-new-exam',
@@ -23,10 +24,12 @@ export class AddNewExamComponent implements OnInit {
               private fb: FormBuilder,
               private router: Router,
               public dialogRef: MatDialogRef<AddNewExamComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Add New Exam');
     this.messageErr = '';
     this.messageErrName = '';
     this.createExam = this.fb.group({

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ImportQuizService} from '../service/import-quiz.service';
 import {Router} from '@angular/router';
 import {QuestionService} from '../../question-manager/services/question.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-upload-file',
@@ -20,11 +21,13 @@ export class ImportQuizComponent implements OnInit {
   constructor(
     private importQuizService: ImportQuizService,
     private router: Router,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private title: Title,
   ) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Upload File');
   }
 
   saveFile() {

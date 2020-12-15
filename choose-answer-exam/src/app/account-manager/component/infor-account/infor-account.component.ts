@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountManagerService} from '../../service/account-manager.service';
 import {TokenStorageService} from '../../../page-common/service/token-storage/token-storage.service';
+import {Title} from '@angular/platform-browser';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -18,13 +19,16 @@ export class InforAccountComponent implements OnInit {
   constructor(
     private accountManagerService: AccountManagerService,
     private tokenStorage: TokenStorageService,
+    private title: Title
     private formBuilder: FormBuilder,
   ) { }
-
+  
   ngOnInit(): void {
+    this.title.setTitle('Information Account');
     this.formEditImage = this.formBuilder.group( {
       image: ['']
     });
+    
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.id = this.tokenStorage.getUser().id;

@@ -5,6 +5,7 @@ import {ExamService} from '../../services/exam.service';
 import {DeleteExamComponent} from '../delete-exam/delete-exam.component';
 import {AddNewExamComponent} from '../add-new-exam/add-new-exam.component';
 import {Exam} from '../../model/exam.class';
+import {Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -21,10 +22,14 @@ export class ListExamComponent implements OnInit {
   public messageDeleteSuccess = '';
   selectedItemsList = [];
 
-  constructor(private examService: ExamService, private dialog: MatDialog, public router: Router) {
+  constructor(private examService: ExamService,
+              private dialog: MatDialog,
+              public router: Router,
+              private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('List Exam');
     this.p = 0;
     this.messageAddSuccess = this.examService.messageAddSuccess;
     setTimeout (() => {

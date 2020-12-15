@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AccountManagerService} from '../../service/account-manager.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ChangePassComponent} from '../change-pass/change-pass.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-update-info-account',
@@ -21,10 +22,12 @@ export class UpdateInfoAccountComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private accountManagerService: AccountManagerService,
     public dialog: MatDialog,
+    private title: Title
   ) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Update Info');
     this.formEditAccount = this.formBuilder.group({
       fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9\s]{3,30}$/)]],
       email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{3,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],

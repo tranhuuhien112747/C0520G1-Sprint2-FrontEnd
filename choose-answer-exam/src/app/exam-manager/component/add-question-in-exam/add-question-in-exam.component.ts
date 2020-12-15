@@ -3,6 +3,7 @@ import {Question} from '../../model/question.class';
 import {ExamService} from '../../services/exam.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-question-in-exam',
@@ -21,10 +22,12 @@ export class AddQuestionInExamComponent implements OnInit {
 
   constructor(private examService: ExamService, private dialog: MatDialog, public router: Router,
               private dialogRef: MatDialogRef<AddQuestionInExamComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Add New Question');
     this.selectedItemsList = [];
     this.idExam = this.data.data1;
     this.numQuestion = this.data.data2;

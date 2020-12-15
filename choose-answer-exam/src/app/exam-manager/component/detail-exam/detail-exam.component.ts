@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Question} from '../../model/question.class';
 import {AddQuestionInExamComponent} from '../add-question-in-exam/add-question-in-exam.component';
 import {DeleteQuestionInExamComponent} from '../delete-question-in-exam/delete-question-in-exam.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail-exam',
@@ -23,11 +24,14 @@ export class DetailExamComponent implements OnInit {
   public select = [];
   selectedItemsList = [];
 
-  constructor(private examService: ExamService, private dialog: MatDialog, private router: Router,
-              private activatedRoute: ActivatedRoute) {
+  constructor(private examService: ExamService, private dialog: MatDialog,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Detail Exam');
     this.selectedItemsList = [];
     this.messageDeleteQuestionSuccess = this.examService.messageDeleteQuestionSuccess;
     setTimeout(() => {
