@@ -2,46 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Choose Answer Exam</title>
+  <title>Web Trắc Nghiệm</title>
   <base href="/">
+  <link rel="icon" type="image/x-icon" href="assets/home-page/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
         crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-
-
-
   <app-root></app-root>
-  <!-- Load Facebook SDK for JavaScript -->
-  <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        xfbml            : true,
-        version          : 'v9.0'
-      });
-    };
+<!--   Load Facebook SDK for JavaScript-->
+<!--  <div id="fb-root"></div>-->
+<!--  <script>-->
+<!--    window.fbAsyncInit = function() {-->
+<!--      FB.init({-->
+<!--        xfbml            : true,-->
+<!--        version          : 'v9.0'-->
+<!--      });-->
+<!--    };-->
 
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+<!--    (function(d, s, id) {-->
+<!--      var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--      if (d.getElementById(id)) return;-->
+<!--      js = d.createElement(s); js.id = id;-->
+<!--      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';-->
+<!--      fjs.parentNode.insertBefore(js, fjs);-->
+<!--    }(document, 'script', 'facebook-jssdk'));</script>-->
 
-  <!-- Your Chat Plugin code -->
-  <div class="fb-customerchat"
-       attribution=setup_tool
-       page_id="104977468142963"
-       theme_color="#0A7CFF"
-       logged_in_greeting="Chào bạn!!Chào mừng bạn đến với chúng tôi!!"
-       logged_out_greeting="Chào bạn!!Chào mừng bạn đến với chúng tôi!!">
-  </div>
+<!--  &lt;!&ndash; Your Chat Plugin code &ndash;&gt;-->
+<!--  <div class="fb-customerchat"-->
+<!--       attribution=setup_tool-->
+<!--       page_id="104977468142963"-->
+<!--       theme_color="#0A7CFF"-->
+<!--       logged_in_greeting="Chào bạn!!Chào mừng bạn đến với chúng tôi!!"-->
+<!--       logged_out_greeting="Chào bạn!!Chào mừng bạn đến với chúng tôi!!">-->
+<!--  </div>-->
 
 </body>
 </html>

@@ -12,3 +12,6 @@ li a:hover, .dropdown:hover .dropbtn {
   display: inline-block;
 }
 
+a:hover{
+  background-color: black;
+}

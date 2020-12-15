@@ -1,38 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-0" style="background-color: #5f5f5f">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-0" style="background-color: #5f5f5f">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
   <img class="ml-3" src="../../../../assets/home-page/C0520G1.png" style="width: 14%" [routerLink]="['C0520G1']">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <ul class="navbar-nav topnav ml-auto">
+    <ul class="navbar-nav topnav" style="margin-left: 87px">
       <li class="nav-item text-center" style="width: 125px">
-        <a class="nav-link text-white font-text" href="/"><i class="fa fa-home font-text"><span class="font-text"> Trang chủ</span></i></a>
+        <a class="nav-link text-white font-text" href="/"><i class="fa fa-home fa-lg"></i><span class="font-text"> Trang chủ</span></a>
       </li>
       <li class="nav-item text-center" style="width: 125px">
-        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'java']">JAVA</a>
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'java']">Java</a>
       </li>
       <li class="nav-item text-center" style="width: 125px">
-        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'javascript']">JAVASCRIPT</a>
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'javascript']">Javascript</a>
       </li>
       <li class="nav-item text-center" style="width: 125px">
         <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'html']">HTML</a>
       </li>
       <li class="nav-item text-center" style="width: 125px">
-        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'angular']">ANGULAR</a>
+        <a class="nav-link text-white font-text" [routerLink]="['exam-list-by-subject/'+'angular']">Angular</a>
       </li>
-      <li class="nav-item text-center mr-2"  *ngIf="showAdminBoard; else use">
-        <a data-toggle="dropdown" class="nav-link text-white font-text" style="width: 125px">Quản lý</a>
-        <ul class="dropdown-menu dropdown-menu-right" style=" background-color: #5f5f5f; font-size: 12px">
-          <li><a class="dropdown-item text-white" href="#">Danh sách tài khoản</a></li>
-          <li><a class="dropdown-item text-white" href="#">Tài khoản của tôi</a></li>
-        </ul>
-      </li>
-      <ng-template #use>
-      <li class="nav-item text-center mr-2" style="width: 125px">
-        <a class="nav-link text-white font-text" [routerLink]="['/infor-account']" *ngIf="showUserBoard">Thông tin</a>
-      </li>
-      </ng-template>
     </ul>
   </div>
+  <a data-toggle="dropdown" type="button" class="nav-link text-white font-text" *ngIf="showAdminBoard; else use"><i
+    class="fas fa-cog"></i> Quản
+    lý</a>
+  <ul class="dropdown-menu dropdown-menu-right" style=" background-color: #5f5f5f; font-size: 12px">
+    <li><a class="dropdown-item text-white" href="#">Danh sách tài khoản</a></li>
+    <li><a class="dropdown-item text-white" href="#">Tài khoản của tôi</a></li>
+  </ul>
+  <ng-template #use>
+    <a class="nav-link text-white font-text" [routerLink]="['/infor-account']" *ngIf="showUserBoard"><i
+      class="fas fa-cog"></i> Thông tin</a>
+  </ng-template>
 </nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xs-12" style="background: #f9f4f4; height: 50px"></div>
+    <div class="col-md-6 col-xs-12"></div>
+    <div class="col-md-3 col-xs-12" style="background: #f9f4f4;"></div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountManagerService} from '../../service/account-manager.service';
 import {TokenStorageService} from '../../../page-common/service/token-storage/token-storage.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-exam-history',
@@ -18,10 +19,12 @@ export class ExamHistoryComponent implements OnInit {
   constructor(
     private accountManagerService: AccountManagerService,
     private tokenStorage: TokenStorageService,
+    private title: Title
   ) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Exam History');
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.idToFind = this.tokenStorage.getUser().id;

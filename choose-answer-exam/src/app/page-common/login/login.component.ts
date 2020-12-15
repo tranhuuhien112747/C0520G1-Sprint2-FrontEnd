@@ -7,6 +7,7 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUse
 import {TokenDTO} from '../model/TokenDTO';
 import {MatDialog} from '@angular/material/dialog';
 import {UserCreateComponent} from '../../user-manager/component/user-create/user-create.component';
+import {MessageComponent} from '../message/message.component';
 
 
 @Component({
@@ -22,7 +23,6 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: string;
-  private this: any;
   showPasswordChange: boolean;
 
   constructor(
@@ -30,12 +30,10 @@ export class LoginComponent implements OnInit {
     private tokenStorage: TokenStorageService,
     private router: Router,
     private dialog: MatDialog,
-    private title: Title,
     private authService: SocialAuthService) {
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Login');
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.role = this.tokenStorage.getUser().role;
