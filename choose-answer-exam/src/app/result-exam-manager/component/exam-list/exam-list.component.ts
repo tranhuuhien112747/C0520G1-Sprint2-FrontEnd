@@ -19,6 +19,7 @@ export class ExamListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.p = 1;
     this.activatedRoute.params.subscribe(data => {
       this.subjectName = data.subject;
       console.log('subject is: ' + this.subjectName);
