@@ -12,14 +12,14 @@
       </thead>
 
       <tbody>
-      <tr class="row">
-        <td class="col-2" style="text-align: center">[0]</td>
-        <td class="col-2" style="text-align: center">[subject]</td>
-        <td class="col-2" style="text-align: center">[Đề 000]</td>
-        <td class="col-3" style="text-align: center">[7 phút]</td>
-        <td class="col-3" style="text-align: center"><a role="button" class="btn btn-sm btn-success"
-                                                        [routerLink]="['/take-exam/'+0]">Làm bài thi</a></td>
-      </tr>
+<!--      <tr class="row">-->
+<!--        <td class="col-2" style="text-align: center">[0]</td>-->
+<!--        <td class="col-2" style="text-align: center">[subject]</td>-->
+<!--        <td class="col-2" style="text-align: center">[Đề 000]</td>-->
+<!--        <td class="col-3" style="text-align: center">[7 phút]</td>-->
+<!--        <td class="col-3" style="text-align: center"><a role="button" class="btn btn-sm btn-success"-->
+<!--                                                        [routerLink]="['/take-exam/'+0]">Làm bài thi</a></td>-->
+<!--      </tr>-->
 
       <tr class="row"
           *ngFor="let exam of examListBySubject| paginate : { itemsPerPage: 4, currentPage: p }; let i = index;">
