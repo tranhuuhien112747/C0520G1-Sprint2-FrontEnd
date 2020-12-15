@@ -1,28 +1,12 @@
-<div class="col-md-12 m-0 p-0" style="width: 100%;height:  100%; border: 3px solid darkblue">
-  <!--    <div class="col-md-1 m-0 p-0 text-center"> TOP 10-->
-  <!--      <div class="btn-group-vertical text-center mt-5" role="group" aria-label="Basic outlined example">-->
-  <!--        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"-->
-  <!--                (click)="onSearchTop10User('java')"> Java-->
-  <!--        </button>-->
-  <!--        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"-->
-  <!--                (click)="onSearchTop10User('html')">HTML5-->
-  <!--        </button>-->
-  <!--        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"-->
-  <!--                (click)="onSearchTop10User('javaScript')">JavaScript-->
-  <!--        </button>-->
-  <!--        <button type="button" class="btn btn-outline-dark" role="button" style="width: 75px"-->
-  <!--                (click)="onSearchTop10User('angular')">Angular-->
-  <!--        </button>-->
-  <!--      </div>-->
-  <!--    </div>-->
+<div class="col-md-12 container-fluid m-0 p-0" style="width: 100%;height:  100%; border: 3px solid darkblue">
   <div class="card m-1 p-0">
     <div class="card-header d-flex justify-content-end m-0 p-0" style="background: #fffab3">
       <button class="btn btn-sm btn-danger font-weight-bold p-1" mat-dialog-close type="button"
               style="width: 25px;font-size: 10px;border: 1px solid dimgray"> X
       </button>
     </div>
-    <div class="card-body">
-      <div class="col-md-12 d-flex" *ngIf="top10UserList.length>0 || countSubjectList.length >0">
+    <div class="col-md-12 card-body">
+      <div class="col-md-12  d-flex" *ngIf="top10UserList.length>0 || countSubjectList.length >0">
         <div class="col-md-2"></div>
         <div class="col-md-5 m-0 p-0 card text-center" style="height: 58px">
           <div class="card-header m-0 p-0" style="height: 23px">Bảng xếp hạng</div>
@@ -58,7 +42,7 @@
         <div class="col-md-2"></div>
       </div>
       <div *ngIf="countSubjectList.length == 0" class="text-center">
-        <h2 style="color: darkred; font-size: 25px">Hệ thống đang được bảo trì. Vui lòng quay lại sau !!!</h2>
+        <h2 style="color: darkred; font-size: 25px">Hệ thống đang được bảo trì. Vui lòng quay lại sau !</h2>
         <h2 style="color: darkred; font-size: 25px">Xin cảm ơn</h2>
       </div>
       <div class="row col-md-12 m-0 p-0" *ngIf="countSubjectList.length > 0">

@@ -213,6 +213,11 @@ export class StatisticsDetailDataComponent implements OnInit {
       quarter2 = dataList[1];
       quarter3 = dataList[2];
       quarter4 = dataList[3];
+      console.log(quarter1);
+      console.log(quarter2);
+      console.log(quarter3);
+      console.log(quarter4);
+
       this.flag = 3;
       this.chartOptionsBar = {
         series: [
