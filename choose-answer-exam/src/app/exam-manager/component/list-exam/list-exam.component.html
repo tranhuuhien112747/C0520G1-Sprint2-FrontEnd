@@ -71,7 +71,7 @@
         <td class="text-center">{{element.examName}}</td>
         <td class="text-center">{{element.questions[0].subject.subjectName}}</td>
 
-        <td class="text-center"><input type="checkbox" name="" id="" [(ngModel)]="element.isChecked"
+        <td class="text-center"><input type="checkbox" [(ngModel)]="element.isChecked"
                                        (change)="changeSelection()"></td>
 
         <td class="text-center"><a [routerLink]="['/detail/'+ element.idExam]">Xem</a></td>
