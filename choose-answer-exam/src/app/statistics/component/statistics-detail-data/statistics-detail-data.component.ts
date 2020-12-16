@@ -75,7 +75,7 @@ export class StatisticsDetailDataComponent implements OnInit {
   public top10UserList = [];
   public dataTop = [];
   public flag: number;
-  p: any;
+  public p = 1;
 
   constructor(public statisticsService: StatisticsService) {
   }
@@ -111,7 +111,7 @@ export class StatisticsDetailDataComponent implements OnInit {
           }
         ],
         chart: {
-          height: 270,
+          height: 273,
           type: 'bar',
         },
         colors: [
@@ -180,7 +180,7 @@ export class StatisticsDetailDataComponent implements OnInit {
       this.chartOptions = {
         series: [this.countSubject[0], this.countSubject[1], this.countSubject[2], this.countSubject[3]],
         chart: {
-          width: 420,
+          width: 428,
           type: 'pie'
         },
         labels: [this.nameSubject[0], this.nameSubject[1], this.nameSubject[2], this.nameSubject[3]],
@@ -240,7 +240,7 @@ export class StatisticsDetailDataComponent implements OnInit {
         ],
         chart: {
           type: 'bar',
-          height: 270,
+          height: 273,
           stacked: true,
           toolbar: {
             show: true
