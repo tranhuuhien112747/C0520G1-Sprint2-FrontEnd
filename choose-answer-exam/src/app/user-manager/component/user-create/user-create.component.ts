@@ -49,7 +49,7 @@ export class UserCreateComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[a-zA-Zà-ỹÀ-Ỹ_0-9\s]{1,30}$/)]],
       email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{3,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],
       address: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9\-\+]{10,15}$/)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9\-\+]{10}$/)]],
     }, {validator: comparePassword});
     this.userService.getAllUser().subscribe(data => {
       this.userList = data;
